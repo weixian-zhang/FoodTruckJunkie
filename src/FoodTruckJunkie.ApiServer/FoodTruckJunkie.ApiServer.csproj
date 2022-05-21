@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <ProjectReference Include="..\FoodTruckJunkie.Model\FoodTruckJunkie.Model.csproj" />
+    <ProjectReference Include="..\FoodTruckJunkie.Repository\FoodTruckJunkie.Repository.csproj" />
+    <ProjectReference Include="..\FoodTruckJunkie.Service\FoodTruckJunkie.Service.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+
+</Project>
