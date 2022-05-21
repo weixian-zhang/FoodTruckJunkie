@@ -2,7 +2,7 @@
 
 namespace FoodTruckJunkie.Model
 {
-    public class LatitudeLongitudeSearchResult
+    public class NearestFoodTruck
     {
         public string Applicant { get; set; }
         public string FoodItems { get; set; }

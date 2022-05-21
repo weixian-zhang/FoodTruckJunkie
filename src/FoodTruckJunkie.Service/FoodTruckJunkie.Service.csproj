@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <ItemGroup>
-    <ProjectReference Include="..\FoodTruckJunkie.Model\FoodTruckJunkie.Model.csproj" />
-    <ProjectReference Include="..\FoodTruckJunkie.Repository\FoodTruckJunkie.Repository.csproj" />
+    <ProjectReference Include="..\FoodTruckJunkie.Model\FoodTruckJunkie.Model.csproj"/>
+    <ProjectReference Include="..\FoodTruckJunkie.Repository\FoodTruckJunkie.Repository.csproj"/>
   </ItemGroup>
-
+  <ItemGroup>
+    <PackageReference Include="Serilog" Version="2.11.0"/>
+  </ItemGroup>
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
-
 </Project>

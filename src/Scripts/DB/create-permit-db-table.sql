@@ -12,12 +12,11 @@ CREATE TABLE IF NOT EXISTS FoodTruckJunkie.FoodTruckPermit (
     `Lot` nvarchar(30)  NULL,
     `Status` nvarchar(30)  NOT NULL,
     `FoodItems`  text NOT NULL,
-    `X` nvarchar(50)  NULL,
-    `Y` nvarchar(50)  NULL,
     `Latitude` nvarchar(50)  NULL,
     `Longitude`  nvarchar(50)   NULL,
      PRIMARY KEY ( id )
 );
+
 
 /* all columns
 CREATE TABLE IF NOT EXISTS FoodTruckJunkie.FoodTruckPermit (
