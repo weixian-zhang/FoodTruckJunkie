@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -22,17 +23,30 @@ namespace FoodTruckJunkie.Repository
         public NearestFoodTruckSearchResult SearchNearestFoodTrucks
             (decimal latitude, decimal longtitude, int distantMiles, int noOfResult)
         {
-            var result = _db.Query<NearestFoodTruck>(StoredProcSearchLatitudeLongtitude,
+            try
+            {
+                var result = _db.Query<NearestFoodTruck>(StoredProcSearchLatitudeLongtitude,
                 new {startLatitude = latitude, startLongtitude = longtitude, distantMiles = distantMiles, noOfResult = noOfResult}, 
                 commandType: CommandType.StoredProcedure);
 
-            bool hasNearestFoodTrucks = result.Count() > 0 ? true : false;
+                bool hasNearestFoodTrucks = result.Count() > 0 ? true : false;
 
-            return new NearestFoodTruckSearchResult()
+                return new NearestFoodTruckSearchResult()
+                {
+                    HasNearestFoodTruck = hasNearestFoodTrucks,
+                    NearestFoodTrucks = result
+                };
+            }
+            catch(Exception ex)
             {
-                HasNearestFoodTruck = hasNearestFoodTrucks,
-                NearestFoodTrucks = result
-            };
+                return new NearestFoodTruckSearchResult()
+                {
+                    HasNearestFoodTruck = false,
+                    HasError = true,
+                    NearestFoodTrucks = new List<NearestFoodTruck>()
+                };
+            }
+            
         }
     }
 }

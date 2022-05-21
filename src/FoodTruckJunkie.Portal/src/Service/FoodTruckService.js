@@ -12,6 +12,9 @@ export default class FoodTruckService
                 distantMiles: distantMiles,
                 noOfResult: noOfResult
               },
+              headers: {
+                'Content-Type': 'application/json'
+              }
             })
             .then(function (response) {
               var result = response.data;

@@ -25,11 +25,11 @@ namespace FoodTruckJunkie.ApiServer.Controllers
 public decimal Latitude { get; set; }
 
         [HttpGet("searchfoodtrucks")]
-        public NearestFoodTruckSearchResult SearchNearestFoodTrucks
+        public IActionResult SearchNearestFoodTrucks
             ([FromQuery] decimal latitude, decimal longitude, int distantMiles, int noOfResult )
         {
            var result =  _ftService.SearchNearestFoodTrucks(latitude, longitude, distantMiles, noOfResult);
-           return result;
+           return Ok(result);
         }
     }
 }

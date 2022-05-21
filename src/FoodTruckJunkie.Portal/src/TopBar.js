@@ -110,8 +110,8 @@ export default class TopBar extends Component {
     }
 
     searchNearestFoodTrucks = () => {
-        if(!this.state.latitude || this.state.longitude || 
-          !this.state.distantMiles | !this.state.noOfResult) {
+        if(!this.state.latitude || !this.state.longitude || 
+          !this.state.distantMiles || !this.state.noOfResult) {
               alert('All fields need to be filled up');
               return;
           }
@@ -119,6 +119,9 @@ export default class TopBar extends Component {
           this.foodtruckService.searchNearestFoodTruck
             (this.state.latitude, this.state.longitude, this.state.distantMiles, this.state.noOfResult,
                 function(result) {
+                    if(result.hasError) {
+                        alert('An error has occurred, likely input is incorrect. Try entering valid latitude and longitude');
+                    }
                     alert('successful!');
                 },
                 function(error) {
