@@ -6,7 +6,7 @@ namespace FoodTruckJunkie.Service
 {
     public interface IFoodTruckPermitService
     {
-        public IEnumerable<LatitudeLongitudeSearchResult> SearchLatitudeLongtitude
+        public NearestFoodTruckSearchResult SearchNearestFoodTrucks
             (decimal lat, decimal longtitude, int distantMiles, int noOfResult);
     }
 }

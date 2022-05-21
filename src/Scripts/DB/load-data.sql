@@ -4,4 +4,4 @@ FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 LINES TERMINATED BY '\r\n'
 IGNORE 1 ROWS
-(Applicant, FacilityType, LocationDescription,Address, BlockLot,Block,Lot,Status,FoodItems,X,Y,Latitude,Longitude);
+(Applicant, FacilityType, LocationDescription,Address, BlockLot,Block,Lot,Status,FoodItems,Latitude,Longitude);

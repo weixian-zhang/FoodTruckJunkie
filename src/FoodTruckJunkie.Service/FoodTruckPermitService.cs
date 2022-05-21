@@ -2,20 +2,28 @@ using System;
 using System.Collections.Generic;
 using FoodTruckJunkie.Model;
 using FoodTruckJunkie.Repository;
+using Serilog;
 
 namespace FoodTruckJunkie.Service
 {
     public class FoodTruckPermitService : IFoodTruckPermitService
     {
-        public FoodTruckPermitService(IFoodTruckPermitRepository permitRepo)
-        {
+        private IFoodTruckPermitRepository _permitRepo;
+        private AppConfig _appconfig;
+        private ILogger _logger;
 
+        public FoodTruckPermitService(AppConfig appconfig, IFoodTruckPermitRepository permitRepo, ILogger logger)
+        {
+            _appconfig = appconfig;
+            _permitRepo = permitRepo;
+            _logger = logger;
         }
         
-        public IEnumerable<LatitudeLongitudeSearchResult> SearchLatitudeLongtitude
-            (decimal lat, decimal longtitude, int distantMiles, int noOfResult)
+        public NearestFoodTruckSearchResult SearchNearestFoodTrucks
+            (decimal lat, decimal longitude, int distantMiles, int noOfResult)
         {
-            throw new NotImplementedException();
+           var result = _permitRepo.SearchNearestFoodTrucks(lat, longitude, distantMiles, noOfResult);
+           return result;           
         }
     }
 }

@@ -3,34 +3,36 @@ using System.Data;
 using System.Linq;
 using Dapper;
 using FoodTruckJunkie.Model;
+using Serilog;
 
 namespace FoodTruckJunkie.Repository
 {
     public class FoodTruckPermitRepository : BaseRepository, IFoodTruckPermitRepository
     {
         private AppConfig _appconfig;
-        private const string StoredProcSearchLatitudeLongtitude = "SP_SearchLatitudeLongtitude";
+        private ILogger _logger;
+        private const string StoredProcSearchLatitudeLongtitude = "SP_SearchLatitudeLongitude";
 
-        public FoodTruckPermitRepository(AppConfig appconfig) : base(appconfig.MySQLConnectionString)
+        public FoodTruckPermitRepository(AppConfig appconfig, ILogger logger) : base(appconfig.MySQLConnectionString)
         {
+            _logger = logger;
             _appconfig = appconfig;
         }
 
-        public IEnumerable<LatitudeLongitudeSearchResult> SearchLatitudeLongtitude
+        public NearestFoodTruckSearchResult SearchNearestFoodTrucks
             (decimal latitude, decimal longtitude, int distantMiles, int noOfResult)
         {
-            // var p = new DynamicParameters();
-            // p.Add("@latitude", dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            // p.Add("@longtitude", dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            // p.Add("@distant", dbType: DbType.Int32, direction: ParameterDirection.Input);
-
-            // _db.Execute(StoredProcSearchLatitudeLongtitude, p, commandType: CommandType.StoredProcedure);
-
-            var result = _db.Query<LatitudeLongitudeSearchResult>(StoredProcSearchLatitudeLongtitude,
-                new {latitude = latitude, longtitude = longtitude, distantMiles = distantMiles, noOfResult = noOfResult}, 
+            var result = _db.Query<NearestFoodTruck>(StoredProcSearchLatitudeLongtitude,
+                new {startLatitude = latitude, startLongtitude = longtitude, distantMiles = distantMiles, noOfResult = noOfResult}, 
                 commandType: CommandType.StoredProcedure);
 
-            return result;
+            bool hasNearestFoodTrucks = result.Count() > 0 ? true : false;
+
+            return new NearestFoodTruckSearchResult()
+            {
+                HasNearestFoodTruck = hasNearestFoodTrucks,
+                NearestFoodTrucks = result
+            };
         }
     }
 }
