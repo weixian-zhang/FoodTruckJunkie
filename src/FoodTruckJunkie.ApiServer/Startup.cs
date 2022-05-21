@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FoodTruckJunkie.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +27,11 @@ namespace FoodTruckJunkie.ApiServer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+        }
+
+        private void WireupDependencies(IServiceCollection services)
+        {
+            services.AddTransient<IFoodTruckPermitService, FoodTruckPermitService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

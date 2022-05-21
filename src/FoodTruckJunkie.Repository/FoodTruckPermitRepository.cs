@@ -6,17 +6,18 @@ using FoodTruckJunkie.Model;
 
 namespace FoodTruckJunkie.Repository
 {
-    public class PermitRepository : BaseRepository, IPermitRepository
+    public class FoodTruckPermitRepository : BaseRepository, IFoodTruckPermitRepository
     {
         private AppConfig _appconfig;
-        private const string StoredProcSearchLatitudeLongtitude = "spSearchLatitudeLongtitude";
+        private const string StoredProcSearchLatitudeLongtitude = "SP_SearchLatitudeLongtitude";
 
-        public PermitRepository(AppConfig appconfig) : base(appconfig.MySQLConnectionString)
+        public FoodTruckPermitRepository(AppConfig appconfig) : base(appconfig.MySQLConnectionString)
         {
             _appconfig = appconfig;
         }
 
-        public IEnumerable<LatitudeLongTitudeSearchResult> SearchLatitudeLongtitude(decimal latitude, decimal longtitude, int distantMiles)
+        public IEnumerable<LatitudeLongitudeSearchResult> SearchLatitudeLongtitude
+            (decimal latitude, decimal longtitude, int distantMiles, int noOfResult)
         {
             // var p = new DynamicParameters();
             // p.Add("@latitude", dbType: DbType.Decimal, direction: ParameterDirection.Input);
@@ -25,8 +26,8 @@ namespace FoodTruckJunkie.Repository
 
             // _db.Execute(StoredProcSearchLatitudeLongtitude, p, commandType: CommandType.StoredProcedure);
 
-            var result = _db.Query<LatitudeLongTitudeSearchResult>("SP_SearchLatiitudeLongtitude",
-                new {latitude = latitude, longtitude = longtitude, distantMiles = distantMiles}, 
+            var result = _db.Query<LatitudeLongitudeSearchResult>(StoredProcSearchLatitudeLongtitude,
+                new {latitude = latitude, longtitude = longtitude, distantMiles = distantMiles, noOfResult = noOfResult}, 
                 commandType: CommandType.StoredProcedure);
 
             return result;

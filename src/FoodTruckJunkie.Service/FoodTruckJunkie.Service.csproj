@@ -1,5 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <ItemGroup>
+    <ProjectReference Include="..\FoodTruckJunkie.Model\FoodTruckJunkie.Model.csproj" />
+    <ProjectReference Include="..\FoodTruckJunkie.Repository\FoodTruckJunkie.Repository.csproj" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
