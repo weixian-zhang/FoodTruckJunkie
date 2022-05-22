@@ -31,10 +31,7 @@ CREATE TABLE IF NOT EXISTS FoodTruckJunkie.FoodTruckPermit (
      PRIMARY KEY ( id )
 );
 
-
-
-
-call SP_SearchLatitudeLongtitude(37.78813948, -122.3925795, 20, 10);
+call FoodTruckJunkie.SP_SearchLatitudeLongitude(37.78813948, -122.3925795, 20, 10);
 
 
 

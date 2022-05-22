@@ -8,8 +8,8 @@ import { withScriptjs,
   withGoogleMap,
   GoogleMap,
   Marker,
-  InfoWindow  } from "react-google-maps";
-  
+  InfoWindow,  } from "react-google-maps";
+ 
 
 import FoodTruckService from './Service/FoodTruckService';
 
@@ -20,16 +20,18 @@ class App extends Component {
     super(props);
 
     this.state = {
+      centerMap: {lat: 37.78813948, lng: -122.3925795},
       latitude: 37.78813948,
       longitude: -122.3925795,
       distantMiles: 20,
       noOfResult: 10,
-      foodtruckResult: {}
+      nearestFoodTrucks: [],
+      selectedMarker: false
     };
 
     this.foodtruckService = new FoodTruckService();
 
-
+    //this.getUserCurrentLocation();
   }
 
   render() {
@@ -42,73 +44,63 @@ class App extends Component {
       x: '200',
       y: '0'
     };
-    const marketIconSize = {
-      width: 60, height: 80
-    };
-
-    const labelPadding = 8;
+  
 
     const FoodTruckMap = withScriptjs(withGoogleMap((props) =>{
                       
       return (
           <GoogleMap
-            defaultZoom={14} 
-            google={this.props.google}
-            center={{lat:this.state.latitude, lng: this.state.longitude}}
-            >
-            //user marker
-            {
-              this.state.latitude != undefined && this.state.longitude != undefined ?
-              (
-                 <Marker
-                    key="999"      
-                    label= {{
-                      text: "You are here",
-                      color: "#4682B4",
-                      fontSize: "20px",
-                      fontWeight: "bold"
-                    }}
-                    icon= {{
-                      url: UserMarkerIcon,
-                      scaledSize: {width: 60, height: 80}
-                    }}
-                    position={{ lat: this.state.latitude, lng: this.state.longitude }} />
-              ) : 
-              (
-                ''
-              )
-            }
+            defaultZoom={17}
+            onChange={this.onMapChange}
+            center={this.state.centerMap}>
             
-            //food truck markers
-            {
-              this.state.foodtruckResult.nearestFoodTrucks != undefined ?
-              (
-                this.state.foodtruckResult.nearestFoodTrucks.forEach((foodTruckInfo) => {
-                    
-                  <Marker
-                    key= {foodTruckInfo.applicant }  
-                    label= {{
-                      text: foodTruckInfo.applicant,
-                      color: "#4682B4",
-                      fontSize: "20px",
-                      fontWeight: "bold"
-                    }}
-                    icon= {{
-                      url: NearbyFoodTruckMarkerIcon,
-                      scaledSize: {width: 60, height: 80}
-                    }}
-                    position={{ lat: foodTruckInfo.latitude, lng: foodTruckInfo.longitude }} />
-                  })
-              ) :
-              (
-                ''
-              )
-            }
+            
+            {this.renderUserMapMarker()}
 
-            {/* <Marker
-            key="999"      
-            label='You are here'    
-            position={{ lat: this.state.latitude, lng: this.state.longitude }} /> */}
+            {/* render food truck markers */}
+            {
+             
+              this.state.nearestFoodTrucks.map(foodTruckInfo => {
+                  const onClick = props.onClick.bind(this, foodTruckInfo)
+                  return(
+                    
+                    <Marker
+                        key= {foodTruckInfo.id}
+                        onClick={onClick}
+                        label= {{
+                          text: foodTruckInfo.applicant,
+                          color: "#4682B4",
+                          fontSize: "20px",
+                          fontWeight: "bold",
+                          background: '#fff'
+                        }}
+                        icon= {{
+                          url: NearbyFoodTruckMarkerIcon,
+                          scaledSize: {width: 60, height: 80},
+                          labelOrigin: {x: 40, y: -12}
+                        }}
+                        position={{ lat: foodTruckInfo.latitude, lng: foodTruckInfo.longitude }}>
+
+                              {
+                              props.selectedMarker === foodTruckInfo &&
+                                <InfoWindow>
+                                  <div style={{fontSize: '25px', fontFamily: 'Segoe UI'}}>
+                                    <p style={{color: 'blue'}}>{foodTruckInfo.applicant}</p>
+                                    <hr />
+                                    <p>{foodTruckInfo.foodItems}</p>
+                                    <hr />
+                                    <p>{foodTruckInfo.address}</p>
+                                    <hr />
+                                    <p>{foodTruckInfo.locationDescription}</p>
+                                  </div>
+                                </InfoWindow>
+                              }
+
+                    </Marker>
+                  )
+                                  
+              })
+            }  
           </GoogleMap>
         );
       }
@@ -120,6 +112,10 @@ class App extends Component {
               <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
                   <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
 
+                    <div class="row" style={{marginTop: '20px', marginBottom: '20px', fontSize: '25'}}>
+                      <div>Food Truck Junkie</div>
+                    </div>
+
                     <div class="row">
                       <img src={FoodTruckImage} style={{ width:"100%", height:"150px" }} alt="" />
                     </div>
@@ -127,6 +123,7 @@ class App extends Component {
                     <div class="row" style={{marginTop: '20px'}}>
                       <form>
                         <div class="form-group">
+                          <label for="exampleInputEmail1">Latitude</label>
                           <input type="text" class="form-control"  placeholder="your current latitude"
                               onChange={this.latitudeChanged} value={this.state.latitude} />
                         </div>
@@ -136,6 +133,7 @@ class App extends Component {
                     <div class="row" style={{marginTop: '10px'}}>
                         <form>
                               <div class="form-group">
+                              <label for="exampleInputEmail1">Longitude</label>
                                   <input type="text" class="form-control"  placeholder="your current longitude"
                                       onChange={this.longitudeChanged} value={ this.state.longitude } />
                               </div>
@@ -144,22 +142,25 @@ class App extends Component {
 
                     <div class="row" style={{marginTop: '10px'}}>
                       <form>
-                              <div class="form-group">
-                                  <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="search within X miles" 
-                                  onChange={this.distantMilesChanged} value={ this.state.distantMiles }/>
-                              </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Search within X miles</label>
+                            <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="search within X miles" 
+                            onChange={this.distantMilesChanged} value={ this.state.distantMiles }/>
+                        </div>
                       </form>
                     </div>
 
                     <div class="row" style={{marginTop: '10px'}}>
                       <form>
                             <div class="form-group">
+                              <label for="exampleInputEmail1">No. of result</label>
                                 <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="no. of result" 
                                     onChange={this.noOfResultChanged} value= { this.state.noOfResult } />
                             </div>
                         </form>
                     </div>
-
+                    <br />
+                    <br />
                     <div class="row" style={{marginTop: '10px', width: '100%'}}>
                       <button type="submit" class="btn btn-primary" style={{width: '100%'}} onClick={this.searchNearestFoodTrucks}> Search</button>
                     </div>                  
@@ -167,10 +168,15 @@ class App extends Component {
               </div>
               <div class="col py-3">
                 <FoodTruckMap
+                  selectedMarker={this.state.selectedMarker}
+                  onClick={this.handleMarkerClick}
+                  markers={this.state.nearestFoodTrucks}
+                  center={this.state.centerMap}
                   googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyC0rNODpJvayMKar-t5OC6OEDhmJZSaDKE&v=3.exp&libraries=geometry,drawing,places`}
                   loadingElement={<div style={{ height: `100%` }} />}
                   containerElement={<div style={{ height: `100%`, width: `100%` }} />}
                   mapElement={<div style={{ height: `100%` }} />}
+                  
                 />
               </div>
           </div>
@@ -178,36 +184,79 @@ class App extends Component {
     );
   } //render
 
-  getUserCurrentLocation = () => {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(this.userCurrentLocationHandler);
-      } 
+  handleMarkerClick = (marker, event) => {
+    // console.log({ marker })
+    this.setState({ selectedMarker: marker })
   }
 
-  userCurrentLocationHandler = (position) => {
-    var lat = position.coords.latitude;
-    var long = position.coords.longitude;
+  renderUserMapMarker() {
 
-    this.setState({
-        latitude: lat,
-        longitude: long
-    })
- }
+    // if(this.state.latitude != '' && this.state.longitude != '') {
+    //     this.setState({centerMap: {
+    //         lat: this.state.latitude,
+    //         lng: this.state.longitude
+    //     }});
+    // } else {
+    //   this.setState({centerMap: {
+    //     lat: 37.7749,
+    //     lng: 122.4194
+    //   }}); 
+    // }
+
+    return (
+      this.state.latitude != '' && this.state.longitude != '' ?
+      (
+         <Marker
+            key="999"      
+            label= {{
+              text: "You are here",
+              color: "#4682B4",
+              fontSize: "20px",
+              fontWeight: "bold"
+            }}
+            icon= {{
+              url: UserMarkerIcon,
+              scaledSize: {width: 60, height: 80}
+            }}
+            position={{ lat: parseFloat(this.state.latitude), lng: parseFloat(this.state.longitude) }} />
+      ) : 
+      (
+        ''
+      )
+    );
+  }
+
+//   getUserCurrentLocation = () => {
+//     if (navigator.geolocation) {
+//         navigator.geolocation.getCurrentPosition(this.userCurrentLocationHandler);
+//       } 
+//   }
+
+//   userCurrentLocationHandler = (position) => {
+//     var lat = position.coords.latitude;
+//     var long = position.coords.longitude;
+
+//     this.setState({
+//       centerMap: {lat: parseFloat(lat), lng: parseFloat(long)}
+//     })
+//  }
 
 latitudeChanged = (event) => {
     this.setState({
-        latitude: event.target.value
+        latitude: event.target.value,
+        centerMap: {lat: parseFloat(event.target.value), lng: parseFloat(this.state.longitude)}
     });
 
-    this.renderUserLocationMarker();
+    this.renderUserMapMarker();
 }
 
 longitudeChanged = (event) => {
     this.setState({
-        longitude: event.target.value
+        longitude: event.target.value,
+        centerMap: {lat: parseFloat(this.state.latitude), lng: parseFloat(event.target.value)}
     });
 
-    this.renderUserLocationMarker();
+    this.renderUserMapMarker();
 }
 
 distantMilesChanged = (event) => {
@@ -222,14 +271,7 @@ noOfResultChanged = (event) => {
     })
 }
 
-renderUserLocationMarker() {
 
-  return (
-    <div>
-      
-    </div>
-  );
-}
 
 searchNearestFoodTrucks = () => {
     if(!this.state.latitude || !this.state.longitude || 
@@ -237,6 +279,8 @@ searchNearestFoodTrucks = () => {
           alert('All fields need to be filled up');
           return;
       }
+
+      this.renderUserMapMarker();
 
       this.setState({foodtruckResult: []}); //reset prev result
 
@@ -248,7 +292,8 @@ searchNearestFoodTrucks = () => {
                 if(result.hasError) {
                     alert('An error has occurred, likely input is incorrect. Try entering valid latitude and longitude');
                 }
-                thisComp.setState({foodtruckResult: result});
+            
+                thisComp.setState({nearestFoodTrucks:result.nearestFoodTrucks });                
             },
             function(error) {
                 alert(error);

@@ -28,6 +28,9 @@ public decimal Latitude { get; set; }
         public IActionResult SearchNearestFoodTrucks
             ([FromQuery] decimal latitude, decimal longitude, int distantMiles, int noOfResult )
         {
+            //TODO: input validations
+            //https://stackoverflow.com/questions/32830512/using-data-annotations-specifically-datatype-in-a-console-app
+            
            var result =  _ftService.SearchNearestFoodTrucks(latitude, longitude, distantMiles, noOfResult);
            return Ok(result);
         }
