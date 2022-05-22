@@ -30,7 +30,9 @@ public decimal Latitude { get; set; }
         {
             //TODO: input validations
             //https://stackoverflow.com/questions/32830512/using-data-annotations-specifically-datatype-in-a-console-app
-            
+
+            //throw new Exception("hello");
+
            var result =  _ftService.SearchNearestFoodTrucks(latitude, longitude, distantMiles, noOfResult);
            return Ok(result);
         }

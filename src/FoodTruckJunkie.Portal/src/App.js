@@ -191,18 +191,6 @@ class App extends Component {
 
   renderUserMapMarker() {
 
-    // if(this.state.latitude != '' && this.state.longitude != '') {
-    //     this.setState({centerMap: {
-    //         lat: this.state.latitude,
-    //         lng: this.state.longitude
-    //     }});
-    // } else {
-    //   this.setState({centerMap: {
-    //     lat: 37.7749,
-    //     lng: 122.4194
-    //   }}); 
-    // }
-
     return (
       this.state.latitude != '' && this.state.longitude != '' ?
       (
@@ -216,7 +204,8 @@ class App extends Component {
             }}
             icon= {{
               url: UserMarkerIcon,
-              scaledSize: {width: 60, height: 80}
+              scaledSize: {width: 60, height: 80},
+              labelOrigin: {x: 40, y: -12}
             }}
             position={{ lat: parseFloat(this.state.latitude), lng: parseFloat(this.state.longitude) }} />
       ) : 
@@ -247,6 +236,8 @@ latitudeChanged = (event) => {
         centerMap: {lat: parseFloat(event.target.value), lng: parseFloat(this.state.longitude)}
     });
 
+    this.setState({nearestFoodTrucks: []});
+
     this.renderUserMapMarker();
 }
 
@@ -255,6 +246,8 @@ longitudeChanged = (event) => {
         longitude: event.target.value,
         centerMap: {lat: parseFloat(this.state.latitude), lng: parseFloat(event.target.value)}
     });
+
+    this.setState({nearestFoodTrucks: []});
 
     this.renderUserMapMarker();
 }
