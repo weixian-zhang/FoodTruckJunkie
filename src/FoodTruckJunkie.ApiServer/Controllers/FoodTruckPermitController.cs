@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using FoodTruckJunkie.Model;
@@ -28,13 +29,37 @@ public decimal Latitude { get; set; }
         public IActionResult SearchNearestFoodTrucks
             ([FromQuery] decimal latitude, decimal longitude, int distantMiles, int noOfResult )
         {
-            //TODO: input validations
-            //https://stackoverflow.com/questions/32830512/using-data-annotations-specifically-datatype-in-a-console-app
-
-            //throw new Exception("hello");
-
+            string validationMessage = "";
+            if(!IsInputValid(latitude, longitude, distantMiles, noOfResult, out validationMessage)) {
+                return Forbid(validationMessage);
+            }
+            
            var result =  _ftService.SearchNearestFoodTrucks(latitude, longitude, distantMiles, noOfResult);
            return Ok(result);
+        }
+
+        private bool IsInputValid(decimal latitude, decimal longitude, int distantMiles, int noOfResult, out string validationMessages)
+        {
+            var inputs = new SearchNearestFoodTrucksInput() {
+                Latitude = latitude,
+                Longitude = longitude,
+                DistantMiles = distantMiles,
+                NoOfResult = noOfResult
+            };
+
+            var valContext = new ValidationContext(inputs, null, null);
+
+            var valResults = new List<ValidationResult>();
+
+            bool isValid = Validator.TryValidateObject(inputs, valContext, valResults);
+
+            validationMessages = string.Join("\r\n", valResults);
+
+            if(!isValid)
+                _logger.Information($"Invalid paramters supplied: {validationMessages}");
+
+            return isValid;
+            
         }
     }
 }
