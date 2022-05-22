@@ -37,6 +37,15 @@ namespace FoodTruckJunkie.ApiServer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(o => o.AddPolicy("CORS_Policy", builder =>
+            {
+                builder
+                    //.WithOrigins("https://localhost:5001")
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            }));
+
             InitAppConfig();
             
             WireupDependencies(services);
@@ -91,6 +100,8 @@ namespace FoodTruckJunkie.ApiServer
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors("CORS_Policy");
 
             app.UseHttpsRedirection();
 

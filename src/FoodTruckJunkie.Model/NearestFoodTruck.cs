@@ -4,6 +4,7 @@ namespace FoodTruckJunkie.Model
 {
     public class NearestFoodTruck
     {
+        //public int id { get; set; }
         public string Applicant { get; set; }
         public string FoodItems { get; set; }
         public decimal Latitude { get; set; }

@@ -8,7 +8,7 @@
             "name": "debug Api Server",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
+            "preLaunchTask": "build Api Server",
             "program": "${workspaceFolder}/src/FoodTruckJunkie.ApiServer/bin/Debug/netcoreapp3.1/FoodTruckJunkie.ApiServer.dll",
             "args": [],
             "cwd": "${workspaceFolder}/src/FoodTruckJunkie.ApiServer",

@@ -2,40 +2,42 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "build",
-                "${workspaceFolder}/src/FoodTruckJunkie.ApiServer/FoodTruckJunkie.ApiServer.csproj",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
-            ],
-            "problemMatcher": "$msCompile"
+            "label": "run Portal",
+            "type": "shell",
+            "command": "npm run start",
+            "options": {
+                "cwd": "${workspaceFolder}/src/FoodTruckJunkie.Portal",
+                "env": {
+                    "REACT_APP_ENV": "local"
+                }
+            }
         },
         {
-            "label": "publish",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "publish",
-                "${workspaceFolder}/src/FoodTruckJunkie.ApiServer/FoodTruckJunkie.ApiServer.csproj",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
-            ],
-            "problemMatcher": "$msCompile"
+            "label": "build Api Server",
+            "type": "shell",
+            "command": "dotnet build",
+            "options": {
+                "cwd": "${workspaceFolder}/src/FoodTruckJunkie.ApiServer"
+            }
         },
         {
-            "label": "watch",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "watch",
-                "run",
-                "--project",
-                "${workspaceFolder}/src/FoodTruckJunkie.ApiServer/FoodTruckJunkie.ApiServer.csproj"
-            ],
-            "problemMatcher": "$msCompile"
-        }
+            "label": "build Portal Prod",
+            "type": "shell",
+            "command": "npm run build",
+            "options": {
+                "cwd": "${workspaceFolder}/src/FoodTruckJunkie.Portal",
+                "env": {
+                    "REACT_APP_ENV": "prod"
+                }
+            }
+        },
+        {
+            "label": "publish Api Server",
+            "type": "shell",
+            "command": "dotnet publish -c Release -o ./publish",
+            "options": {
+                "cwd": "${workspaceFolder}/src/FoodTruckJunkie.ApiServer"
+            }
+        },
     ]
 }
