@@ -11,7 +11,9 @@ export default class Main extends Component {
 
     render() {
         return (
-            <div>MAIN</div>
+            <div class="col-auto d-flex flex-column align-items-center">
+                HELLO
+            </div>
         );
     }
 

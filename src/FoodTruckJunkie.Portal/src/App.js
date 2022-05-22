@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import './App.css';
-import TopBar from './TopBar';
+import SideBar from './SideBar';
 import Main from './Main';
 
 
@@ -16,9 +16,12 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App" class = "container">
-          <TopBar />
-          <Main />
+      
+      <div className="App" class = "container-fluid">
+         <div class="row">
+            <SideBar />
+            <Main />
+         </div>  
       </div>
     );
   }
