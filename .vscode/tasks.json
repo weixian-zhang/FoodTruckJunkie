@@ -19,6 +19,25 @@
             "options": {
                 "cwd": "${workspaceFolder}/src/FoodTruckJunkie.ApiServer"
             }
-        }
+        },
+        {
+            "label": "build Portal Prod",
+            "type": "shell",
+            "command": "npm run build",
+            "options": {
+                "cwd": "${workspaceFolder}/src/FoodTruckJunkie.Portal",
+                "env": {
+                    "REACT_APP_ENV": "prod"
+                }
+            }
+        },
+        {
+            "label": "publish Api Server",
+            "type": "shell",
+            "command": "dotnet publish -c Release -o ./publish",
+            "options": {
+                "cwd": "${workspaceFolder}/src/FoodTruckJunkie.ApiServer"
+            }
+        },
     ]
 }
