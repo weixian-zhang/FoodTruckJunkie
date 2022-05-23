@@ -1,6 +1,6 @@
 select count(1) from foodtruckjunkie.foodtruckpermit;
 
-select * from foodtruckjunkie.foodtruckpermit order by id desc;
+select * from foodtruckjunkie.foodtruckpermit order by id desc limit 10;
 
 
 LOAD DATA local INFILE 'C:/Weixian/Projects/FoodTruckJunkie/data/Mobile_Food_Facility_Permit_Reduced.csv' 
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS FoodTruckJunkie.FoodTruckPermit (
      PRIMARY KEY ( id )
 );
 
-call FoodTruckJunkie.SP_SearchLatitudeLongitude(37.78813948, -122.3925795, 20, 10);
+call FoodTruckJunkie.SP_SearchLatitudeLongitude(37.78813948, -122.3925795, 20, 7);
 
 
 

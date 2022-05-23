@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using FoodTruckJunkie.Model;
@@ -12,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MySql.Data.MySqlClient;
 using Serilog;
 using Serilog.Core;
 
@@ -71,6 +73,10 @@ namespace FoodTruckJunkie.ApiServer
         private void WireupDependencies(IServiceCollection services)
         {
             InitSerilog();
+
+            services.AddSingleton<IDbConnection>(sp => {
+                return new MySqlConnection(_appconfig.MySQLConnectionString);
+            });
 
             services.AddSingleton<AppConfig>( sp => {
                 return _appconfig;
