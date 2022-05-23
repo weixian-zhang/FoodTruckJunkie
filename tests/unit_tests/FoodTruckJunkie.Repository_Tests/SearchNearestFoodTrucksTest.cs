@@ -6,7 +6,7 @@ namespace FoodTruckJunkie.Repository_Tests
     public class SearchNearestFoodTrucksTest
     {
         [Fact]
-        public void Test1()
+        public void Given_LatitudeLongitude_When()
         {
 
         }
