@@ -30,28 +30,26 @@ public decimal Latitude { get; set; }
             ([FromQuery] decimal latitude, decimal longitude, int distantMiles, int noOfResult )
         {
             string validationMessage = "";
-            if(!IsInputValid(latitude, longitude, distantMiles, noOfResult, out validationMessage)) {
-                return Forbid(validationMessage);
+            if(!IsLatitudeLongitudeValid(latitude, longitude, out validationMessage)) {
+                return BadRequest(validationMessage);
             }
             
            var result =  _ftService.SearchNearestFoodTrucks(latitude, longitude, distantMiles, noOfResult);
            return Ok(result);
         }
 
-        private bool IsInputValid(decimal latitude, decimal longitude, int distantMiles, int noOfResult, out string validationMessages)
+        private bool IsLatitudeLongitudeValid(decimal latitude, decimal longitude, out string validationMessages)
         {
             var inputs = new SearchNearestFoodTrucksInput() {
-                Latitude = latitude,
-                Longitude = longitude,
-                DistantMiles = distantMiles,
-                NoOfResult = noOfResult
+                Latitude = latitude.ToString(),
+                Longitude = longitude.ToString()
             };
 
             var valContext = new ValidationContext(inputs, null, null);
 
             var valResults = new List<ValidationResult>();
 
-            bool isValid = Validator.TryValidateObject(inputs, valContext, valResults);
+            bool isValid = Validator.TryValidateObject(inputs, valContext, valResults, true);
 
             validationMessages = string.Join("\r\n", valResults);
 

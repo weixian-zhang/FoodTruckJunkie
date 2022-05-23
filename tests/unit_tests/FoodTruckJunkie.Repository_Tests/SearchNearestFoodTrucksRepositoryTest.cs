@@ -31,6 +31,7 @@ namespace FoodTruckJunkie.Repository_Tests
         [Theory]
         [InlineData(37.78623677, -122.3890662, 20 , 5)]
         [InlineData(37.78795496, -122.3972365, 20 , 5)]
+        [InlineData(37.78844616, -122.3925795, 20 , 5)]
         public void SearchNearestFoodTrucks_InputsAreValid_ReturnSearchResult
             (decimal latitude, decimal longitude, int distantMiles,  int noOfResult)
         {
