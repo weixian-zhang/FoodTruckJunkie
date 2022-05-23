@@ -8,16 +8,17 @@ using Serilog;
 
 namespace FoodTruckJunkie.Repository
 {
-    public class FoodTruckPermitRepository : BaseRepository, IFoodTruckPermitRepository
+    public class FoodTruckPermitRepository : IFoodTruckPermitRepository
     {
         private AppConfig _appconfig;
         private ILogger _logger;
+        private IDbConnection _db;
         private const string StoredProcSearchLatitudeLongtitude = "SP_SearchLatitudeLongitude";
 
-        public FoodTruckPermitRepository(AppConfig appconfig, ILogger logger) : base(appconfig.MySQLConnectionString)
-        {
+        public FoodTruckPermitRepository(AppConfig appconfig, IDbConnection db, ILogger logger) {
             _logger = logger;
             _appconfig = appconfig;
+            _db = db;
         }
 
         public NearestFoodTruckSearchResult SearchNearestFoodTrucks
@@ -39,6 +40,8 @@ namespace FoodTruckJunkie.Repository
             }
             catch(Exception ex)
             {
+                _logger.Error(ex.ToString());
+                
                 return new NearestFoodTruckSearchResult()
                 {
                     HasNearestFoodTruck = false,
