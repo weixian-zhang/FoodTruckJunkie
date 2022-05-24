@@ -77,7 +77,7 @@ class App extends Component {
                         }}
                         icon= {{
                           url: NearbyFoodTruckMarkerIcon,
-                          scaledSize: {width: 60, height: 80},
+                          scaledSize: {width: 80, height: 90},
                           labelOrigin: {x: 40, y: -12}
                         }}
                         position={{ lat: foodTruckInfo.latitude, lng: foodTruckInfo.longitude }}>
@@ -208,7 +208,7 @@ class App extends Component {
             }}
             icon= {{
               url: UserMarkerIcon,
-              scaledSize: {width: 60, height: 80},
+              scaledSize: {width: 80, height: 90},
               labelOrigin: {x: 40, y: -12}
             }}
             position={{ lat: parseFloat(this.state.latitude), lng: parseFloat(this.state.longitude) }} />
