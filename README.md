@@ -34,16 +34,33 @@ Web App is fully hosted on Azure and consist of major components including
   
 ## Table of Content
 * [Azure Deployment](#azure-deployment)
+* [How to Contribute to Project](#how-to-contribute-to-project)
+* [Software Architecture Design](#software-architecture-design)
+  * [Context Diagram](#context-diagram)
+  * [Container Diagram](#container-diagram)
+  * [Component Diagram](#component-diagram)
+* [Threat Modelling](#threat-modelling)
 * [ApiServer Specifications](#api-server-specifications)
 * [Database Specifications](#database-specifications)
-* How to Contribute to Project
-* Software Architecture Design
-* Testings
+* [Testings](#testings)
 * Project Roadmap
-* What Have I learnt - The Happy Moments  
+* [What Have I Learned](#what-have-i-learned) - The Happy Moments :nerd_face:  
 
-## Azure Deployment  
+## Azure Deployment 
 
+Refer to 
+
+## How to Contribute to Project
+
+## Software Architecture Design
+
+### Context Diagram
+
+### Container Diagram
+
+### Component Diagram
+
+## Threat Modelling
 
 ## Api Server Specifications
 
@@ -55,14 +72,18 @@ ApiServer subsystem is an ASP.NET Core 3.1 web application which uses Json as th
   * improve external developers' experience
   * API Gateway products can easily import ApiServer's API spec using OpenApi Json format as exposed as ""/swagger/v1/swagger.json
 
-| Verbs | API Paths | QueryStrings | Description | HTTP Status Code
-| ------------- | ------------- | ------------- | ------------- | ------------- |
-| GET | /api/<b>1.0</b>/searchfoodtrucks | latitude={decimal}&longitude={decimal}&distantMiles={int}&noOfResult={int} | search food truck info by given {latitude} + {longitude} within {distantMiles} | 200, 400 |
-| GET | /health | none | health status and monitoring information | 200 |
-| GET | / | none | OpenAPI/Swagger UI | 200 || GET | / | none | OpenAPI/Swagger UI | 200 |
-| GET | /swagger/v1/swagger.json | none | OpenAPI/Swagger Json | 200 |
+| Verbs | API Paths | QueryStrings | Description | HTTP Status Code | Data Returned | 
+| ------------- | ------------- | ------------- | ------------- | ------------- |  ------------- |
+| GET | /api/<b>1.0</b>/searchfoodtrucks | latitude={decimal}&longitude={decimal}&distantMiles={int}&noOfResult={int} | search food truck info by given {latitude} + {longitude} within {distantMiles} | 200, 400 | "applicant": {string}, "foodItems": {string}, "latitude": {decimal}, "longitude": {decimal}, "address": {string},   "locationDescription": {string} |
+| GET | /health |  | health status and monitoring information | 200 | |
+| GET | / |  | OpenAPI/Swagger UI | 200 | |
+| GET | /swagger/v1/swagger.json | | OpenAPI/Swagger Json | 200 | |
 
 
 ## Database Specifications
 
+## Testings
 
+## Project Roadmap
+
+## What Have I Learned
