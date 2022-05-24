@@ -3,7 +3,7 @@
 Food Truck Junkie is a [Web App](https://webapp-foodtruckjunkie-portal.azurewebsites.net) that helps you search for food trucks in San Francisco and displays them on an embedded Google Map for your ease of navigation to deliciousness. 
 
 URLs below for quick testing  
-*Note: web app is currently whitelisted (App Service IP Restrictions) for security reasons and only allow access when needed.
+*Note: web app is currently whitelisted (Azure App Service IP Restrictions) for security reasons and only allow access when needed.
 |  Components | URLs |
 | ------------- | ------------- |
 | Portal/Frontend  | https://webapp-foodtruckjunkie-portal.azurewebsites.net  |
