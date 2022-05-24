@@ -1,9 +1,9 @@
 ## Food Truck Junkie
 
-A [Web App](https://webapp-foodtruckjunkie-portal.azurewebsites.net) that helps you search for food trucks in San Francisco and displays them on an embedded Google Map. 
+Food Truck Junkie is a [Web App](https://webapp-foodtruckjunkie-portal.azurewebsites.net) that helps you search for food trucks in San Francisco and displays them on an embedded Google Map for your ease of navigation to deliciousness. 
 
-URLs below for quick tetsing  
-*Note the URLs are whitelisted for security reasons and only allowed access when needed.
+URLs below for quick testing  
+*Note: web app are currently whitelisted for security reasons and only allowed access when needed.
 |  Components | URLs |
 | ------------- | ------------- |
 | Portal/Frontend  | https://webapp-foodtruckjunkie-portal.azurewebsites.net  |
@@ -11,17 +11,16 @@ URLs below for quick tetsing
 
 ## Project Description
 
-This project aims to search for food truck coordinates (latitude, longitude) within a user-defined proximity in miles,  
-by using the [Haversine Formula](https://en.wikipedia.org/wiki/Haversine_formula) on every food truck coordinates against user-defined coordinates.  
-Properties of this Web App includes:
-*  source of food truck dataset comes from [Mobile Food Facility Permit](https://data.sfgov.org/Economy-and-Community/Mobile-Food-Facility-Permit/rqzj-sfat/data)  
-*  A food truck is displayed on map only when their permit status is "APPROVED" 
-
-This Web App is fully hosted on Azure and consist of major components including
+The Web App aims to search for food truck coordinates (latitude, longitude) within a user-defined proximity in miles,  
+by using the [Haversine Formula](https://en.wikipedia.org/wiki/Haversine_formula) on every food truck coordinates measured against user-defined coordinates entered in Frontend.  
+Web App is fully hosted on Azure and consist of major components including
 * a SPA-based Frontend developed using React
-* Web API also known as ApiServer is an ASP.NET Core b\Backend that supports food truck search feature made by Frontend,  
-  and potentially also support future clients like desktop app, mobile apps and CLIs.
+* Web API also known as ApiServer is an ASP.NET Core Backend that supports food truck search feature made by React Frontend.  
+  In future ApiServer potentially adopts Backend-For-Frontend architectural pattern to support additional client types like Desktop App, mobile App and CLIs.
 * Azure Database for MySQL as the main relational DB  
+* other properties includes:
+*  source of food truck dataset comes from [Mobile Food Facility Permit](https://data.sfgov.org/Economy-and-Community/Mobile-Food-Facility-Permit/rqzj-sfat/data)  
+*  A food truck is plotted on GoogleMap only when their permit status is "APPROVED" 
 
 #### Development Challenges
 * A challenge with MySQL LIMIT clause is that LIMIT cannot be used with a variable for e.g LIMIT @numberOfResult as this syntax is considered invalid.
@@ -32,3 +31,12 @@ This Web App is fully hosted on Azure and consist of major components including
   any text change causes map to grey-out.
   This is due to input textboxes are string type while GoogleMap's "center" property accepts decimal only.
   This is solved by parsing string to float e.g: parseFloat(this.state.latitude)
+  
+## Table of Content
+* Azure Deployment
+* ApiServer Specification
+* How to Contribute to Project
+* Software Architecture Design
+* Testings
+* Project Roadmap
+* What Have I learnt - The Happy Moments
