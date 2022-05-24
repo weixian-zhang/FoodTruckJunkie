@@ -1,3 +1,4 @@
 {
-    "dotnet-test-explorer.testProjectPath": "tests/unit_tests/*_Tests"
+    "dotnet-test-explorer.testProjectPath": "tests/unit_tests/*_Tests",
+    "appService.defaultWebAppToDeploy": "None"
 }

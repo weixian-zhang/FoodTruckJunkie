@@ -3,6 +3,7 @@ import './App.css';
 import FoodTruckImage from './assets/images/foodtruck-main.png';
 import UserMarkerIcon from './assets/images/user-marker.png';
 import NearbyFoodTruckMarkerIcon from './assets/images/foodtruck-marker.png';
+import SanFrancisco from './assets/images/sanfrans.png';
 
 import { withScriptjs,
   withGoogleMap,
@@ -113,14 +114,14 @@ class App extends Component {
                   <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
 
                     <div class="row" style={{marginTop: '20px', marginBottom: '20px', fontSize: '25'}}>
-                      <div>Food Truck Junkie</div>
+                      <div style= {{position: "relative"}}>
+                        <h2 style={{color: 'yellow', fontFamily: "Segoe UI", position: "absolute", marginTop: "10px"}}>
+                          Food Truck Junkie
+                        </h2>
+                        <img src={SanFrancisco} style={{ width:"100%", height:"200px" }} alt="" />
+                       </div>
                     </div>
-
-                    <div class="row">
-                      <img src={FoodTruckImage} style={{ width:"100%", height:"150px" }} alt="" />
-                    </div>
-
-                    <div class="row" style={{marginTop: '20px'}}>
+                    <div class="row" style={{marginTop: '10px'}}>
                       <form>
                         <div class="form-group">
                           <label for="exampleInputEmail1">Latitude</label>
@@ -163,7 +164,10 @@ class App extends Component {
                     <br />
                     <div class="row" style={{marginTop: '10px', width: '100%'}}>
                       <button type="submit" class="btn btn-primary" style={{width: '100%'}} onClick={this.searchNearestFoodTrucks}> Search</button>
-                    </div>                  
+                    </div>  
+                    <div class="row" style={{marginTop: '20px', width: '100%'}}>
+                      <img src={FoodTruckImage} style={{ width:"100%", height:"150px" }} alt="" />
+                    </div>                
                   </div>
               </div>
               <div class="col py-3">

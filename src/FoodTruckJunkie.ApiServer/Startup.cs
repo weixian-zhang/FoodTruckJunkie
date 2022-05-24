@@ -42,7 +42,10 @@ namespace FoodTruckJunkie.ApiServer
             services.AddCors(o => o.AddPolicy("CORS_Policy", builder =>
             {
                 builder
-                    //.WithOrigins("https://localhost:5001")
+                    .WithOrigins(
+                        "https://localhost:5001",
+                        "https://webapp-foodtruckjunkie-api.azurewebsites.net"
+                    )
                     .AllowAnyOrigin()
                     .AllowAnyMethod()
                     .AllowAnyHeader();
@@ -58,6 +61,8 @@ namespace FoodTruckJunkie.ApiServer
             {
                 options.Filters.Add(new ErrorHandlingActionFilter(_logger));
             });
+
+            services.AddSwaggerGen();
 
             services.AddControllers();
         }
@@ -106,6 +111,14 @@ namespace FoodTruckJunkie.ApiServer
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+            //serve swaggerui at root /
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+                options.RoutePrefix = string.Empty;
+            });
 
             app.UseCors("CORS_Policy");
 
