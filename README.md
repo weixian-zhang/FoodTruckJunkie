@@ -3,7 +3,7 @@
 Food Truck Junkie is a [Web App](https://webapp-foodtruckjunkie-portal.azurewebsites.net) that helps you search for food trucks in San Francisco and displays them on an embedded Google Map for your ease of navigation to deliciousness. 
 
 URLs below for quick testing  
-*Note: web app are currently whitelisted for security reasons and only allowed access when needed.
+*Note: web app is currently whitelisted (App Service IP Restrictions) for security reasons and only allow access when needed.
 |  Components | URLs |
 | ------------- | ------------- |
 | Portal/Frontend  | https://webapp-foodtruckjunkie-portal.azurewebsites.net  |
@@ -34,7 +34,8 @@ Web App is fully hosted on Azure and consist of major components including
   
 ## Table of Content
 * Azure Deployment
-* ApiServer Specification
+* [ApiServer Specifications](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ApiServerSpecifications.md)
+* Database Specifications
 * How to Contribute to Project
 * Software Architecture Design
 * Testings
