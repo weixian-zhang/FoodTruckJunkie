@@ -1,9 +1,15 @@
-### Food Truck Junkie
+## Food Truck Junkie
+
 A [Web App](https://webapp-foodtruckjunkie-portal.azurewebsites.net) that helps you search for food trucks in San Francisco and displays them on an embedded Google Map.  
 
-### Project Description  
+## Project Description
 
-This project aims to search for food truck coordinates within a proximity calculated using 
+This project aims to search for food truck coordinates (latitude, longitude) within a user-defined proximity in miles,  
+by using the [Haversine Formula](https://en.wikipedia.org/wiki/Haversine_formula) on every food truck cooridinate against user-defined corrdinates.  
+Properties of this Web App includes:
+*  source of food truck dataset comes from [Mobile Food Facility Permit](https://data.sfgov.org/Economy-and-Community/Mobile-Food-Facility-Permit/rqzj-sfat/data)  
+*  A food truck is displayed on map only when their permit status is "APPROVED" 
+
 This Web App is fully hosted on Azure and consist of major components including
 * a SPA-based Frontend developed using React
 * Web API also known as ApiServer is an ASP.NET Core b\Backend that supports food truck search feature made by Frontend,  
@@ -17,10 +23,11 @@ For quick testing you can access the Frontend and Backend below
 | Frontend  | https://webapp-foodtruckjunkie-portal.azurewebsites.net  |
 | ApiServer  | https://webapp-foodtruckjunkie-api.azurewebsites.net/api/searchfoodtrucks?latitude=37.78798865&longitude=-122.3961007&distantMiles=20&noOfResult=1  |
 
-Frontend has input fields for user to enter their current coordinates(latitude, longtitude) and perform a search on nearby available food trucks and together,  
-Portal displays user's current location and food trucks in Google Map.
-*  source of food truck dataset comes from [here](https://data.sfgov.org/Economy-and-Community/Mobile-Food-Facility-Permit/rqzj-sfat/data)
-*  A food truck is displayed in map only when their permit status is "APPROVED"  
+#### Development Challenges
+* A challenge on MySQL LIMIT clause is that LIMIT cannot be used with a variable for e.g LIMIT @numberOfResult as this syntax is considered invalid.
+  A workaround could be to wrap the whole SELECT statement in string and use PREPARE stmt
+  ![image](https://user-images.githubusercontent.com/43234101/169995446-3424ed5e-41b0-439a-9848-74df786660d3.png)
+
 
 This is an important component of your project that many new developers often overlook.
 
