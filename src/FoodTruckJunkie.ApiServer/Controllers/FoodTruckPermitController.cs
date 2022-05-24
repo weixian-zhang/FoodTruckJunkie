@@ -1,9 +1,6 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-using FoodTruckJunkie.Model;
 using FoodTruckJunkie.Service;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
@@ -11,7 +8,8 @@ using Serilog;
 namespace FoodTruckJunkie.ApiServer.Controllers
 {
     [ApiController]
-    [Route("api/")]
+    [Route("api/{version:apiVersion}/")]
+    [ApiVersion("1.0")]
     public class FoodTruckPermitController : ControllerBase
     {
         private IFoodTruckPermitService _ftService;
@@ -23,9 +21,8 @@ namespace FoodTruckJunkie.ApiServer.Controllers
             _logger = logger;
         }
 
-public decimal Latitude { get; set; }
-
         [HttpGet("searchfoodtrucks")]
+        [MapToApiVersion("1.0")]
         public IActionResult SearchNearestFoodTrucks
             ([FromQuery] decimal latitude, decimal longitude, int distantMiles, int noOfResult )
         {

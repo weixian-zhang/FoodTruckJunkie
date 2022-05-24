@@ -4,7 +4,7 @@ export default class FoodTruckService
 {
     searchNearestFoodTruck(latitude, longitude, distantMiles, noOfResult, onSuccess, onFailure) {
         
-        axios.get('api/searchfoodtrucks', 
+        axios.get('api/1.0/searchfoodtrucks', 
             {
               params: {
                 latitude: latitude,

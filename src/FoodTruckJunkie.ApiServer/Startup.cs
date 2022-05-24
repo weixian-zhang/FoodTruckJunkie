@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -60,6 +61,13 @@ namespace FoodTruckJunkie.ApiServer
             services.AddMvc(options =>
             {
                 options.Filters.Add(new ErrorHandlingActionFilter(_logger));
+            });
+
+            services.AddApiVersioning(setup => {
+                setup.DefaultApiVersion = new ApiVersion(1, 0);
+                setup.AssumeDefaultVersionWhenUnspecified = true; //assume latest version. E.g 1.0, 1.1 - assumes 1.1
+                setup.ReportApiVersions = true;
+                setup.ApiVersionReader = new UrlSegmentApiVersionReader();
             });
 
             services.AddSwaggerGen();
