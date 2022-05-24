@@ -87,3 +87,5 @@ ApiServer subsystem is an ASP.NET Core 3.1 web application which uses Json as th
 ## Project Roadmap
 
 ## What Have I Learned
+
+The idea of this one-person-sized challenge is an interesting one, most importantly this challenge can effectively access one's knowledge and experience in a full Software Delivery Lifecycle end to end from understanding requriements, to software architecture design, system Infra/Networking design, threat modelling, software module-level design (package-level), software development in full-stack involving polyglot languages and frameworks from Frontend, Backend to Database, to deployment in this case Azure, and finally to documentation.
