@@ -114,10 +114,16 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 
 ## Security
 
+### Threat Modelling
+
+* Threat modelling was done according to [Container Diagram](#container-diagram) and the designer file can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ThreatModel-FoodTruckJunkie.tm7).  
+Threat Modelling Report can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ThreatMode-Report-FoodTruckJunkie%20WebApp.htm)
+* The detected threats were thoroughly evaluated, threats marked with "Needs Investation", a work item will be created to further explore mitigations in the form of code-based enhancements or existing Azure resource configuration changes, and/or by adding new security-related Azure resources. 
+
 ## Api Server Specifications
 
 ApiServer subsystem is an ASP.NET Core 3.1 web application which uses Json as the default data response format.
-* ApiServer adopts a URL Api versioning strategy as I wanted versioning to be explicit and not subtle like header and content-negotitation strategies.
+* ApiServer adopts a URL Api versioning strategy as we want versioning to be explicit and not subtle like header and content-negotitation strategies.
   QueryString Api versioning strategt tends to clutter the Api's natural querystring parameters
 * ApiServer also supports a /heath endpoint in addition to report "is alive" status, this endpoint can extend to return monitoring metrics modern monitoring tools like Prometheus to scrape metrics from.
 * Supports OpenAPI to
