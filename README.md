@@ -137,8 +137,8 @@ Threat Modelling Report can be found [here](https://github.com/weixian-zhang/Foo
 
 ### During Pre-Commit Stage (while you are coding)
 
-* Secure coding practices - constantly keep in mind these [secure coding practice checklists](https://owasp.org/www-pdf-archive/OWASP_SCP_Quick_Reference_Guide_v2.pdf) while we code
-Example: > * do not disclose sensitive info in error message
+* Secure coding practices - we use these [secure coding practice checklists](https://owasp.org/www-pdf-archive/OWASP_SCP_Quick_Reference_Guide_v2.pdf) while we code
+  Example: > * do not disclose sensitive info in error message
 	   * close DB connection right after use, leaving  persisted TCP connections are like leaving a back-door for adversaries to exploit
            * validate all inputs
            * encode all outputs including HTML, Javascript, CSS, XML, JSON, Http Headers and more
@@ -151,10 +151,16 @@ Example: > * do not disclose sensitive info in error message
   
  ### DevSecOps
  
- * Build Pipeline
-   * Credential 
-   * Static Code Analysis
- * 
+ We will be introducing security tasks into our Build and Release pieplines with tasks as follows
+ * <b>Build Pipeline</b>
+    * Credential Scanner - detects credentials and secrets
+    * SonarQube Static Code Analysis - code smells, bugs and security vulnerabilities ([rules here](https://docs.sonarqube.org/latest/user-guide/security-rules/))
+    * WhiteSource Bolt - detects vulnerabilities in open source components and provides fixes and checks licensing
+    * OWasp Dependency Checks - detects publicly disclosed vulnerabilities contained within a project’s dependencies
+    * Anchore Image Scanner - scans Docker images for vulnerabilities
+ * <b>Release Pipeline</b>
+    * OWASP ZAP - integrated penetration testing tool to detect web vulnerabilities in web apps
+     
 
 
 ## Api Server Specifications
