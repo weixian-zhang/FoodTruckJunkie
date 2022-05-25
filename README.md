@@ -1,6 +1,6 @@
 ## What is Food Truck Junkie
 
-Food Truck Junkie is a [Web App](https://webapp-foodtruckjunkie-portal.azurewebsites.net) that helps you search for food trucks in San Francisco and displays them on an embedded Google Map for your ease of navigation to deliciousness. 
+Food Truck Junkie is a [Web App](https://webapp-foodtruckjunkie-portal.azurewebsites.net) that helps you search for food trucks in San Francisco and displays them on an embedded Google Map for your ease of navigation to deliciousness, but mostly for hunger. 
 
 Quick test URLs below
 *Note: web app is currently whitelisted (Azure App Service IP Restrictions) for security reasons and only allow access when needed.
@@ -55,13 +55,18 @@ The primary target deployment platform is on Azure and PaaS services are preferr
 
 Our team practice Feature Branching, any feature is a short-lived branch that you can clone from Dev.
 Once your great work is done, do a pull request and find any team mate for a second pair of eyes before merging into Dev.
-We like to work on bite-size feature, so it is important how the User Stories are broken down into "manageable-sized" Tasks and each Task should do only one thing.
-For example implementing a Search-FoodTruck-By-FoodType User Story, updating ApiServer, Service and Repository Layers can be one task. Updating Stored Proc to accept "FoodType" parameter can be another task, lastly updating Portal can be another. This User Story can be a branch.  
-<img src="https://user-images.githubusercontent.com/43234101/170171766-8aba42ff-a88c-4ab0-8d18-2fb58447d50d.png" width="600" height="400" />  
-[A Workbench diagram](https://www.azureworkbench.com/?id=RKytBbvBNVqtAtxSXfJg)
+We like to work on bite-size feature, so it is important how the User Stories are broken down into "manageable-sized" Tasks and each Task should do only one thing.  
+>For example implementing a Search-FoodTruck-By-FoodType User Story, updating ApiServer, Service and Repository Layers can be one task. Updating Stored Proc to accept "FoodType" parameter can be another task, lastly updating Portal can be another. This User Story can be a branch.  
 
 * Dev branch will be deployed to Staging environment to perform various tests before merging into Main over pull request
-* Main branch is for production release only. 
+* Main branch is for production release only
+  * Every production release is a new branch
+  * Any production bug fix will be a new branch from the release-branch
+  * Bug fixes will be merged back to release-branch, Main and Dev
+
+<img src="https://user-images.githubusercontent.com/43234101/170193365-0c6eb4eb-0c3f-44a2-b075-c7206d00581a.png" width="600" height="400" />  
+
+[A Workbench diagram](https://www.azureworkbench.com/?id=RKytBbvBNVqtAtxSXfJg)
 
 
 ### Bug Tracker using GitHub Issues
