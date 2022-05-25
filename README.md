@@ -101,7 +101,16 @@ A big picture of how users use FoodTruckJunkie Web App
 
 [A Workbench diagram](https://www.azureworkbench.com/?id=jSjmXFhgHxBzFuBTUTap)
 
-### Component Diagram
+### Component Diagrams
+
+#### Layered Architecture Diagrams
+A supplementary Layered architecture diagram is added to explicitly describe the adoption of a Layered architectural style. I feel this diagram can better help developers to visualize the packages used in each Layers and the Cross-Cutting Concerns packages.
+
+<img src="https://user-images.githubusercontent.com/43234101/170198413-068eaedf-93e2-4954-87b5-7f4d03a24226.png"  width="600" height="550" />  
+
+#### Component Interaction Diagram
+
+<img src="https://user-images.githubusercontent.com/43234101/170208325-93a86940-294c-434d-9c44-6b13bc3ac29a.png" width="900" height="550" />  
 
 ## Security
 
