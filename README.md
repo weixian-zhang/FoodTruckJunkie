@@ -7,7 +7,7 @@ Quick test URLs below
 |  Components | URLs |
 | ------------- | ------------- |
 | Portal/Frontend  | https://webapp-foodtruckjunkie-portal.azurewebsites.net  |
-| ApiServer/Backend  | https://webapp-foodtruckjunkie-api.azurewebsites.net/api/searchfoodtrucks?latitude=37.78798865&longitude=-122.3961007&distantMiles=20&noOfResult=1  |
+| ApiServer/Backend  | https://webapp-foodtruckjunkie-api.azurewebsites.net/api/1.0/searchfoodtrucks?latitude=37.78798865&longitude=-122.3961007&distantMiles=20&noOfResult=1  |
 
 ## Project Description
 
