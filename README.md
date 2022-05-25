@@ -21,16 +21,6 @@ Web App is fully hosted on Azure and consist of major components including
 * other properties includes:
 *  source of food truck dataset comes from [Mobile Food Facility Permit](https://data.sfgov.org/Economy-and-Community/Mobile-Food-Facility-Permit/rqzj-sfat/data)  
 *  A food truck is plotted on GoogleMap only when their permit status is "APPROVED" 
-
-#### Development Challenges
-* A challenge with MySQL LIMIT clause is that LIMIT cannot be used with a variable for e.g LIMIT @numberOfResult as this syntax is considered invalid.
-  A workaround could be to wrap the whole SELECT statement in string and use PREPARE stmt
-  <img src="https://user-images.githubusercontent.com/43234101/169995446-3424ed5e-41b0-439a-9848-74df786660d3.png" width="700" height="250" />  
-  An easier way to solve this is by setting "PageSize" in ApiServer before passing parameter into MySQL stored procedure to calculate food truck proximity using Haversine formula.
-* Frontend - when binding GoogleMap javascript object's "center" property to input textboxes of latitude and longitude over React-State,
-  any text change causes map to grey-out.
-  This is due to input textboxes are string type while GoogleMap's "center" property accepts decimal only.
-  This is solved by parsing string to float e.g: parseFloat(this.state.latitude)
   
 ## Table of Content
 * [System Deployment](#system-deployment)
@@ -43,6 +33,7 @@ Web App is fully hosted on Azure and consist of major components including
 * [ApiServer Specifications](#api-server-specifications)
 * [Database Specifications](#database-specifications)
 * [Testings](#testings)
+* [Development Challenges](#development-challenges)
 * [Project Roadmap](#project-roadmap)
 * [What Have I Learned](#what-have-i-learned) - The Happy Moments :nerd_face:  
 
@@ -114,6 +105,16 @@ ApiServer subsystem is an ASP.NET Core 3.1 web application which uses Json as th
 ## Database Specifications
 
 ## Testings
+
+## Development Challenges
+* A challenge with MySQL LIMIT clause is that LIMIT cannot be used with a variable for e.g LIMIT @numberOfResult as this syntax is considered invalid.
+  A workaround could be to wrap the whole SELECT statement in string and use PREPARE stmt
+  <img src="https://user-images.githubusercontent.com/43234101/169995446-3424ed5e-41b0-439a-9848-74df786660d3.png" width="700" height="250" />  
+  An easier way to solve this is by setting "PageSize" in ApiServer before passing parameter into MySQL stored procedure to calculate food truck proximity using Haversine formula.
+* Frontend - when binding GoogleMap javascript object's "center" property to input textboxes of latitude and longitude over React-State,
+  any text change causes map to grey-out.
+  This is due to input textboxes are string type while GoogleMap's "center" property accepts decimal only.
+  This is solved by parsing string to float e.g: parseFloat(this.state.latitude)
 
 ## Project Roadmap
 
