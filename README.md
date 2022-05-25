@@ -95,7 +95,7 @@ A big picture of how users use FoodTruckJunkie Web App
 ### Container Diagram
 
 * ApiServer is RESTful API hosted on multi-tenanted App Service
-  For security reasons, Azure FrontDoor WAF (see [project roadmap](#project-roadmap)) can be added in-front of ApiServer to allow FrontDoor WAF capability to perform SSL Termination and Owasp web vulnerability   scan, before routing scanned HTTP traffic to ApiServer. 
+  For security reasons, Azure FrontDoor WAF (see [project roadmap](#project-roadmap)) can be added in-front of ApiServer to allow FrontDoor WAF capability to perform     SSL Termination and Owasp web vulnerability scan, before routing scanned HTTP traffic to ApiServer. 
 * SPA-based Portal is hosted on a separate App Service. In future, Portal can be moved to Azure Static Web App to take advange of the built-in CDN for capability.
 ![image](https://user-images.githubusercontent.com/43234101/170195884-acccc7a8-ebd3-4248-8a6a-5d6a5ee24937.png)
 
@@ -110,7 +110,9 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 
 #### Component Interaction Diagram
 
-API Controller layer is the entry point to Web App and it contains all contains all dependencies including cross-cutting (concerns) libraries like Serilog (logging framework). Dependency Injection is implemented here to configure all Interface and concrete class mappings
+* API Controller layer (see [Api Specifications](#api-specifications)) is the entry point to Web App and it contains all package dependencies including cross-cutting (concerns) libraries like Serilog (logging framework). Dependency Injection is configured here to map Interfaces with their concrete classes
+* With reference to the [12 Factor App](https://12factor.net/) guiding principles, environment variables 
+
 <img src="https://user-images.githubusercontent.com/43234101/170208325-93a86940-294c-434d-9c44-6b13bc3ac29a.png" width="900" height="550" />  
 
 ## Security
@@ -123,11 +125,15 @@ The following are software security practices our team strives to following thro
 Threat Modelling Report can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ThreatMode-Report-FoodTruckJunkie%20WebApp.htm)
 * The detected threats were thoroughly evaluated, threats marked with "Needs Investation", a work item will be created to further explore mitigations in the form of code-based enhancements or existing Azure resource configuration changes, and/or by adding new security-related Azure resources. 
 
+### Azure Resource Security Guidelines
+* Always use Azure Managed Identity (wherever supported) as the authentication mechaism when accessing Azure services
+* All Secrets, Asymmetric and Symmetric keys and x.509 Certifications should store in Azure Key Vault
+
 ### During Pre-Commit Stage (while you are coding)
 
 * Secure coding practices - constantly keep in mind these [secure coding practice checklists](https://owasp.org/www-pdf-archive/OWASP_SCP_Quick_Reference_Guide_v2.pdf) while we code
 Example: > * do not disclose sensitive info in error message
-				   * close DB connection right after use, leaving  persisted TCP connections are like leaving a back-door for adversaries to exploit
+	   * close DB connection right after use, leaving  persisted TCP connections are like leaving a back-door for adversaries to exploit
            * validate all inputs
            * encode all outputs including HTML, Javascript, CSS, XML, JSON, Http Headers and more
            
