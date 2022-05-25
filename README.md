@@ -114,11 +114,30 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 
 ## Security
 
+The following are software security practices our team strives to following throughout the SDLC of this project
+
 ### Threat Modelling
 
 * Threat modelling was done according to [Container Diagram](#container-diagram) and the designer file can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ThreatModel-FoodTruckJunkie.tm7).  
 Threat Modelling Report can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ThreatMode-Report-FoodTruckJunkie%20WebApp.htm)
 * The detected threats were thoroughly evaluated, threats marked with "Needs Investation", a work item will be created to further explore mitigations in the form of code-based enhancements or existing Azure resource configuration changes, and/or by adding new security-related Azure resources. 
+
+### During Pre-Commit Stage (while you are coding)
+
+* Secure coding practices - constantly keep in mind these [secure coding practice checklists](https://owasp.org/www-pdf-archive/OWASP_SCP_Quick_Reference_Guide_v2.pdf) while we code
+Example: > * do not disclose sensitive info in error message
+				   * close DB connection right after use, leaving  persisted TCP connections are like leaving a back-door for adversaries to exploit
+           * validate all inputs
+           * encode all outputs including HTML, Javascript, CSS, XML, JSON, Http Headers and more
+           
+* App secrets - if develope using .Net use the [User Secret](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-6.0&tabs=windows) feature from SDK 
+* Pre-commit hook - use Git pre=commit hook to prevent committing secrets
+* DevSkim VSCode extension - able to provide inline security assessment while writing codes on the fly. Example: using outdated Hash MD5 library.
+* Security peer review - security reviews can be done on high risk modules such as authentication, authorization, user management, cryptography and etc.  
+  Also based on secure coding practice checklists
+  
+ ### DevSecOps
+
 
 ## Api Server Specifications
 
