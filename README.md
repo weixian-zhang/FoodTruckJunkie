@@ -25,8 +25,8 @@ Web App is fully hosted on Azure and consist of major components including
 #### Development Challenges
 * A challenge with MySQL LIMIT clause is that LIMIT cannot be used with a variable for e.g LIMIT @numberOfResult as this syntax is considered invalid.
   A workaround could be to wrap the whole SELECT statement in string and use PREPARE stmt
-  ![image](https://user-images.githubusercontent.com/43234101/169995446-3424ed5e-41b0-439a-9848-74df786660d3.png) 
-  I solve this by simply setting paramter in ApiServer before passing parameter into MySQL stored procedure to calculate food truck proximity using Haversine formula.
+  <img src="https://user-images.githubusercontent.com/43234101/169995446-3424ed5e-41b0-439a-9848-74df786660d3.png" width="700" height="250" />  
+  An easier way to solve this is by setting "PageSize" in ApiServer before passing parameter into MySQL stored procedure to calculate food truck proximity using Haversine formula.
 * Frontend - when binding GoogleMap javascript object's "center" property to input textboxes of latitude and longitude over React-State,
   any text change causes map to grey-out.
   This is due to input textboxes are string type while GoogleMap's "center" property accepts decimal only.
