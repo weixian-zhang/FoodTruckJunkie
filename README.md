@@ -34,14 +34,16 @@ Web App is fully hosted on Azure and consist of major components including
 * [Database Specifications](#database-specifications)
 * [Testings](#testings)
 * [Development Challenges](#development-challenges)
-* [Project Roadmap](#project-roadmap)
-* [What Have I Learned](#what-have-i-learned) - The Happy Moments :nerd_face:  
+* [Project Roadmap - If I Have More Time](#project-roadmap---if-i-have-more-time)
+* [What I Have Learned](#what-i-have-learned) - The Happy Moments :nerd_face:  
 
 ## System Deployment & Azure Resource provisioning
 
 The primary target deployment platform is on Azure and PaaS services are preferred over IaaS, as much as possible to reduce any infra-related maintenance overhead.
 * Infra-as-Code (see [Project Roadmap]((#project-roadmap))) is the defacto means to deploy any Azure resource, we are open to any practical ways but the team mainly adopts Bicep, Terraform and/or PowerShell at times.
-* for Apps deployment, our team is working towards GitHub Actions to perform end-to-end DevSecOps (see [Security](#security)). Currently we use [VSCode Azure Tools extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) for deployment.
+* for apps and IAC scripts deployment, in future Project Roadmap, DevSecOps (see [Security](#security)) will be implemented using Azure DevOps Pipelines or GitHub Actions
+  
+  Currently we use [VSCode Azure Tools extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) for deployment.
 
 | Sub-Systems | Azure Resource | Descriptions |
 | ------------- | ------------- | ------------- |
@@ -53,7 +55,7 @@ The primary target deployment platform is on Azure and PaaS services are preferr
 
 ### Branching Strategy
 
-Our team practice Feature Branching, any feature is a short-lived branch that you can clone from Dev.
+Our team practices GitFlow branching, any feature is a short-lived branch that you can clone from Dev.
 Once your great work is done, do a pull request and find any team mate for a second pair of eyes before merging into Dev.
 We like to work on bite-size feature, so it is important how the User Stories are broken down into "manageable-sized" Tasks and each Task should do only one thing.  
 >For example implementing a Search-FoodTruck-By-FoodType User Story, updating ApiServer, Service and Repository Layers can be one task. Updating Stored Proc to accept "FoodType" parameter can be another task, lastly updating Portal can be another. This User Story can be a branch.  
@@ -63,6 +65,9 @@ We like to work on bite-size feature, so it is important how the User Stories ar
   * Every production release is a new branch
   * Any production bug fix will be a new branch from the release-branch
   * Bug fixes will be merged back to release-branch, Main and Dev
+
+[Feature Toggling](https://github.com/launchdarkly/featureflags/blob/master/6%20-%20Flags%20vs%20Branching.md) - there is a disadvantage to GitFlow and that is many branches to maintain, and the merge back to Main and Dev can be complicated.
+One way to tackle this issue is to introduce Feature Toggling (a.k.a feature flipping)
 
 <img src="https://user-images.githubusercontent.com/43234101/170193365-0c6eb4eb-0c3f-44a2-b075-c7206d00581a.png" width="800" height="400" />  
 
@@ -90,7 +95,7 @@ The following diagrams describe Food Truck Junkie's software architecture from a
 ### Context Diagram
 
 A big picture of how users use FoodTruckJunkie Web App  
-<img src="https://user-images.githubusercontent.com/43234101/170187803-b1a55b76-dda0-4ac9-9511-350539bfe478.png" width="200" height="500" />  
+<img src="https://user-images.githubusercontent.com/43234101/170187803-b1a55b76-dda0-4ac9-9511-350539bfe478.png" width="250" height="500" />  
 
 ### Container Diagram
 
@@ -113,7 +118,7 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 * API Controller layer (see [Api Specifications](#api-specifications)) is the entry point to Web App and it contains all package dependencies including cross-cutting (concerns) libraries like Serilog (logging framework). Dependency Injection is configured here to map Interfaces with their concrete classes
 * With reference to the [12 Factor App](https://12factor.net/) guiding principles, environment variables 
 
-<img src="https://user-images.githubusercontent.com/43234101/170208325-93a86940-294c-434d-9c44-6b13bc3ac29a.png" width="900" height="550" />  
+<img src="https://user-images.githubusercontent.com/43234101/170208325-93a86940-294c-434d-9c44-6b13bc3ac29a.png" width="1100" height="600" />  
 
 ## Security
 
@@ -125,9 +130,10 @@ The following are software security practices our team strives to following thro
 Threat Modelling Report can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ThreatMode-Report-FoodTruckJunkie%20WebApp.htm)
 * The detected threats were thoroughly evaluated, threats marked with "Needs Investation", a work item will be created to further explore mitigations in the form of code-based enhancements or existing Azure resource configuration changes, and/or by adding new security-related Azure resources. 
 
-### Azure Resource Security Guidelines
+### Azure Development Security Guidelines
 * Always use Azure Managed Identity (wherever supported) as the authentication mechaism when accessing Azure services
 * All Secrets, Asymmetric and Symmetric keys and x.509 Certifications should store in Azure Key Vault
+* Application Insights SDK should always be implemented for supported languages. Always enable Application Insights that has direct integration with the Azure web app   hosting services 
 
 ### During Pre-Commit Stage (while you are coding)
 
@@ -144,6 +150,11 @@ Example: > * do not disclose sensitive info in error message
   Also based on secure coding practice checklists
   
  ### DevSecOps
+ 
+ * Build Pipeline
+   * Credential 
+   * Static Code Analysis
+ * 
 
 
 ## Api Server Specifications
@@ -178,8 +189,8 @@ ApiServer subsystem is an ASP.NET Core 3.1 web application which uses Json as th
   This is due to input textboxes are string type while GoogleMap's "center" property accepts decimal only.
   This is solved by parsing string to float e.g: parseFloat(this.state.latitude)
 
-## Project Roadmap
+## Project Roadmap - If I Have More Time
 
-## What Have I Learned
+## What I Have Learned
 
 The idea of this one-person-sized challenge is an interesting one, most importantly this challenge can effectively access one's knowledge and experience in a full Software Delivery Lifecycle end to end from understanding requriements, to software architecture design, system Infra/Networking design, threat modelling, software module-level design (package-level), software development in full-stack involving polyglot languages and frameworks from Frontend, Backend to Database, to deployment in this case Azure, and finally to documentation.
