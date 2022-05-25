@@ -110,6 +110,7 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 
 #### Component Interaction Diagram
 
+API Controller layer is the entry point to Web App and it contains all contains all dependencies including cross-cutting (concerns) libraries like Serilog (logging framework). Dependency Injection is implemented here to configure all Interface and concrete class mappings
 <img src="https://user-images.githubusercontent.com/43234101/170208325-93a86940-294c-434d-9c44-6b13bc3ac29a.png" width="900" height="550" />  
 
 ## Security
