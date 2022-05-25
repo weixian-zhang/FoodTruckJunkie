@@ -1,4 +1,4 @@
-## Food Truck Junkie
+## What is Food Truck Junkie
 
 Food Truck Junkie is a [Web App](https://webapp-foodtruckjunkie-portal.azurewebsites.net) that helps you search for food trucks in San Francisco and displays them on an embedded Google Map for your ease of navigation to deliciousness. 
 
@@ -54,12 +54,15 @@ The primary target deployment platform is on Azure and PaaS services are preferr
 ### Branching Strategy
 
 Our team practice Feature Branching, any feature is a short-lived branch that you can clone from Dev.
-Once your great work is done,  do a pull request and find any team mate for a second pair of eyes before merging in Dev.
+Once your great work is done, do a pull request and find any team mate for a second pair of eyes before merging into Dev.
 We like to work on bite-size feature, so it is important how the User Stories are broken down into "manageable-sized" Tasks and each Task should do only one thing.
-
-For example implementing a Search-By-FoodType User Story, updating ApiServer, Service and Repository Layers can be one task. Updating Stored Proc to accept "FoodType" parameter can be another task, lastly updating Portal can be another. This User Story can be a branch.  
+For example implementing a Search-FoodTruck-By-FoodType User Story, updating ApiServer, Service and Repository Layers can be one task. Updating Stored Proc to accept "FoodType" parameter can be another task, lastly updating Portal can be another. This User Story can be a branch.  
 <img src="https://user-images.githubusercontent.com/43234101/170171766-8aba42ff-a88c-4ab0-8d18-2fb58447d50d.png" width="600" height="400" />  
 [A Workbench diagram](https://www.azureworkbench.com/?id=RKytBbvBNVqtAtxSXfJg)
+
+* Dev branch will be deployed to Staging environment to perform various tests before merging into Main over pull request
+* Main branch is for production release only. 
+
 
 ### Bug Tracker using GitHub Issues
 A bug report template tends to look like:
@@ -76,9 +79,20 @@ Notes (possibly including why you think this might be happening, or stuff you tr
 
 ## Software Architecture Design
 
+For describing software architecture, we like to use the [C4 Model](https://c4model.com/) modelling technique. We reckon that thete are other mature techniques like [4+1 View Models]([url](https://en.wikipedia.org/wiki/4%2B1_architectural_view_model)) with UML, we favour C4 due to its lean and simple nature for both non-technical and technial folks.
+The following diagrams describe Food Truck Junkie's software architecture from a bird's eye-view using Context Diagram, zooming into the Infra and Network architecture using Container Diagram 
+
 ### Context Diagram
 
+<img src="https://user-images.githubusercontent.com/43234101/170187803-b1a55b76-dda0-4ac9-9511-350539bfe478.png" width="200" height="500" />  
+A big picture of how users use FoodTruckJunkie Web App
+
+
 ### Container Diagram
+
+![image](https://user-images.githubusercontent.com/43234101/170189736-928789aa-5c3a-4e48-a627-4e2cfff2a802.png)
+
+[A Workbench diagram](https://www.azureworkbench.com/?id=jSjmXFhgHxBzFuBTUTap)
 
 ### Component Diagram
 
