@@ -33,7 +33,7 @@ Web App is fully hosted on Azure and consist of major components including
   This is solved by parsing string to float e.g: parseFloat(this.state.latitude)
   
 ## Table of Content
-* [Azure Deployment](#azure-deployment)
+* [System Deployment](#system-deployment)
 * [How to Contribute to Project](#how-to-contribute-to-project)
 * [Software Architecture Design](#software-architecture-design)
   * [Context Diagram](#context-diagram)
@@ -46,9 +46,17 @@ Web App is fully hosted on Azure and consist of major components including
 * [Project Roadmap](#project-roadmap)
 * [What Have I Learned](#what-have-i-learned) - The Happy Moments :nerd_face:  
 
-## Azure Deployment 
+## System Deployment & Azure Resource provisioning
 
-Refer to 
+The primary target deployment platform is on Azure and PaaS services are preferred over IaaS, as much as possible to reduce any infra-related maintenance overhead.
+* Infra-as-Code (see [Project Roadmap]((#project-roadmap))) is the defacto means to deploy any Azure resource, we are open to any practical ways but the team mainly adopts Bicep, Terraform and/or PowerShell at times.
+* for Apps deployment, our team is working towards GitHub Actions to perform end-to-end DevSecOps (see [Security](#security)). Currently we use [VSCode Azure Tools extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) for deployment.
+
+| Sub-Systems | Azure Resource | Descriptions |
+| ------------- | ------------- | ------------- |
+| Portal | App Service | | |
+| Api Server | App Service | configurations are stored in App Service - Configurations, all properties are encrypted-at-rest by default |
+| Database | Azure Database for MySQL | | |
 
 ## How to Contribute to Project
 
