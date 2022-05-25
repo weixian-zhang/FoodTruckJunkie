@@ -2,7 +2,7 @@
 
 Food Truck Junkie is a [Web App](https://webapp-foodtruckjunkie-portal.azurewebsites.net) that helps you search for food trucks in San Francisco and displays them on an embedded Google Map for your ease of navigation to deliciousness. 
 
-URLs below for quick testing  
+Quick test URLs below
 *Note: web app is currently whitelisted (Azure App Service IP Restrictions) for security reasons and only allow access when needed.
 |  Components | URLs |
 | ------------- | ------------- |
@@ -39,7 +39,7 @@ Web App is fully hosted on Azure and consist of major components including
   * [Context Diagram](#context-diagram)
   * [Container Diagram](#container-diagram)
   * [Component Diagram](#component-diagram)
-* [Threat Modelling](#threat-modelling)
+* [Security](#security)
 * [ApiServer Specifications](#api-server-specifications)
 * [Database Specifications](#database-specifications)
 * [Testings](#testings)
@@ -52,6 +52,29 @@ Refer to
 
 ## How to Contribute to Project
 
+### Branching Strategy
+
+Our team practice Feature Branching, any feature is a short-lived branch that you can clone from Dev.
+Once your great work is done,  do a pull request and find any team mate for a second pair of eyes before merging in Dev.
+We like to work on bite-size feature, so it is important how the User Stories are broken down into "manageable-sized" Tasks and each Task should do only one thing.
+
+For example implementing a Search-By-FoodType User Story, updating ApiServer, Service and Repository Layers can be one task. Updating Stored Proc to accept "FoodType" parameter can be another task, lastly updating Portal can be another. This User Story can be a branch.  
+<img src="https://user-images.githubusercontent.com/43234101/170171766-8aba42ff-a88c-4ab0-8d18-2fb58447d50d.png" width="600" height="400" />  
+[A Workbench diagram](https://www.azureworkbench.com/?id=RKytBbvBNVqtAtxSXfJg)
+
+### Bug Tracker using GitHub Issues
+A bug report template tends to look like:
+```Great Bug Reports tend to have:
+
+A quick summary and/or background
+Steps to reproduce
+Be specific!
+Give sample code if you can.
+What you expected would happen
+What actually happens
+Notes (possibly including why you think this might be happening, or stuff you tried that didn't work)
+```
+
 ## Software Architecture Design
 
 ### Context Diagram
@@ -60,7 +83,7 @@ Refer to
 
 ### Component Diagram
 
-## Threat Modelling
+## Security
 
 ## Api Server Specifications
 
@@ -72,7 +95,7 @@ ApiServer subsystem is an ASP.NET Core 3.1 web application which uses Json as th
   * improve external developers' experience
   * API Gateway products can easily import ApiServer's API spec using OpenApi Json format as exposed as ""/swagger/v1/swagger.json
 
-| Verbs | API Paths | QueryStrings | Description | HTTP Status Code | Data Returned | 
+| Verbs | API Paths | QueryStrings | Description | Status Code | Data Returned | 
 | ------------- | ------------- | ------------- | ------------- | ------------- |  ------------- |
 | GET | /api/<b>1.0</b>/searchfoodtrucks | latitude={decimal}&longitude={decimal}&distantMiles={int}&noOfResult={int} | search food truck info by given {latitude} + {longitude} within {distantMiles} | 200, 400 | "applicant": {string}, "foodItems": {string}, "latitude": {decimal}, "longitude": {decimal}, "address": {string},   "locationDescription": {string} |
 | GET | /health |  | health status and monitoring information | 200 | |
