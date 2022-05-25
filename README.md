@@ -128,7 +128,7 @@ The following are software security practices our team strives to following thro
 
 * Threat modelling was done according to [Container Diagram](#container-diagram) and the designer file can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ThreatModel-FoodTruckJunkie.tm7).  
 Threat Modelling Report can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ThreatMode-Report-FoodTruckJunkie%20WebApp.htm)
-* The detected threats were thoroughly evaluated, threats marked with "Needs Investation", a work item will be created to further explore mitigations in the form of code-based enhancements or existing Azure resource configuration changes, and/or by adding new security-related Azure resources. 
+* The detected threats were evaluated, for each threat mark with "Needs Investigation", a work item will be created to further explore mitigations in the form of code-based enhancements, configuration changes to existing Azure resource, and/or by adding new security-related Azure resources or 3rd-party COTS products if necessary. 
 
 ### Azure Development Security Guidelines
 * Always use Azure Managed Identity (wherever supported) as the authentication mechaism when accessing Azure services
@@ -161,7 +161,6 @@ Threat Modelling Report can be found [here](https://github.com/weixian-zhang/Foo
  * <b>Release Pipeline</b>
     * OWASP ZAP - integrated penetration testing tool to detect web vulnerabilities in web apps
      
-
 
 ## Api Server Specifications
 
