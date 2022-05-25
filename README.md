@@ -64,7 +64,7 @@ We like to work on bite-size feature, so it is important how the User Stories ar
   * Any production bug fix will be a new branch from the release-branch
   * Bug fixes will be merged back to release-branch, Main and Dev
 
-<img src="https://user-images.githubusercontent.com/43234101/170193365-0c6eb4eb-0c3f-44a2-b075-c7206d00581a.png" width="600" height="400" />  
+<img src="https://user-images.githubusercontent.com/43234101/170193365-0c6eb4eb-0c3f-44a2-b075-c7206d00581a.png" width="800" height="400" />  
 
 [A Workbench diagram](https://www.azureworkbench.com/?id=RKytBbvBNVqtAtxSXfJg)
 
@@ -89,13 +89,15 @@ The following diagrams describe Food Truck Junkie's software architecture from a
 
 ### Context Diagram
 
+A big picture of how users use FoodTruckJunkie Web App  
 <img src="https://user-images.githubusercontent.com/43234101/170187803-b1a55b76-dda0-4ac9-9511-350539bfe478.png" width="200" height="500" />  
-A big picture of how users use FoodTruckJunkie Web App
-
 
 ### Container Diagram
 
-![image](https://user-images.githubusercontent.com/43234101/170189736-928789aa-5c3a-4e48-a627-4e2cfff2a802.png)
+* ApiServer is RESTful API hosted on multi-tenanted App Service
+  For security reasons, Azure FrontDoor WAF (see [project roadmap](#project-roadmap)) can be added in-front of ApiServer to allow FrontDoor WAF capability to perform SSL Termination and Owasp web vulnerability   scan, before routing scanned HTTP traffic to ApiServer. 
+* SPA-based Portal is hosted on a separate App Service. In future, Portal can be moved to Azure Static Web App to take advange of the built-in CDN for capability.
+![image](https://user-images.githubusercontent.com/43234101/170195884-acccc7a8-ebd3-4248-8a6a-5d6a5ee24937.png)
 
 [A Workbench diagram](https://www.azureworkbench.com/?id=jSjmXFhgHxBzFuBTUTap)
 
