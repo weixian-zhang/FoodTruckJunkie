@@ -159,9 +159,9 @@ Behind the scenes, we will be implementing OpenID Connect authn protocol on Port
   
 ### Authorization
 
-Many systems rely on Frontend to authorize (allow and deny) calls to Backend APIs, by hiding UI elements like buttons and menu items.
+Many systems rely on Frontend to authorize (allow and deny) calls to Backend APIs, by hiding UI elements like buttons and menu items.  
 Within APIs, many of them today uses OAuth 2.0 to perform authorization.  
-Scopes can be granular for example in Azure AD adding a scope *API.Admin.User.Reset*, follow by configuring API Permissions to determine which App has access to the defined scope *API.Admin.User.Reset*.  
+OAuth scopes can be expressed quite granularly for example in Azure AD adding a scope *API.Admin.User.Reset*, follow by configuring API Permissions to determine which App has access to the defined scope *API.Admin.User.Reset*.  
 
 In my opinion (purely my opinion), I feel its very difficult to configure a enterpise-scale complex authorizaton policy that comprises of maybe both role-based and attribute-based, and using both mechanisms to determine which user can or not access an API.  
 Furthermore, authorization module need to store every feature of the system as *action/operation* (UI element or URL paths) in order to process them with policies to derive the permission, hence, making authorization very intimate to the system, yet holds no domain functional value.  
