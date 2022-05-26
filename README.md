@@ -19,10 +19,10 @@ Web App is fully hosted on Azure and consist of major components including
 * Azure Database for MySQL as the main relational DB  
 * other properties includes:
   *  source of food truck dataset comes from [Mobile Food Facility Permit](https://data.sfgov.org/Economy-and-Community/Mobile-Food-Facility-Permit/rqzj-sfat/data)  
-  *  A food truck is plotted on GoogleMap only when their permit status is "APPROVED" 
+  *  A food truck is retrieved and plotted on map only when it's permit status is "APPROVED" 
   
 ## Table of Content
-* [System Deployment](#system-deployment)
+* [System Deployment & Azure Resource Provisioning](#system-deployment--azure-resource-provisioning)
 * [How to Contribute to Project](#how-to-contribute-to-project)
 * [Software Architecture Design](#software-architecture-design)
   * [Context Diagram](#context-diagram)
@@ -36,7 +36,7 @@ Web App is fully hosted on Azure and consist of major components including
 * [Project Roadmap - If I Have More Time](#project-roadmap---if-i-have-more-time)
 * [What I Have Learned](#what-i-have-learned) - The Happy Moments :nerd_face:  
 
-## System Deployment & Azure Resource provisioning
+## System Deployment & Azure Resource Provisioning
 
 The primary target deployment platform is on Azure and PaaS services are preferred over IaaS, as much as possible to reduce any infra-related maintenance overhead.
 * Infra-as-Code (see [Project Roadmap]((#project-roadmap))) is the defacto means to deploy any Azure resource, we are open to any practical ways but the team mainly adopts Bicep, Terraform and/or PowerShell at times.
