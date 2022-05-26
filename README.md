@@ -265,8 +265,8 @@ And not forgetting Project Manager, Scrum Master, Subject-Matter Experts and Pro
 
 Having said a mouthful, this challenge although a one-person size project, it can put one through most of the SDLC stages and playing different roles all at once, simulating a real-world project. I really enjoyed myself.
 
-* Before I kick start this challenge, I took several hours to learn about Latitude, Longitude, the geographical EastWest reference line call the Greenwich Meridian,
+* Before I start this challenge, I took several hours to learn about Latitude, Longitude, the geographical East-West reference line of Greenwich Meridian,
   and how to plot coordinates on a world map.
-  This may be common sense knowledge to other people but for me, I just didn't manage to learn before this challenge. I am glad I learned now.
-* I always wanted to learn how to embed maps into an App and have the icons on the map move by itself. The idea of tracking someone or device on a map watching it move   is really fun. Finally got a purposeful chance to try Google Map. I wanted to use Azure Map at first but its not so easy to integrate Azure Map into React app, so in   the essence of time I chose Google Map
-* I chose MySQL because I have not work on MySQL before and found a chance to. Thanks to that I discover a limitation (see [Development Challenges](#development-         challenges)).
+  This may be common sense knowledge to other people but for me, I just didn't manage to learn before this challenge. I am glad I did now.
+* I always wanted to learn how to embed maps into an App and have the icons on the map move by itself. The idea of tracking someone or device on a map watching it move   is really fun. Finally got a purposeful geospatial requirement to try Map technology. I wanted to use Azure Map at first but due to there are many open-source         libraries on integrating Google Maps into a React web app, and most importantly in the essence of time, I chose Google Map.
+* I also chose MySQL because I have not work on MySQL before. Thanks to that I am able to discover a very common usage of LIMIT clause but yet with big limitation in     my opinion. (see [Development Challenges](#development-challenges)).
