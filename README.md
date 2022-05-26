@@ -44,7 +44,7 @@ Web App is fully hosted on Azure and consist of major components including
 
 Azure is our hosting platform and PaaS services are preferred, over IaaS as much as possible to reduce any infra-related maintenance overhead.
 * Infra-as-Code (see [Project Roadmap]((#project-roadmap))) is the defacto means to deploy any Azure resource, we are open to any practical ways but the team mainly adopts Bicep, Terraform and/or PowerShell at times.
-* for apps and IAC scripts deployment, in future Project Roadmap, DevSecOps (see [Security In Software Development](#security-in-software-development)) will be implemented using Azure DevOps Pipelines or GitHub Actions.  
+* for apps and IAC scripts deployment, in Project Roadmap, DevSecOps (see [Security In Software Development](#security-in-software-development)) will be implemented using Azure DevOps Pipelines or GitHub Actions.  
   As for now we use [VSCode Azure Tools extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) for deployment.
 
 | Sub-Systems | Azure Resource | Descriptions |
@@ -62,7 +62,7 @@ Azure is our hosting platform and PaaS services are preferred, over IaaS as much
 
 Our team practices GitFlow branching, any feature is a short-lived branch that you can clone from Dev.
 Once your great work is done, do a pull request and find any team mate for a second pair of eyes before merging into Dev.
-We like to work on bite-size feature, so it is important how the User Stories are broken down into "manageable-sized" Tasks and each Task should do only one thing.  
+We like to work on bite-size feature, so it is important how the User Stories are broken down into "manageable-sized" Tasks and each Task should only do one thing.  
 >For example implementing a Search-FoodTruck-By-FoodType User Story, updating ApiServer, Service and Repository Layers can be one task. Updating Stored Proc to accept "FoodType" parameter can be another task, lastly updating Portal can be another. This User Story can be a branch.  
 
 * Dev branch will be deployed to Staging environment to perform various tests before merging into Main over pull request
@@ -94,7 +94,7 @@ Notes (possibly including why you think this might be happening, or stuff you tr
 
 ## Software Architecture Design
 
-For describing software architecture, we like to use the [C4 Model](https://c4model.com/) modelling technique. We reckon that thete are other mature techniques like [4+1 View Models]([url](https://en.wikipedia.org/wiki/4%2B1_architectural_view_model)) with UML, we favour C4 due to its lean and simple nature for both non-technical and technial folks.  
+For describing software architecture, we like to use the [C4 Model](https://c4model.com/) modelling technique. We reckon that there are other mature techniques as well like [4+1 View Models](https://en.wikipedia.org/wiki/4%2B1_architectural_view_model)) and UML. We favour C4 due to its lean and simple nature for both non-technical and technial folks.  
 The following [diagrams](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/FoodTruckJunkie-software_architecture_design.pptx) describe Food Truck Junkie's software architecture from a high-level than zooming into more design details on subsequent diagrams.
 
 ### Context Diagram
@@ -104,9 +104,9 @@ A big picture of how users use FoodTruckJunkie Web App
 
 ### Container Diagram
 
-* ApiServer is RESTful API hosted on multi-tenanted App Service
-  For security reasons, Azure FrontDoor WAF (see [project roadmap](#project-roadmap)) can be added in-front of ApiServer to allow FrontDoor WAF capability to perform     SSL Termination and Owasp web vulnerability scan, before routing scanned HTTP traffic to ApiServer. 
-* SPA-based Portal is hosted on a separate App Service. In future, Portal can be moved to Azure Static Web App to take advange of the built-in CDN for capability.
+* ApiServer is RESTful API hosted on multi-tenanted App Service.  
+  In Project Roadmap, for security reasons, Azure FrontDoor WAF (see [project roadmap](#project-roadmap)) can be added in-front of ApiServer to allow FrontDoor WAF       capability to perform SSL Termination and Owasp web vulnerability scan, before routing scanned HTTP traffic to ApiServer. 
+* SPA-based Portal is hosted on a separate App Service. In future, Portal can be moved to Azure Static Web App to take advange of the built-in CDN capability.
 ![image](https://user-images.githubusercontent.com/43234101/170195884-acccc7a8-ebd3-4248-8a6a-5d6a5ee24937.png)
 
 [A Workbench diagram](https://www.azureworkbench.com/?id=jSjmXFhgHxBzFuBTUTap)
@@ -248,10 +248,13 @@ In our project roadmap, we plan to setup the following tests:
     
 * Technology
   * Microservices are deployed on Azure Kubernetes private cluster. Service Mesh like Istio can be introduce for API Gateway capability, mutal-TLS microservice o           microservice authn, and network policy built-in to contract network reacbility amongst microservices and more.
-  * Azure Function to timely pull FT permit file and refresh static data
+  * A data loading daemon app implemented using Azure Function to automatically and timely pull Food Truck permit data file and refresh static data
   * Use Azure Static Web App to host Portal instead of App Service so as to take advantage of built-in CDN and DevOps deployment features.
   * Cache search result in Azure Redis using Cache-Aside pattern to return queried result faster
   * Develope Azure Bicep scripts to setup the Azure environment
+  * Azure FrontDoor WAF added in-front of ApiServer for security coverage:
+    * Custom Rule to perform rate limiting
+    * OWASP TOp 10 web vulnerability scanning on TLS terminated traffic, before routing to ApiServer
 
 * Functional
   * Supporting Address searching - search nearby food trucks by Address in addition to coordinates
