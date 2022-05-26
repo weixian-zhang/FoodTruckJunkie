@@ -130,18 +130,30 @@ The following are software security practices our team strives to following thro
 Threat Modelling Report can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ThreatMode-Report-FoodTruckJunkie%20WebApp.htm)
 * The detected threats were evaluated, for each threat mark with "Needs Investigation", a work item will be created to further explore mitigations in the form of code-based enhancements, configuration changes to existing Azure resource, and/or by adding new security-related Azure resources or 3rd-party COTS products if necessary. 
 
+### Authentication
+
+In the future Project Roadmap, we will want users to be able to sign-in with their Microsoft personal accounts (a.k.a Live account.
+Behind the scenes, we will be implementing OpenID Connect authentication on Portal and ApiServer.
+* Portal will use the  OAuth Authorization Code Flow + PKCE as it is a Public Client.
+* ApiServer being a Confidential Client will be using Auhorization Code Flow
+* API Authn Chain : if at that point when Food Truck Junkie has expanded to have other features which are implemented as microservices, and has the requirement to       for microservices to microservices API authentication, we will then be implementing Authorization Code Flow-On-Behalf Flow for API-to-API authentication chain         scenario.
+  The concept is when an API (API-A) receive an access token from Portal, API-A uses the access token and with its ClientID/Secret, it exchange for another access       token Token-A. This Token-A will be pass on to API-B for authentication. Within Azure AD we will need to configure "Expose API" to add OAuth scopes for each           microservices. Then followed by configuring authorization in Azure AD - App - "API Permissions", specifiying which API scopes are allowed access to which               microservices.
+
 ### Azure Development Security Guidelines
 * Always use Azure Managed Identity (wherever supported) as the authentication mechaism when accessing Azure services
 * All Secrets, Asymmetric and Symmetric keys and x.509 Certifications should store in Azure Key Vault
-* Application Insights SDK should always be implemented for supported languages. Always enable Application Insights that has direct integration with the Azure web app   hosting services 
-
+* Application Insights SDK should always be implemented for supported languages. Always enable Application Insights that has direct integration with the Azure web app   hosting services.
+  Although Application Insights is a App Performance Monitoring (APM) tool
+   * the App Map feature could show if web app is contacting any suspicious external endpoints, detecting malware doing Commmand and Control to form backdoors and          executing data exfiltration
+   *  App Insight logs could potential, further joined with other log types in Azure Sentinel if need be
+   
 ### During Pre-Commit Stage (while you are coding)
 
-* Secure coding practices - we use these [secure coding practice checklists](https://owasp.org/www-pdf-archive/OWASP_SCP_Quick_Reference_Guide_v2.pdf) while we code
+* Secure coding practices - we follow these [secure coding practice checklists](https://owasp.org/www-pdf-archive/OWASP_SCP_Quick_Reference_Guide_v2.pdf) while we code
   Example: > * do not disclose sensitive info in error message
-	   * close DB connection right after use, leaving  persisted TCP connections are like leaving a back-door for adversaries to exploit
-           * validate all inputs
-           * encode all outputs including HTML, Javascript, CSS, XML, JSON, Http Headers and more
+	     * close DB connection right after use, leaving  persisted TCP connections are like leaving a back-door for adversaries to exploit
+             * validate all inputs
+             * encode all outputs including HTML, Javascript, CSS, XML, JSON, Http Headers and more
            
 * App secrets - if develope using .Net use the [User Secret](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-6.0&tabs=windows) feature from SDK 
 * Pre-commit hook - use Git pre=commit hook to prevent committing secrets
@@ -151,7 +163,7 @@ Threat Modelling Report can be found [here](https://github.com/weixian-zhang/Foo
   
  ### Security In DevOps Pipelines
  
- We will be introducing security tasks into our Build and Release pieplines with tasks as follows
+ We will be introducing security tasks into our Build and Release pieplines as follows
  * <b>Build Pipeline</b>
     * Credential Scanner - detects credentials and secrets
     * SonarQube Static Code Analysis - code smells, bugs and security vulnerabilities ([rules here](https://docs.sonarqube.org/latest/user-guide/security-rules/))
@@ -159,6 +171,7 @@ Threat Modelling Report can be found [here](https://github.com/weixian-zhang/Foo
     * OWasp Dependency Checks - detects publicly disclosed vulnerabilities contained within a project’s dependencies
     * Anchore Image Scanner - For scanning Docker images for vulnerabilities, if any team member decides to containerize some sub-systems
     * Run Unit Tests
+    
  * <b>Release Pipeline</b>
     * OWASP ZAP - integrated penetration testing tool to detect web vulnerabilities in web apps
     * Fuzz Test - explore the introduction of Fuzzing with web fuzzers like [FFUS](https://github.com/ffuf/ffuf)
