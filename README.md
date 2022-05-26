@@ -216,7 +216,7 @@ In our project roadmap, we plan to setup the following tests:
   * Portal: using [Cypress](https://docs.cypress.io/guides/overview/why-cypress#Setting-up-tests), [Selenium](https://www.selenium.dev/documentation/) or similar Web       UI testing tool to automate UI testing. Smoke test still follows a set of test cases consisting of       test steps, however, Smoke Test aims to test if a build is     stable and covers breadth more than depth.
   * ApiServer: using [Artillery](https://www.artillery.io/docs/guides/getting-started/core-concepts#test-definitions) to smoke test ApiServer by pre-configuring the querystring parameters following a set of defined test cases.
 * Load Tests - [Artillery](https://www.artillery.io/docs/guides/getting-started/core-concepts#test-definitions) can also be used for load testing by increaing the       number of "virtual-users"
-* Fuzz Test - 
+* Fuzz Test - As mentioned, we could explore Grammer-based Fuzzing to generate templatized inputs to Web APIs to effectively find bugs and security vulnerability.
 
 
 ## Development Challenges
