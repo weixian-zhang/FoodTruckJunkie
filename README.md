@@ -89,8 +89,8 @@ Notes (possibly including why you think this might be happening, or stuff you tr
 
 ## Software Architecture Design
 
-For describing software architecture, we like to use the [C4 Model](https://c4model.com/) modelling technique. We reckon that thete are other mature techniques like [4+1 View Models]([url](https://en.wikipedia.org/wiki/4%2B1_architectural_view_model)) with UML, we favour C4 due to its lean and simple nature for both non-technical and technial folks.
-The following diagrams describe Food Truck Junkie's software architecture from a bird's eye-view using Context Diagram, zooming into the Infra and Network architecture using Container Diagram 
+For describing software architecture, we like to use the [C4 Model](https://c4model.com/) modelling technique. We reckon that thete are other mature techniques like [4+1 View Models]([url](https://en.wikipedia.org/wiki/4%2B1_architectural_view_model)) with UML, we favour C4 due to its lean and simple nature for both non-technical and technial folks.  
+The following [diagrams](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/FoodTruckJunkie-software_architecture_design.pptx) describe Food Truck Junkie's software architecture from a high-level than zooming into more design details on subsequent diagrams.
 
 ### Context Diagram
 
@@ -231,9 +231,35 @@ In our project roadmap, we plan to setup the following tests:
 
 ## Project Roadmap - If I Have More Time
 
+* Technology
+  * Adopts the Microservices architectural style as system grows. This will be a brown-field migration to Microservices archietcture.
+    Each Bounded Context of the system domain can be an independent microservice maintained by a separate team with their own programming language and tech-stack of       their choice.
+    Microservices are deployed on Kubernetes 
+  * Azure Function to timely pull FT permit file and refresh static data
+  * Use Azure Static Web App to host Portal instead of App Service so as to take advantage of built-in CDN and DevOps deployment features.
+  * Cache search result in Azure Redis using Cache-Aside pattern to return queried result faster
+  * Develope Azure Bicep scripts to setup the Azure environment
+  
+* Software Patterns & Practices	
+  * Backend for frontend pattern
+
+* Functional
+  * Supporting aAdress searching - auto-complete box to get Lat-Long coordinates, then get surrounding food trucks coordinate, on the fly. (lowest priority)
+  * Search by Food items e.g: Vegetarians
+		
+		○ Secure coding practice
+		○ More unit tests
+		
+		○ 
+		○ GitHub Actions to deploy FoodTruck API and 
+		○ Azure Boards to track user stories and work items
+		○ 
+![image](https://user-images.githubusercontent.com/43234101/170439795-1bdac569-900d-4776-a715-972ea0d7f139.png)
+
+
 ## What I Have Learned
 
-The idea of this one-person-sized challenge is an interesting one, most importantly this challenge can effectively access one's knowledge and experience in a full Software Delivery Lifecycle stages from, understanding requriements, to software architecture design, system Infra/Networking architecture design, threat modelling, software module-level design (package-level), software development in full-stack involving polyglot languages and frameworks from Frontend, Backend to Database, to deploying web app to Azure (in this case), and finally to documentation.
+The idea of this challenge is an interesting one, most importantly this challenge can effectively get to know one's knowledge and experience in a full Software Delivery Lifecycle from, understanding requriements, to software architecture design, system Infra/Networking architecture design, threat modelling, software module-level design (package-level), software development in full-stack involving polyglot languages and frameworks from Frontend, Backend to Database, to deploying web app to Azure (in this case), and finally to documentation.
 In a real-world software project, we have many other participating roles like Business Analysts for requirements gathering and documentation, Software Engineers, Software Architects, Software Tech Leads, System Admins for OS/Infra/Networking setup and configuration, DBA setup and configure DB clusters (and even run our TSQL scripts some times). Test specialists using specalized software to run penetration tests against our systems.
 3rd-party security auditors scrutinizing our OS hardening configurations, firewall rules, networking routing, web server configurations and etc.
 And not forgetting Project Manager, Scrum Master, Subject-Matter Experts and Product Specialists
