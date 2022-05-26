@@ -135,14 +135,15 @@ The following are software security practices our team strives to following thro
 
 * Threat modelling was done basedon the [Container Diagram](#container-diagram) and the designer file can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ThreatModel-FoodTruckJunkie.tm7).  
 Threat Modelling Report can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ThreatMode-Report-FoodTruckJunkie%20WebApp.htm)
-* The detected threats were evaluated, for each threat mark with "Needs Investigation", a work item will be created to further explore mitigations in the form of:
-  * code-based enhancements - for example encode HTML, Javascript output. Validate and white input.
-  * configuration changes to existing Azure resource - for example edit App Service to not return web server information in response headers. Or tweak Azure Storage       settings to not allow Anonymous access and more.
+* The detected threats are evaluated, for each threat mark with "Needs Investigation", a work item will be created to further explore mitigations in the form of:
+  * code-based enhancements - for example encode HTML, Javascript output. Validate and whitelist input.
+  * configuration changes to existing Azure resource - for example update App Service to not return web server information in response headers.  
+    Or tweak Azure Storage settings to not allow Anonymous access and more.
   * Adding new security-related Azure resources or 3rd-party COTS products if necessary
     * Example: could be implementing defence-in-depth principles by introducing layered defence for example: Building a DMZ VNet with NextGen Firewall/Azure Firewall         to ingest all Internet traffic, perform TLS offloading and IDPS, before further routing to Application Gateway WAF for web vulnerabilities scan.
     * and/or implement Host-based protection (a.k.a endpoint protection) to detech VM level vulnerabilities
-    * and/or 3rd-party SaaS-based WAF to inpect traffic before routing traffic to web app and more
-  * Adopt and follow policies to harden the Azure environment - for example follow the Azure CIS to further harden our Azure environment
+    * and/or 3rd-party SaaS-based WAF to inspect traffic before routing traffic to web app and more
+  * Adopt and follow industrial policies to harden the hosting environment - for example follow the Azure CIS to further harden our Azure environment
 
 ### Authentication
 
