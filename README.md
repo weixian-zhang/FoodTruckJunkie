@@ -206,6 +206,12 @@ The scripts include:
 
 ## Testings
 
+The current available tests are Unit Tests written using XUnit, unit tests covers all 3 layers including API Controller, Service and Repository.
+Additionally, Moq library is used to Mock a DB C# Interface so that MySQL DB access can be mocked and not include any integration to MySQL.
+We are able to make mocking happen due to consistent usage of Intefaces, and all concrete classes must implement Interfaces.
+Dependencies are always constructor injected. Codes need to refactor to support unit test if needed.
+
+
 ## Development Challenges
 * A challenge with MySQL LIMIT clause is that LIMIT cannot be used with a variable for e.g LIMIT @numberOfResult as this syntax is considered invalid.
   A workaround could be to wrap the whole SELECT statement in string and use PREPARE stmt
