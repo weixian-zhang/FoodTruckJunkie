@@ -36,19 +36,25 @@ Web App is fully hosted on Azure and consist of major components including
 * [Project Roadmap - If I Have More Time](#project-roadmap---if-i-have-more-time)
 * [What I Have Learned](#what-i-have-learned) - The Happy Moments :nerd_face:  
 
+<br />
+<br />
+
+
 ## System Deployment & Azure Resource Provisioning
 
-The primary target deployment platform is on Azure and PaaS services are preferred over IaaS, as much as possible to reduce any infra-related maintenance overhead.
+Azure is our hosting platform and PaaS services are preferred, over IaaS as much as possible to reduce any infra-related maintenance overhead.
 * Infra-as-Code (see [Project Roadmap]((#project-roadmap))) is the defacto means to deploy any Azure resource, we are open to any practical ways but the team mainly adopts Bicep, Terraform and/or PowerShell at times.
-* for apps and IAC scripts deployment, in future Project Roadmap, DevSecOps (see [Security](#security)) will be implemented using Azure DevOps Pipelines or GitHub Actions
-  
-  Currently we use [VSCode Azure Tools extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) for deployment.
+* for apps and IAC scripts deployment, in future Project Roadmap, DevSecOps (see [Security In Software Development](#security-in-software-development)) will be implemented using Azure DevOps Pipelines or GitHub Actions.  
+  As for now we use [VSCode Azure Tools extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) for deployment.
 
 | Sub-Systems | Azure Resource | Descriptions |
 | ------------- | ------------- | ------------- |
 | Portal | App Service | | |
 | Api Server | App Service | configurations are stored in App Service - Configurations, all properties are encrypted-at-rest by default |
 | Database | Azure Database for MySQL | | |
+
+<br />
+<br />
 
 ## How to Contribute to Project
 
