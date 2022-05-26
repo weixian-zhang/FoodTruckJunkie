@@ -254,7 +254,7 @@ The scripts include:
 ## Testings
 
 The current available tests are Unit Tests written using XUnit framework, unit tests covers all 3 layers including API Controller, Service and Repository.
-Additionally, Moq library is used to Mock a DB C# Interface so that MySQL DB access can be mocked and not include any integration to MySQL.
+Additionally, Moq library is used to Mock an Interface IDbConnection which represents a connection object to MySQL DB, by mocking we are excluding actual connection to MySQL, as integration test is not part of unit testing.
 We are able to make mocking happen due to consistent usage of Intefaces, and all concrete classes must implement Interfaces.
 Dependencies are always constructor injected and codes need to refactor to support unit testing if needed.
 
