@@ -161,9 +161,16 @@ Behind the scenes, we will be implementing OpenID Connect authn protocol on Port
 
 Many systems rely on Frontend to authorize (allow and deny) calls to Backend APIs, by hiding UI elements like buttons and menu items.
 Within APIs, many of them today uses OAuth 2.0 to perform authorization.  
-Scopes can be granular for example in Azure AD adding a scope *API.Admin.User.Reset*, follow by configuring API Permissions to determine which App has access to the defined scope *API.Admin.User.Reset*.
-In my opinion (purely my opinion), I feel its very difficult to configure a enterpise-scale complex authorizaton policy that comprises of maybe both role-based and attribute-based, and using both mechanisms to determine which user can or not access an API.
-Furthermore, authorization module need to store every feature of the system as *action/operation* (UI element or URL paths) in order to process them with policies to derive the permission, making authorization very intimate to the system, yet holds no domain functional value.
+Scopes can be granular for example in Azure AD adding a scope *API.Admin.User.Reset*, follow by configuring API Permissions to determine which App has access to the defined scope *API.Admin.User.Reset*.  
+
+In my opinion (purely my opinion), I feel its very difficult to configure a enterpise-scale complex authorizaton policy that comprises of maybe both role-based and attribute-based, and using both mechanisms to determine which user can or not access an API.  
+Furthermore, authorization module need to store every feature of the system as *action/operation* (UI element or URL paths) in order to process them with policies to derive the permission, hence, making authorization very intimate to the system, yet holds no domain functional value.  
+
+I personally believe that OAuth can be the "first layer" of authorization, and with OAuth we can get a nice secured Access Token packed with user-specifc claims. 
+Claims can contains both roles and other attributes like department, job title and more. These are the perfect infoformation setup to Role-Based and Attribute-Based Access Control, RBAC + ABAC.
+I am exploring to start a hobby project on such a hybrid policy-based authorization policy call [CanYou](https://github.com/weixian-zhang/CanYou).
+CanYou plans to use [Open Policy Agent (OPA)](https://www.openpolicyagent.org/docs/latest/) as the backend policy engine, and users can express their authorization policies using a domain-specific language call [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/), also created by the team who creates OPA.  
+Hopefully with this generic authorization engine, many applications can take advantage of it not not having to build their own, which is commonly the case.
 
 
 ### Azure Development Security Guidelines
