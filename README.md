@@ -122,8 +122,8 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 
 #### Component Interaction Diagram
 
-* API Controller layer (see [Api Specifications](#api-specifications)) is the entry point to Web App and it contains all package dependencies including cross-cutting (concerns) libraries like Serilog (logging framework). Dependency Injection is configured here to map Interfaces with their concrete classes
-* With reference to the [12 Factor App](https://12factor.net/) guiding principles, environment variables 
+* API Controller layer (see [Api Specifications](#api-specifications)) is the entry point to Web App and it contains all package dependencies including cross-cutting (concerns) libraries like Serilog (logging framework). Dependency Injection is configured here to map Interfaces to their relevant concrete classes.  
+* With reference to the [12 Factor App](https://12factor.net/) guiding principles, app configuration properties and secrets will always be loaded from environment       variables. And the App Services that are used to host ApiServer, by design, already injects configurations as environemnt variable. 
 
 <img src="https://user-images.githubusercontent.com/43234101/170208325-93a86940-294c-434d-9c44-6b13bc3ac29a.png" width="1100" height="600" />  
 
@@ -229,7 +229,13 @@ Dependencies are always constructor injected and codes need to refactor to suppo
 In our project roadmap, we plan to setup the following tests:
 * Automated Smoke Tests
   * Portal: using [Cypress](https://docs.cypress.io/guides/overview/why-cypress#Setting-up-tests), [Selenium](https://www.selenium.dev/documentation/) or similar Web       UI testing tool to automate UI testing. Smoke test still follows a set of test cases consisting of       test steps, however, Smoke Test aims to test if a build is     stable and covers breadth more than depth.
-  * ApiServer: using [Artillery](https://www.artillery.io/docs/guides/getting-started/core-concepts#test-definitions) to smoke test ApiServer by pre-configuring the querystring parameters following a set of defined test cases.
+  * ApiServer: using [Artillery](https://www.artillery.io/docs/guides/getting-started/core-concepts#test-definitions) to smoke test ApiServer by pre-configuring the       querystring parameters following a set of defined test cases.
+* Functional Tests - functional tests can also be automated using Selenium, Cypress or other similar tool. Functional test follows a set of wel-defined and               comprehensive test cases to go deep into testing functionalities, as compared to Smoke Test which aims for coverage to discover instability in new features.
+* Integration Tests - This test focus on cross app domain/network component testing. It can be manual or automated at the GUI layer to trigger calls to MySQL database.
+  If in future there are integrations with external systems and integration tests are to be conducted.  
+  Testing becomes more tricky as each dev team may need to wait for each other's integration endpoint to be ready before integration tests can occur.  
+  In this case we can explore using [Pact](https://docs.pact.io/), a consumer-driven integration test tool that mocks external endpoints by specifying a "contract".
+  A contract makes up of Endpoint Url, input parameters and data types, and return data and data type. So as long as both parties follows the Api interface contract",   testing against a Mocked API that adheres to the contarct is the same as testing against the real external API.
 * Load Tests - [Artillery](https://www.artillery.io/docs/guides/getting-started/core-concepts#test-definitions) can also be used for load testing by increaing the       number of "virtual-users"
 * Fuzz Test - As mentioned, we could explore Grammer-based Fuzzing to generate templatized inputs to Web APIs to effectively find bugs and security vulnerability.
 
