@@ -139,9 +139,10 @@ Threat Modelling Report can be found [here](https://github.com/weixian-zhang/Foo
   * code-based enhancements - for example encode HTML, Javascript output. Validate and white input.
   * configuration changes to existing Azure resource - for example edit App Service to not return web server information in response headers. Or tweak Azure Storage       settings to not allow Anonymous access and more.
   * Adding new security-related Azure resources or 3rd-party COTS products if necessary
-    * Example: could be implementing defence-in-depth principles with introducing layered defence for example: Building a DMZ VNet with NextGen Firewall/Azure Firewall       to tank all Internet traffic, perform TLS offloading and IDPS, before further routing to Application Gateway WAF for web vulnerabilities scan.
-    * and/or implement Host-based protection to detech VM level vulnerabilities
-    * and/or 
+    * Example: could be implementing defence-in-depth principles by introducing layered defence for example: Building a DMZ VNet with NextGen Firewall/Azure Firewall         to ingest all Internet traffic, perform TLS offloading and IDPS, before further routing to Application Gateway WAF for web vulnerabilities scan.
+    * and/or implement Host-based protection (a.k.a endpoint protection) to detech VM level vulnerabilities
+    * and/or 3rd-party SaaS-based WAF to inpect traffic before routing traffic to web app and more
+  * Adopt and follow policies to harden the Azure environment - for example follow the Azure CIS to further harden our Azure environment
 
 ### Authentication
 
