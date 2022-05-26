@@ -186,17 +186,18 @@ Hopefully with this generic authorization engine, many applications can take adv
    
 ### During Pre-Commit Stage (while you are coding)
 
-* Secure coding practices - we follow these [secure coding practice checklists](https://owasp.org/www-pdf-archive/OWASP_SCP_Quick_Reference_Guide_v2.pdf) while we code
-  Example: > * do not disclose sensitive info in error message
-	     * close DB connection right after use, leaving  persisted TCP connections are like leaving a back-door for adversaries to exploit
-             * validate all inputs
-             * encode all outputs including HTML, Javascript, CSS, XML, JSON, Http Headers and more
+* Secure coding practices - we follow these [secure coding practice checklists](https://owasp.org/www-pdf-archive/OWASP_SCP_Quick_Reference_Guide_v2.pdf) while we       code, some examples can be:  
+  * do not disclose sensitive info in error message
+  * close DB connection right after use, leaving  persisted TCP connections are like leaving a back-door for adversaries to exploit
+  * validate all inputs
+  * encode all outputs including HTML, Javascript, CSS, XML, JSON, Http Headers and more
            
-* App secrets - if develope using .Net use the [User Secret](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-6.0&tabs=windows) feature from SDK 
-* Pre-commit hook - use Git pre=commit hook to prevent committing secrets
-* DevSkim VSCode extension - able to provide inline security assessment while writing codes on the fly. Example: using outdated Hash MD5 library.
-* Security peer review - security reviews can be done on high risk modules such as authentication, authorization, user management, cryptography and etc.  
-  Also based on secure coding practice checklists
+* App secrets - if development is using .Net use the [User Secret](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-6.0&tabs=windows)   feature from .Net SDK 
+* Pre-commit hook - use Git pre=commit hook to prevent committing secrets accidentally
+* DevSkim VSCode extension - able to provide inline security assessment while writing codes on the fly. Example: using outdated Hash MD5 library get flags out while     typing.
+* Security peer review
+  * security reviews can be done on high risk modules such as authentication, authorization, user management, cryptography and etc.  
+  * security review can also closely reference the secure coding practice checklists
 * Unit Testing - Aim for at least 90% of code coverage when writing unit test cases. Unut tests should also cover non-happy flows  
   
  ### Security In DevOps Pipelines
@@ -221,11 +222,11 @@ Hopefully with this generic authorization engine, many applications can take adv
 
 ApiServer subsystem is an ASP.NET Core 3.1 web application which uses Json as the default data response format.
 * ApiServer adopts a URL Api versioning strategy as we want versioning to be explicit and not subtle like header and content-negotitation strategies.
-  QueryString Api versioning strategt tends to clutter the Api's natural querystring parameters
-* ApiServer also supports a /heath endpoint in addition to report "is alive" status, this endpoint can extend to return monitoring metrics modern monitoring tools like Prometheus to scrape metrics from.
+  QueryString Api versioning strategy tends to clutter the Api's natural querystring parameters
+* ApiServer also supports a /heath endpoint in addition to report "is alive" status, this endpoint can extend to return monitoring metrics for modern monitoring tools like Prometheus to scrape from.
 * Supports OpenAPI to
-  * improve external developers' experience
-  * API Gateway products can easily import ApiServer's API spec using OpenApi Json format as exposed as ""/swagger/v1/swagger.json
+  * improve external developers' development experience, providing them a formal accurate API contract to develop against
+  * to support better integration with external API Gateway products, they can easily import the OpenApi Json format as exposed as ""/swagger/v1/swagger.json
 
 | Verbs | API Paths | QueryStrings | Description | Status Code | Data Returned | 
 | ------------- | ------------- | ------------- | ------------- | ------------- |  ------------- |
