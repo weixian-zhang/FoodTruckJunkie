@@ -34,7 +34,7 @@ Web App is fully hosted on Azure and consist of major components including
 * [Testings](#testings)
 * [Development Challenges](#development-challenges)
 * [Project Roadmap - If I Have More Time](#project-roadmap---if-i-have-more-time)
-* [What I Have Learned](#what-i-have-learned) - The Happy Moments :nerd_face:  
+* [What I Have Learned](#what-i-have-learned)
 
 <br />
 <br />
@@ -135,15 +135,18 @@ The following are software security practices our team strives to following thro
 
 * Threat modelling was done basedon the [Container Diagram](#container-diagram) and the designer file can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ThreatModel-FoodTruckJunkie.tm7).  
 Threat Modelling Report can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ThreatMode-Report-FoodTruckJunkie%20WebApp.htm)
-* The detected threats are evaluated, for each threat mark with "Needs Investigation", a work item will be created to further explore mitigations in the form of:
+The detected threats are evaluated, for each threat mark with "Needs Investigation",
+a work item will be created to further explore mitigations in the form of:
   * code-based enhancements - for example encode HTML, Javascript output. Validate and whitelist input.
   * configuration changes to existing Azure resource - for example update App Service to not return web server information in response headers.  
     Or tweak Azure Storage settings to not allow Anonymous access and more.
-  * Adding new security-related Azure resources or 3rd-party COTS products if necessary
-    * Example: could be implementing defence-in-depth principles by introducing layered defence for example: Building a DMZ VNet with NextGen Firewall/Azure Firewall         to ingest all Internet traffic, perform TLS offloading and IDPS, before further routing to Application Gateway WAF for web vulnerabilities scan.
-    * and/or implement Host-based protection (a.k.a endpoint protection) to detech VM level vulnerabilities
-    * and/or 3rd-party SaaS-based WAF to inspect traffic before routing traffic to web app and more
-  * Adopt and follow industrial policies to harden the hosting environment - for example follow the Azure CIS to further harden our Azure environment
+  * Adding new security related Azure resources or 3rd-party security COTS products whenever necessary
+    * Implementing defence-in-depth principles by introducing layered defence for example: Add a DMZ VNet with NextGen Firewall/Azure Firewall to ingest all Internet         traffic, perform TLS offloading and IDPS, before further routing to Application Gateway WAF for web vulnerabilities scan.
+    * And/or implement Host-based protection (a.k.a endpoint protection) to detech VM level vulnerabilities
+    * And/or 3rd-party SaaS-based WAF to inspect traffic before routing traffic to web app and more
+  * Re-architect - another option could be to re-architect the design to use services that can be deployed in VNet.  
+    Example App Service Environment, Integrated Service Environment
+  * Adopt and industrial security benchmarks to harden Azure environment. For example Azure CIS  
 
 ### Authentication
 
@@ -157,10 +160,13 @@ Behind the scenes, we will be implementing OpenID Connect authentication on Port
 ### Azure Development Security Guidelines
 * Always use Azure Managed Identity (wherever supported) as the authentication mechaism when accessing Azure services
 * All Secrets, Asymmetric and Symmetric keys and x.509 Certifications should store in Azure Key Vault
+* Always use Private Endpoints whenever the service supports it
+* For Virtual Machines, always enable Azure Automanage
+* Always enable Micosoft Defender for Cloud service protection whenever the service is supported
 * Application Insights SDK should always be implemented for supported languages. Always enable Application Insights that has direct integration with the Azure web app   hosting services.
   Although Application Insights is a App Performance Monitoring (APM) tool
    * the App Map feature could show if web app is contacting any suspicious external endpoints, detecting malware doing Commmand and Control to form backdoors and          executing data exfiltration
-   *  App Insight logs could potential, further joined with other log types in Azure Sentinel if need be
+   *  App Insight logs could potentially further joined with other log types in Azure Sentinel if need be
    
 ### During Pre-Commit Stage (while you are coding)
 
