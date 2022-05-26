@@ -120,7 +120,7 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 
 <img src="https://user-images.githubusercontent.com/43234101/170208325-93a86940-294c-434d-9c44-6b13bc3ac29a.png" width="1100" height="600" />  
 
-## Security
+## Security In Software Development
 
 The following are software security practices our team strives to following throughout the SDLC of this project
 
@@ -149,7 +149,7 @@ Threat Modelling Report can be found [here](https://github.com/weixian-zhang/Foo
 * Security peer review - security reviews can be done on high risk modules such as authentication, authorization, user management, cryptography and etc.  
   Also based on secure coding practice checklists
   
- ### DevSecOps
+ ### Security In DevOps Pipelines
  
  We will be introducing security tasks into our Build and Release pieplines with tasks as follows
  * <b>Build Pipeline</b>
@@ -157,9 +157,11 @@ Threat Modelling Report can be found [here](https://github.com/weixian-zhang/Foo
     * SonarQube Static Code Analysis - code smells, bugs and security vulnerabilities ([rules here](https://docs.sonarqube.org/latest/user-guide/security-rules/))
     * WhiteSource Bolt - detects vulnerabilities in open source components and provides fixes and checks licensing
     * OWasp Dependency Checks - detects publicly disclosed vulnerabilities contained within a project’s dependencies
-    * Anchore Image Scanner - scans Docker images for vulnerabilities
+    * Anchore Image Scanner - For scanning Docker images for vulnerabilities, if any team member decides to containerize some sub-systems
+    * Run Unit Tests
  * <b>Release Pipeline</b>
     * OWASP ZAP - integrated penetration testing tool to detect web vulnerabilities in web apps
+    * Fuzz Test - explore the introduction of Fuzzing with web fuzzers like [FFUS](https://github.com/ffuf/ffuf)
      
 
 ## Api Server Specifications
