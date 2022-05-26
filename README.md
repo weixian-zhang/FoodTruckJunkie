@@ -163,26 +163,26 @@ Many systems rely on Frontend to authorize (allow and deny) calls to Backend API
 Within APIs, many of them today uses OAuth 2.0 to perform authorization.  
 OAuth scopes can be expressed quite granularly for example in Azure AD adding a scope *API.Admin.User.Reset*, follow by configuring API Permissions to determine which App has access to the defined scope *API.Admin.User.Reset*.  
 
-In my opinion (purely my opinion), I feel its very difficult to configure a enterpise-scale complex authorizaton policy that comprises of maybe both role-based and attribute-based, and using both mechanisms to determine which user can or not access an API.  
+In my opinion (purely my opinion), I feel its very difficult to configure an enterpise-scale complex authorizaton policy that comprises of maybe both role-based and attribute-based, and using both mechanisms to determine which user can or not access an API.  
 Furthermore, authorization module need to store every feature of the system as *action/operation* (UI element or URL paths) in order to process them with policies to derive the permission, hence, making authorization very intimate to the system, yet holds no domain functional value.  
 
 I personally believe that OAuth can be the "first layer" of authorization, and with OAuth we can get a nice secured Access Token packed with user-specifc claims. 
-Claims can contains both roles and other attributes like department, job title and more. These are the perfect infoformation setup to Role-Based and Attribute-Based Access Control, RBAC + ABAC.
+Claims can contains both roles and other attributes like department, job title and more. These are the perfect infomation setup to Role-Based and Attribute-Based Access Control, RBAC + ABAC.  
 I am exploring to start a hobby project on such a hybrid policy-based authorization policy call [CanYou](https://github.com/weixian-zhang/CanYou).
 CanYou plans to use [Open Policy Agent (OPA)](https://www.openpolicyagent.org/docs/latest/) as the backend policy engine, and users can express their authorization policies using a domain-specific language call [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/), also created by the team who creates OPA.  
 Hopefully with this generic authorization engine, many applications can take advantage of it not not having to build their own, which is commonly the case.
 
 
 ### Azure Development Security Guidelines
-* Always use Azure Managed Identity (wherever supported) as the authentication mechaism when accessing Azure services
+* Always use Azure Managed Identity (wherever supported) as the authentication mechanism when accessing Azure services
 * All Secrets, Asymmetric and Symmetric keys and x.509 Certifications should store in Azure Key Vault
 * Always use Private Endpoints whenever the service supports it
 * For Virtual Machines, always enable Azure Automanage
-* Always enable Micosoft Defender for Cloud service protection whenever the service is supported
-* Application Insights SDK should always be implemented for supported languages. Always enable Application Insights that has direct integration with the Azure web app   hosting services.
+* Always enable *Micosoft Defender for Cloud* whenever the provisioned service is supported
+* Application Insights SDK should always be implemented for supported languages, or always enable Application Insights on services that has direct integration with.
   Although Application Insights is a App Performance Monitoring (APM) tool
    * the App Map feature could show if web app is contacting any suspicious external endpoints, detecting malware doing Commmand and Control to form backdoors and          executing data exfiltration
-   *  App Insight logs could potentially further joined with other log types in Azure Sentinel if need be
+   * Application Insight logs could  further joined with other log types in Azure Sentinel for further investigation. Although I have not seen this in action, I think      this has potential.
    
 ### During Pre-Commit Stage (while you are coding)
 
