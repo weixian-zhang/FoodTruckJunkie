@@ -263,7 +263,7 @@ In a real-world software project, we have many other participating roles like Bu
 3rd-party security auditors to scrutinize our OS hardening configurations, firewall rules, network routing, web server configurations and more.
 And not forgetting Project Manager, Scrum Master, Subject-Matter Experts and Product Specialists of certain line-of-products.
 
-Having said a mouthful, this challenge although a one-person sized project, it can put one through most of the SDLC stages and playing different roles all at once, simulating a real-world project. I really enjoyed myself.
+Having said a mouthful, this challenge although a one-person size project, it can put one through most of the SDLC stages and playing different roles all at once, simulating a real-world project. I really enjoyed myself.
 
 * Before I kick start this challenge, I took several hours to learn about Latitude, Longitude, the geographical EastWest reference line call the Greenwich Meridian,
   and how to plot coordinates on a world map.
