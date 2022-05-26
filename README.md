@@ -255,15 +255,18 @@ In our project roadmap, we plan to setup the following tests:
     * In the Frontend, food type data can be retrieved when web app loads and food type can be cached in browser's local storage
     * Lastly, an auto-complete textbox is added and binds to the cached food type data. As user types in auto-complete box, the user will be actively prompted with           available food type. This makes food truck searching experience
     * using Azure Boards to track user stories and work items
-		
-![image](https://user-images.githubusercontent.com/43234101/170439795-1bdac569-900d-4776-a715-972ea0d7f139.png)
-
-
+ 
 ## What I Have Learned
 
-The idea of this challenge is an interesting one, most importantly this challenge can effectively get to know one's knowledge and experience in a full Software Delivery Lifecycle from, understanding requriements, to software architecture design, system Infra/Networking architecture design, threat modelling, software module-level design (package-level), software development in full-stack involving polyglot languages and frameworks from Frontend, Backend to Database, to deploying web app to Azure (in this case), and finally to documentation.
-In a real-world software project, we have many other participating roles like Business Analysts for requirements gathering and documentation, Software Engineers, Software Architects, Software Tech Leads, System Admins for OS/Infra/Networking setup and configuration, DBA setup and configure DB clusters (and even run our TSQL scripts some times). Test specialists using specalized software to run penetration tests against our systems.
-3rd-party security auditors scrutinizing our OS hardening configurations, firewall rules, networking routing, web server configurations and etc.
-And not forgetting Project Manager, Scrum Master, Subject-Matter Experts and Product Specialists
+The idea of this challenge is an interesting one, most importantly this challenge can effectively get to know one's knowledge and experience in a full Software Delivery Lifecycle. Starting from understanding the requriements, to software architecture design, system Infra/Networking architecture design, threat modelling, software module-level design (package-level), software development in full-stack involving polyglot languages and frameworks from Frontend, Backend to Database, to deploying system to Azure (in this case), and finally to documentation.
+In a real-world software project, we have many other participating roles like Business Analysts for requirements gathering and documentation, Software Engineers, Software Architects, Software Tech Leads, System Admins to OS/Infra/Networking setup and configuration, DBA to setup and configure DB clusters (and even run our TSQL scripts some times). Test specialists using specalized software to run penetration tests against our systems.
+3rd-party security auditors to scrutinize our OS hardening configurations, firewall rules, network routing, web server configurations and more.
+And not forgetting Project Manager, Scrum Master, Subject-Matter Experts and Product Specialists of certain line-of-products.
 
-Having said a mouthful, this challenge although a one-person sized, it can put one through most of the SDLC stages and playing different roles very close to a real-world project. I really enjoyed myself.
+Having said a mouthful, this challenge although a one-person sized project, it can put one through most of the SDLC stages and playing different roles all at once, simulating a real-world project. I really enjoyed myself.
+
+* Before I kick start this challenge, I took several hours to learn about Latitude, Longitude, the geographical EastWest reference line call the Greenwich Meridian,
+  and how to plot coordinates on a world map.
+  This may be common sense knowledge to other people but for me, I just didn't manage to learn before this challenge. I am glad I learned now.
+* I always wanted to learn how to embed maps into an App and have the icons on the map move by itself. The idea of tracking someone or device on a map watching it move   is really fun. Finally got a purposeful chance to try Google Map. I wanted to use Azure Map at first but its not so easy to integrate Azure Map into React app, so in   the essence of time I chose Google Map
+* I chose MySQL because I have not work on MySQL before and found a chance to. Thanks to that I discover a limitation (see [Development Challenges](#development-         challenges)).
