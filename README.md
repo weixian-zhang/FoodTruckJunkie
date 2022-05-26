@@ -91,6 +91,8 @@ What you expected would happen
 What actually happens
 Notes (possibly including why you think this might be happening, or stuff you tried that didn't work)
 ```
+<br />
+<br />
 
 ## Software Architecture Design
 
@@ -182,6 +184,8 @@ Behind the scenes, we will be implementing OpenID Connect authentication on Port
     * OWASP ZAP - integrated penetration testing tool to detect web vulnerabilities in web apps
     * Fuzz Test - explore the introduction of Fuzzing with web fuzzers like [FFUS](https://github.com/ffuf/ffuf) or [OneFuzz](https://github.com/microsoft/onefuzz/blob/main/README.md)
      
+<br />
+<br />
 
 ## Api Server Specifications
 
@@ -200,6 +204,8 @@ ApiServer subsystem is an ASP.NET Core 3.1 web application which uses Json as th
 | GET | / |  | OpenAPI/Swagger UI | 200 | |
 | GET | /swagger/v1/swagger.json | | OpenAPI/Swagger Json | 200 | |
 
+<br />
+<br />
 
 ## Database Specifications
 
@@ -209,6 +215,9 @@ The scripts include:
 * data loading script that reads from data CSV file
 * table creation script
 * stored procedure that uses the Haversine formula to calculate the distant between filtered food truck coordinates, against coordinates passed in as paramaters from     web portal.
+
+<br />
+<br />
 
 ## Testings
 
@@ -224,6 +233,8 @@ In our project roadmap, we plan to setup the following tests:
 * Load Tests - [Artillery](https://www.artillery.io/docs/guides/getting-started/core-concepts#test-definitions) can also be used for load testing by increaing the       number of "virtual-users"
 * Fuzz Test - As mentioned, we could explore Grammer-based Fuzzing to generate templatized inputs to Web APIs to effectively find bugs and security vulnerability.
 
+<br />
+<br />
 
 ## Development Challenges
 * A challenge with MySQL LIMIT clause is that LIMIT cannot be used with a variable for e.g LIMIT @numberOfResult as this syntax is considered invalid.
@@ -234,6 +245,9 @@ In our project roadmap, we plan to setup the following tests:
   any text change causes map to grey-out.
   This is due to input textboxes are string type while GoogleMap's "center" property accepts decimal only.
   This is solved by parsing string to float e.g: parseFloat(this.state.latitude)
+
+<br />
+<br />
 
 ## Project Roadmap - If I Have More Time
 
@@ -264,6 +278,9 @@ In our project roadmap, we plan to setup the following tests:
     * Lastly, an auto-complete textbox is added and binds to the cached food type data. As user types in auto-complete box, the user will be actively prompted with           available food type. This makes food truck searching experience
     * using Azure Boards to track user stories and work items
  
+<br />
+<br />
+
 ## What I Have Learned
 
 The idea of this challenge is an interesting one, most importantly this challenge can effectively get to know one's knowledge and experience in a full Software Delivery Lifecycle. Starting from understanding the requriements, to software architecture design, system Infra/Networking architecture design, threat modelling, software module-level design (package-level), software development in full-stack involving polyglot languages and frameworks from Frontend, Backend to Database, to deploying system to Azure (in this case), and finally to documentation.
