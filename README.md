@@ -156,6 +156,11 @@ Behind the scenes, we will be implementing OpenID Connect authentication on Port
 * API authn: ApiServer being a Confidential Client will be using Auhorization Code Flow
 * API authn-chain : if at that point when Food Truck Junkie has expanded to have other features which are implemented as microservices, and has the requirement to       for microservices to microservices API authentication, we will then be implementing Authorization Code Flow-On-Behalf Flow for API-to-API authentication chain         scenario.
   The concept is when an API (API-A) receive an access token from Portal, API-A uses the access token and with its ClientID/Secret, it exchange for another access       token Token-A. This Token-A will be pass on to API-B for authentication. Within Azure AD we will need to configure "Expose API" to add OAuth scopes for each           microservices. Then followed by configuring authorization in Azure AD - App - "API Permissions", specifiying which API scopes are allowed access to which               microservices.
+  
+### Authorization
+
+Many systems rely on Frontend to authorize (allow and deny) calls to Backend APIs by hiding UI elements like buttons and menu items.
+Within API, authorization may not generally design when 
 
 ### Azure Development Security Guidelines
 * Always use Azure Managed Identity (wherever supported) as the authentication mechaism when accessing Azure services
