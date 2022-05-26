@@ -267,9 +267,9 @@ In our project roadmap, we plan to setup the following tests:
   If in future there are integrations with external systems and integration tests are to be conducted.  
   Testing becomes more tricky as each dev team may need to wait for each other's integration endpoint to be ready before integration tests can occur.  
   In this case we can explore using [Pact](https://docs.pact.io/), a consumer-driven integration test tool that mocks external endpoints by specifying a "contract".
-  A contract makes up of Endpoint Url, input parameters and data types, and return data and data type. So as long as both parties follows the Api interface contract",   testing against a Mocked API that adheres to the contarct is the same as testing against the real external API.
-* Load Tests - [Artillery](https://www.artillery.io/docs/guides/getting-started/core-concepts#test-definitions) can also be used for load testing by increaing the       number of "virtual-users"
-* Fuzz Test - As mentioned, we could explore Grammer-based Fuzzing to generate templatized inputs to Web APIs to effectively find bugs and security vulnerability.
+  A contract makes up of Endpoint Url, input parameters and data types, and return data and data type. So as long as both parties follows the Api interface contract,     testing against a Mocked API that adheres to the contract is the same as testing against the real external API.
+* Load Tests - [Artillery](https://www.artillery.io/docs/guides/getting-started/core-concepts#test-definitions) can also be used for load testing by increasing the       number of "virtual-users"
+* Fuzz Test - As mentioned, we could explore Grammer-based Fuzzing to generate templatized inputs to Web APIs, to find bugs and security vulnerability.
 
 <br />
 <br />
@@ -278,10 +278,11 @@ In our project roadmap, we plan to setup the following tests:
 * A challenge with MySQL LIMIT clause is that LIMIT cannot be used with a variable for e.g LIMIT @numberOfResult as this syntax is considered invalid.
   A workaround could be to wrap the whole SELECT statement in string and use PREPARE stmt
   <img src="https://user-images.githubusercontent.com/43234101/169995446-3424ed5e-41b0-439a-9848-74df786660d3.png" width="700" height="250" />  
-  An easier way to solve this is by setting "PageSize" in ApiServer before passing parameter into MySQL stored procedure to calculate food truck proximity using Haversine formula.
-* Frontend - when binding GoogleMap javascript object's "center" property to input textboxes of latitude and longitude over React-State,
+  An easier way I did to solve this is by just setting "numberOfResult" in ApiServer before passing parameter into MySQL stored procedure.  
+  
+* Frontend - when binding GoogleMap javascript object's "center" property, to input textboxes of latitude and longitude over React-State,
   any text change causes map to grey-out.
-  This is due to input textboxes are string type while GoogleMap's "center" property accepts decimal only.
+  Finally found out that this bug is due to input textboxes are of string type while GoogleMap's "center" property accepts decimal only, which makes perfect sense       since they are coordinates.  
   This is solved by parsing string to float e.g: parseFloat(this.state.latitude)
 
 <br />
@@ -295,26 +296,28 @@ In our project roadmap, we plan to setup the following tests:
     These BFF client-specific APIs are usually coarse-grain APIs that could be calling other microservices to aggregate data before returning to the client.
     For example, Mobile App may not have an admin module while Desktop and Web clients have it. Hence Mobile BFF API will not contain admin modules as well.
     
-  * Adopts the Microservices architectural style as system grows. This will be a brown-field migration to Microservices archietcture.
+  * Adopts the Microservices architectural style as system grows. This will be a brown-field migration to Microservices architecture.
     Each Bounded Context of the system domain can be an independent microservice maintained by a separate team with their own programming language and tech-stack of       their choice.
     
 * Technology
-  * Microservices are deployed on Azure Kubernetes private cluster. Service Mesh like Istio can be introduce for API Gateway capability, mutal-TLS microservice o           microservice authn, and network policy built-in to contract network reacbility amongst microservices and more.
-  * A data loading daemon app implemented using Azure Function to automatically and timely pull Food Truck permit data file and refresh static data
+  * Microservices are deployed on Azure Kubernetes private cluster. Service Mesh like Istio can be introduce for API Gateway capability, mutual-TLS authn, 
+    and network policy built-in to constraint network reacbility amongst microservices, and more.
+  * A data loading daemon app implemented using Azure Function to automatically and timely pull Food Truck permit data file and refresh static data in DB Table
   * Use Azure Static Web App to host Portal instead of App Service so as to take advantage of built-in CDN and DevOps deployment features.
-  * Cache search result in Azure Redis using Cache-Aside pattern to return queried result faster
+  * Cache search result in Azure Redis using Cache-Aside pattern to return food truck results from previous queries
   * Develope Azure Bicep scripts to setup the Azure environment
-  * Azure FrontDoor WAF added in-front of ApiServer for security coverage:
+  * Azure FrontDoor WAF added in front of ApiServer for better security coverage:
     * Custom Rule to perform rate limiting
     * OWASP TOp 10 web vulnerability scanning on TLS terminated traffic, before routing to ApiServer
 
 * Functional
-  * Supporting Address searching - search nearby food trucks by Address in addition to coordinates
-  * Search by Food
-    * Food type data can be isolated and compiled and save into a dedicated DB Table
-    * In the Frontend, food type data can be retrieved when web app loads and food type can be cached in browser's local storage
-    * Lastly, an auto-complete textbox is added and binds to the cached food type data. As user types in auto-complete box, the user will be actively prompted with           available food type. This makes food truck searching experience
-    * using Azure Boards to track user stories and work items
+  * Search by Address - search nearby food trucks by Address in addition to coordinates
+  * Search by Food Type
+    * Food type data can be isolated, compiled and save into a dedicated DB Table
+    * In the Frontend, food type data can be retrieved when Frontend loads, food type can be cached in browser's local storage
+    * Lastly, an auto-complete textbox is added and binds to the local storage cached food type data.  A
+      As user types in auto-complete box, food choices are actively prompted.
+  * Use Azure Boards to track user stories and work items
  
 <br />
 <br />
