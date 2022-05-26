@@ -232,20 +232,21 @@ In our project roadmap, we plan to setup the following tests:
 
 ## Project Roadmap - If I Have More Time
 
-* Technology
-  * Adopts the Microservices architectural style as system grows. This will be a brown-field migration to Microservices archietcture.
-    Each Bounded Context of the system domain can be an independent microservice maintained by a separate team with their own programming language and tech-stack of       their choice.
-    Microservices are deployed on Kubernetes 
-  * Azure Function to timely pull FT permit file and refresh static data
-  * Use Azure Static Web App to host Portal instead of App Service so as to take advantage of built-in CDN and DevOps deployment features.
-  * Cache search result in Azure Redis using Cache-Aside pattern to return queried result faster
-  * Develope Azure Bicep scripts to setup the Azure environment
-  
 * Software Patterns & Practices	
   * Backend For Frontend pattern - in future if more client types like Desktop, mobile and Cli are added, we could explore Backend-For-Frontend (BFF) pattern.
     How BFF works is that there will be a API layer where data and business logic are customized for each Frontend type.
     These BFF client-specific APIs are usually coarse-grain APIs that could be calling other microservices to aggregate data before returning to the client.
     For example, Mobile App may not have an admin module while Desktop and Web clients have it. Hence Mobile BFF API will not contain admin modules as well.
+    
+  * Adopts the Microservices architectural style as system grows. This will be a brown-field migration to Microservices archietcture.
+    Each Bounded Context of the system domain can be an independent microservice maintained by a separate team with their own programming language and tech-stack of       their choice.
+    
+* Technology
+  * Microservices are deployed on Azure Kubernetes private cluster. Service Mesh like Istio can be introduce for API Gateway capability, mutal-TLS microservice o           microservice authn, and network policy built-in to contract network reacbility amongst microservices and more.
+  * Azure Function to timely pull FT permit file and refresh static data
+  * Use Azure Static Web App to host Portal instead of App Service so as to take advantage of built-in CDN and DevOps deployment features.
+  * Cache search result in Azure Redis using Cache-Aside pattern to return queried result faster
+  * Develope Azure Bicep scripts to setup the Azure environment
 
 * Functional
   * Supporting Address searching - search nearby food trucks by Address in addition to coordinates
@@ -253,14 +254,8 @@ In our project roadmap, we plan to setup the following tests:
     * Food type data can be isolated and compiled and save into a dedicated DB Table
     * In the Frontend, food type data can be retrieved when web app loads and food type can be cached in browser's local storage
     * Lastly, an auto-complete textbox is added and binds to the cached food type data. As user types in auto-complete box, the user will be actively prompted with           available food type. This makes food truck searching experience
+    * using Azure Boards to track user stories and work items
 		
-		○ Secure coding practice
-		○ More unit tests
-		
-		○ 
-		○ GitHub Actions to deploy FoodTruck API and 
-		○ Azure Boards to track user stories and work items
-		○ 
 ![image](https://user-images.githubusercontent.com/43234101/170439795-1bdac569-900d-4776-a715-972ea0d7f139.png)
 
 
