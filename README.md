@@ -168,6 +168,8 @@ Furthermore, authorization module need to store every feature of the system as *
 
 I personally believe that OAuth can be the "first layer" of authorization, and with OAuth we can get a nice secured Access Token packed with user-specifc claims. 
 Claims can contains both roles and other attributes like department, job title and more. These are the perfect infomation setup to Role-Based and Attribute-Based Access Control, RBAC + ABAC.  
+
+For the "second layer " of authroization, which usually Dev teams tend to build their own for every project,  
 I am exploring to start a hobby project on such a hybrid policy-based authorization policy call [CanYou](https://github.com/weixian-zhang/CanYou).
 CanYou plans to use [Open Policy Agent (OPA)](https://www.openpolicyagent.org/docs/latest/) as the backend policy engine, and users can express their authorization policies using a domain-specific language call [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/), also created by the team who creates OPA.  
 Hopefully with this generic authorization engine, many applications can take advantage of it not not having to build their own, which is commonly the case.
