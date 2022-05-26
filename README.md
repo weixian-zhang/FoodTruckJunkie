@@ -326,7 +326,7 @@ In our project roadmap, we plan to setup the following tests:
 
 The idea of this challenge is an interesting one, most importantly this challenge takes the challenger through a full Software Delivery Lifecycle much like a real world's. Starting from understanding the requriements, to software architecture design, system Infra/Networking architecture design, threat modelling, software module-level design (package-level), software development in full-stack involving polyglot languages and frameworks from Frontend, Backend to Database, to deploying system to Azure (in this case), and finally to documentation.
 In a real-world software project, we have many other participating roles like Business Analysts for requirements gathering and documentation, Software Engineers, Software Architects, Software Tech Leads, System Admins to OS/Infra/Networking setup and configuration, DBA to setup and configure DB clusters (and even run our TSQL scripts some times). Test specialists using specalized software to run penetration tests against our systems.
-3rd-party security auditors to scrutinize our OS hardening configurations, firewall rules, network routing, web server configurations and more.
+3rd-party security auditors to scrutinize our OS hardening configurations, firewall rules, network routing policies, web server configurations and more.
 And not forgetting Project Manager, Scrum Master, Subject-Matter Experts and Product Specialists of certain line-of-products.
 
 Having said a mouthful, this challenge although a one-person size project, it can put one through most of the SDLC stages and playing different roles all at once, simulating a real-world project. I really enjoyed myself.
