@@ -129,13 +129,19 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 
 ## Security In Software Development
 
-The following are software security practices our team strives to following throughout the SDLC of this project
+The following are software security practices our team strives to following throughout the SDLC.
 
 ### Threat Modelling
 
-* Threat modelling was done according to [Container Diagram](#container-diagram) and the designer file can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ThreatModel-FoodTruckJunkie.tm7).  
+* Threat modelling was done basedon the [Container Diagram](#container-diagram) and the designer file can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ThreatModel-FoodTruckJunkie.tm7).  
 Threat Modelling Report can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ThreatMode-Report-FoodTruckJunkie%20WebApp.htm)
-* The detected threats were evaluated, for each threat mark with "Needs Investigation", a work item will be created to further explore mitigations in the form of code-based enhancements, configuration changes to existing Azure resource, and/or by adding new security-related Azure resources or 3rd-party COTS products if necessary. 
+* The detected threats were evaluated, for each threat mark with "Needs Investigation", a work item will be created to further explore mitigations in the form of:
+  * code-based enhancements - for example encode HTML, Javascript output. Validate and white input.
+  * configuration changes to existing Azure resource - for example edit App Service to not return web server information in response headers. Or tweak Azure Storage       settings to not allow Anonymous access and more.
+  * Adding new security-related Azure resources or 3rd-party COTS products if necessary
+    * Example: could be implementing defence-in-depth principles with introducing layered defence for example: Building a DMZ VNet with NextGen Firewall/Azure Firewall       to tank all Internet traffic, perform TLS offloading and IDPS, before further routing to Application Gateway WAF for web vulnerabilities scan.
+    * and/or implement Host-based protection to detech VM level vulnerabilities
+    * and/or 
 
 ### Authentication
 
