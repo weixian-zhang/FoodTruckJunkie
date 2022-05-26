@@ -2,7 +2,7 @@
 
 Food Truck Junkie is a [Web App](https://webapp-foodtruckjunkie-portal.azurewebsites.net) that helps you search for food trucks in San Francisco and displays them on an embedded Google Map for your ease of navigation to deliciousness, but mostly for hunger. 
 
-Quick test URLs below
+Quick test URLs below  
 *Note: web app is currently whitelisted (Azure App Service IP Restrictions) for security reasons and only allow access when needed.
 |  Components | URLs |
 | ------------- | ------------- |
@@ -11,16 +11,15 @@ Quick test URLs below
 
 ## Project Description
 
-The Web App aims to search for food truck coordinates (latitude, longitude) within a user-defined proximity in miles,  
+This web app aims to search for food truck coordinates (latitude, longitude) within a user-defined proximity in miles,  
 by using the [Haversine Formula](https://en.wikipedia.org/wiki/Haversine_formula) on every food truck coordinates measured against user-defined coordinates entered in Frontend.  
 Web App is fully hosted on Azure and consist of major components including
 * a SPA-based Frontend developed using React
 * Web API also known as ApiServer is an ASP.NET Core Backend that supports food truck search feature made by React Frontend.  
-  In future ApiServer potentially adopts Backend-For-Frontend architectural pattern to support additional client types like Desktop App, mobile App and CLIs.
 * Azure Database for MySQL as the main relational DB  
 * other properties includes:
-*  source of food truck dataset comes from [Mobile Food Facility Permit](https://data.sfgov.org/Economy-and-Community/Mobile-Food-Facility-Permit/rqzj-sfat/data)  
-*  A food truck is plotted on GoogleMap only when their permit status is "APPROVED" 
+  *  source of food truck dataset comes from [Mobile Food Facility Permit](https://data.sfgov.org/Economy-and-Community/Mobile-Food-Facility-Permit/rqzj-sfat/data)  
+  *  A food truck is plotted on GoogleMap only when their permit status is "APPROVED" 
   
 ## Table of Content
 * [System Deployment](#system-deployment)
