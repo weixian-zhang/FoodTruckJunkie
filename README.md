@@ -206,10 +206,17 @@ The scripts include:
 
 ## Testings
 
-The current available tests are Unit Tests written using XUnit, unit tests covers all 3 layers including API Controller, Service and Repository.
+The current available tests are Unit Tests written using XUnit framework, unit tests covers all 3 layers including API Controller, Service and Repository.
 Additionally, Moq library is used to Mock a DB C# Interface so that MySQL DB access can be mocked and not include any integration to MySQL.
 We are able to make mocking happen due to consistent usage of Intefaces, and all concrete classes must implement Interfaces.
-Dependencies are always constructor injected. Codes need to refactor to support unit test if needed.
+Dependencies are always constructor injected and codes need to refactor to support unit testing if needed.
+
+In our project roadmap, we plan to setup the following tests:
+* Automated Smoke Tests
+  * Portal: using [Cypress](https://docs.cypress.io/guides/overview/why-cypress#Setting-up-tests), [Selenium](https://www.selenium.dev/documentation/) or similar Web       UI testing tool to automate UI testing. Smoke test still follows a set of test cases consisting of       test steps, however, Smoke Test aims to test if a build is     stable and covers breadth more than depth.
+  * ApiServer: using [Artillery](https://www.artillery.io/docs/guides/getting-started/core-concepts#test-definitions) to smoke test ApiServer by pre-configuring the querystring parameters following a set of defined test cases.
+* Load Tests - [Artillery](https://www.artillery.io/docs/guides/getting-started/core-concepts#test-definitions) can also be used for load testing by increaing the       number of "virtual-users"
+* Fuzz Test - 
 
 
 ## Development Challenges
