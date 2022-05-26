@@ -242,12 +242,11 @@ ApiServer subsystem is an ASP.NET Core 3.1 web application which uses Json as th
 
 ## Database Specifications
 
-We are using Azure Database for MySQL as our amin relational DB.
-All DB setup scripts can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/tree/main/src/Scripts/DB).
+We are using Azure Database for MySQL All DB setup scripts can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/tree/main/src/Scripts/DB).  
 The scripts include:
-* data loading script that reads from data CSV file
+* data loading script that reads food truck data from CSV file and insert them to the a Table
 * table creation script
-* stored procedure that uses the Haversine formula to calculate the distant between filtered food truck coordinates, against coordinates passed in as paramaters from     web portal.
+* stored procedure that uses the Haversine formula to calculate the distant between filtered food truck coordinates, against user's coordinates passed in as paramaters   from web portal.
 
 <br />
 <br />
