@@ -150,17 +150,21 @@ a work item will be created to further explore mitigations in the form of:
 
 ### Authentication
 
-In the future Project Roadmap, we will want users to be able to sign-in with their Microsoft personal accounts (a.k.a Live account.
-Behind the scenes, we will be implementing OpenID Connect authentication on Portal and ApiServer.
-* SPA authn: Portal will use the  OAuth Authorization Code Flow + PKCE as it is a Public Client.
+In the Project Roadmap, we will want users to be able to sign-in with their Microsoft personal accounts (a.k.a Live account.
+Behind the scenes, we will be implementing OpenID Connect authn protocol on Portal and ApiServer.
+* SPA authn: Portal will use the OAuth Authorization Code Flow PKCE as it is a Public Client.
 * API authn: ApiServer being a Confidential Client will be using Auhorization Code Flow
 * API authn-chain : if at that point when Food Truck Junkie has expanded to have other features which are implemented as microservices, and has the requirement to       for microservices to microservices API authentication, we will then be implementing Authorization Code Flow-On-Behalf Flow for API-to-API authentication chain         scenario.
   The concept is when an API (API-A) receive an access token from Portal, API-A uses the access token and with its ClientID/Secret, it exchange for another access       token Token-A. This Token-A will be pass on to API-B for authentication. Within Azure AD we will need to configure "Expose API" to add OAuth scopes for each           microservices. Then followed by configuring authorization in Azure AD - App - "API Permissions", specifiying which API scopes are allowed access to which               microservices.
   
 ### Authorization
 
-Many systems rely on Frontend to authorize (allow and deny) calls to Backend APIs by hiding UI elements like buttons and menu items.
-Within API, authorization may not generally design when 
+Many systems rely on Frontend to authorize (allow and deny) calls to Backend APIs, by hiding UI elements like buttons and menu items.
+Within APIs, many of them today uses OAuth 2.0 to perform authorization.  
+Scopes can be granular for example in Azure AD adding a scope *API.Admin.User.Reset*, follow by configuring API Permissions to determine which App has access to the defined scope *API.Admin.User.Reset*.
+In my opinion (purely my opinion), I feel its very difficult to configure a enterpise-scale complex authorizaton policy that comprises of maybe both role-based and attribute-based, and using both mechanisms to determine which user can or not access an API.
+Furthermore, authorization module need to store every feature of the system as *action/operation* (UI element or URL paths) in order to process them with policies to derive the permission, making authorization very intimate to the system, yet holds no domain functional value.
+
 
 ### Azure Development Security Guidelines
 * Always use Azure Managed Identity (wherever supported) as the authentication mechaism when accessing Azure services
