@@ -160,6 +160,7 @@ Behind the scenes, we will be implementing OpenID Connect authentication on Port
 * DevSkim VSCode extension - able to provide inline security assessment while writing codes on the fly. Example: using outdated Hash MD5 library.
 * Security peer review - security reviews can be done on high risk modules such as authentication, authorization, user management, cryptography and etc.  
   Also based on secure coding practice checklists
+* Unit Testing - Aim for at least 90% of code coverage when writing unit test cases. Unut tests should also cover non-happy flows  
   
  ### Security In DevOps Pipelines
  
@@ -241,11 +242,17 @@ In our project roadmap, we plan to setup the following tests:
   * Develope Azure Bicep scripts to setup the Azure environment
   
 * Software Patterns & Practices	
-  * Backend for frontend pattern
+  * Backend For Frontend pattern - in future if more client types like Desktop, mobile and Cli are added, we could explore Backend-For-Frontend (BFF) pattern.
+    How BFF works is that there will be a API layer where data and business logic are customized for each Frontend type.
+    These BFF client-specific APIs are usually coarse-grain APIs that could be calling other microservices to aggregate data before returning to the client.
+    For example, Mobile App may not have an admin module while Desktop and Web clients have it. Hence Mobile BFF API will not contain admin modules as well.
 
 * Functional
-  * Supporting aAdress searching - auto-complete box to get Lat-Long coordinates, then get surrounding food trucks coordinate, on the fly. (lowest priority)
-  * Search by Food items e.g: Vegetarians
+  * Supporting Address searching - search nearby food trucks by Address in addition to coordinates
+  * Search by Food
+    * Food type data can be isolated and compiled and save into a dedicated DB Table
+    * In the Frontend, food type data can be retrieved when web app loads and food type can be cached in browser's local storage
+    * Lastly, an auto-complete textbox is added and binds to the cached food type data. As user types in auto-complete box, the user will be actively prompted with           available food type. This makes food truck searching experience
 		
 		○ Secure coding practice
 		○ More unit tests
