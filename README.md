@@ -29,7 +29,7 @@ Web App is fully hosted on Azure and consist of major components including
   * [Context Diagram](#context-diagram)
   * [Container Diagram](#container-diagram)
   * [Component Diagrams](#component-diagrams)
-* [Security](#security)
+* [Security In Software Development](#security-in-software-development)
 * [ApiServer Specifications](#api-server-specifications)
 * [Database Specifications](#database-specifications)
 * [Testings](#testings)
@@ -134,9 +134,9 @@ Threat Modelling Report can be found [here](https://github.com/weixian-zhang/Foo
 
 In the future Project Roadmap, we will want users to be able to sign-in with their Microsoft personal accounts (a.k.a Live account.
 Behind the scenes, we will be implementing OpenID Connect authentication on Portal and ApiServer.
-* Portal will use the  OAuth Authorization Code Flow + PKCE as it is a Public Client.
-* ApiServer being a Confidential Client will be using Auhorization Code Flow
-* API Authn Chain : if at that point when Food Truck Junkie has expanded to have other features which are implemented as microservices, and has the requirement to       for microservices to microservices API authentication, we will then be implementing Authorization Code Flow-On-Behalf Flow for API-to-API authentication chain         scenario.
+* SPA authn: Portal will use the  OAuth Authorization Code Flow + PKCE as it is a Public Client.
+* API authn: ApiServer being a Confidential Client will be using Auhorization Code Flow
+* API authn-chain : if at that point when Food Truck Junkie has expanded to have other features which are implemented as microservices, and has the requirement to       for microservices to microservices API authentication, we will then be implementing Authorization Code Flow-On-Behalf Flow for API-to-API authentication chain         scenario.
   The concept is when an API (API-A) receive an access token from Portal, API-A uses the access token and with its ClientID/Secret, it exchange for another access       token Token-A. This Token-A will be pass on to API-B for authentication. Within Azure AD we will need to configure "Expose API" to add OAuth scopes for each           microservices. Then followed by configuring authorization in Azure AD - App - "API Permissions", specifiying which API scopes are allowed access to which               microservices.
 
 ### Azure Development Security Guidelines
@@ -174,7 +174,7 @@ Behind the scenes, we will be implementing OpenID Connect authentication on Port
     
  * <b>Release Pipeline</b>
     * OWASP ZAP - integrated penetration testing tool to detect web vulnerabilities in web apps
-    * Fuzz Test - explore the introduction of Fuzzing with web fuzzers like [FFUS](https://github.com/ffuf/ffuf)
+    * Fuzz Test - explore the introduction of Fuzzing with web fuzzers like [FFUS](https://github.com/ffuf/ffuf) or [OneFuzz](https://github.com/microsoft/onefuzz/blob/main/README.md)
      
 
 ## Api Server Specifications
@@ -197,6 +197,13 @@ ApiServer subsystem is an ASP.NET Core 3.1 web application which uses Json as th
 
 ## Database Specifications
 
+We are using Azure Database for MySQL as our amin relational DB.
+All DB setup scripts can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/tree/main/src/Scripts/DB).
+The scripts include:
+* data loading script that reads from data CSV file
+* table creation script
+* stored procedure that uses the Haversine formula to calculate the distant between filtered food truck coordinates, against coordinates passed in as paramaters from     web portal.
+
 ## Testings
 
 ## Development Challenges
@@ -213,4 +220,9 @@ ApiServer subsystem is an ASP.NET Core 3.1 web application which uses Json as th
 
 ## What I Have Learned
 
-The idea of this one-person-sized challenge is an interesting one, most importantly this challenge can effectively access one's knowledge and experience in a full Software Delivery Lifecycle end to end from understanding requriements, to software architecture design, system Infra/Networking design, threat modelling, software module-level design (package-level), software development in full-stack involving polyglot languages and frameworks from Frontend, Backend to Database, to deployment in this case Azure, and finally to documentation.
+The idea of this one-person-sized challenge is an interesting one, most importantly this challenge can effectively access one's knowledge and experience in a full Software Delivery Lifecycle stages from, understanding requriements, to software architecture design, system Infra/Networking architecture design, threat modelling, software module-level design (package-level), software development in full-stack involving polyglot languages and frameworks from Frontend, Backend to Database, to deploying web app to Azure (in this case), and finally to documentation.
+In a real-world software project, we have many other participating roles like Business Analysts for requirements gathering and documentation, Software Engineers, Software Architects, Software Tech Leads, System Admins for OS/Infra/Networking setup and configuration, DBA setup and configure DB clusters (and even run our TSQL scripts some times). Test specialists using specalized software to run penetration tests against our systems.
+3rd-party security auditors scrutinizing our OS hardening configurations, firewall rules, networking routing, web server configurations and etc.
+And not forgetting Project Manager, Scrum Master, Subject-Matter Experts and Product Specialists
+
+Having said a mouthful, this challenge although a one-person sized, it can put one through most of the SDLC stages and playing different roles very close to a real-world project. I really enjoyed myself.
