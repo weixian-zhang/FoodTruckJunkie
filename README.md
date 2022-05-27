@@ -243,9 +243,10 @@ ApiServer subsystem is an ASP.NET Core 3.1 web application which uses Json as th
 
 ## Database Specifications
 
-We are using Azure Database for MySQL All DB setup scripts can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/tree/main/src/Scripts/DB).  
+We are using Azure Database for MySQL and all setup scripts can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/tree/main/src/Scripts/DB).  
+All scripts are written and tested using MySQL Workbench 8.0
 The scripts include:
-* data loading script that reads food truck data from CSV file and insert them to the a Table
+* data loading script that reads food truck data from CSV file and inserts them to the a Table
 * table creation script
 * stored procedure that uses the Haversine formula to calculate the distant between filtered food truck coordinates, against user's coordinates passed in as paramaters   from web portal.
 
@@ -280,6 +281,14 @@ In our project roadmap, we plan to setup the following tests:
   A workaround could be to wrap the whole SELECT statement in string and use PREPARE stmt
   <img src="https://user-images.githubusercontent.com/43234101/169995446-3424ed5e-41b0-439a-9848-74df786660d3.png" width="700" height="250" />  
   An easier way I did to solve this is by just setting "numberOfResult" in ApiServer before passing parameter into MySQL stored procedure.  
+  
+* I spent several hours on data loading and Latitude and Longitude data type conversion to MySQL with decimal typed columns.  
+  Initially I was using MySQL Workbench for data loading, and found out that this feature  is infamously slow: 5-6 mins/per record.  
+  I then resort to other tools like *Toad for MySQL* and *HeidiSQL*, turns out that the Latitude and Longitude data are incorrect in MySQL.  
+  For example: Lat=36.54323222, in DB=99.00000000.  
+  I am about to write a custom tool to do data loading, however I did a last attempt to use MySQL script to do data loading.  
+  I also changed Lat/Long column type to *text* instead of decmial, and I have to do text-to-decmial conversion in stored proc for the Haversine calculation.
+  My final attempt resolves the data loading (in few secs) and Lat/Long data type incorrect issues, saved me time from writing a custom app.
   
 * Frontend - when binding GoogleMap javascript object's "center" property, to input textboxes of latitude and longitude over React-State,
   any text change causes map to grey-out.
