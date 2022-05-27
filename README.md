@@ -134,17 +134,19 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 Our team strives to include security in each phase of the SDLC.   
 The following describes the software security practices our team follows throughout the SDLC.
 
+### Security "Business Requirements"
+
 ### Threat Modelling
 
-Threat modelling is done after we have the [Azure architecture diagram](#container-diagram) firmed up.  
+Threat modelling is done after we have firmed up more or less on the [Azure architecture diagram](#container-diagram).  
 Threat model designer file can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ThreatModel-FoodTruckJunkie.tm7) and the exported       Report can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ThreatMode-Report-FoodTruckJunkie%20WebApp.htm).  
   
 The detected threats are evaluated one by one, for each threat that is mark as "Needs Investigation",
-  a work item will be created to further explore mitigations in the form of:
+a work item will be created to further explore mitigations strategies such as:
   * code-based enhancements - for example encode HTML, Javascript output. Validate and whitelist input.
   * configuration changes to existing Azure resource - for example update App Service to not return web server information in response headers.  
     Or tweak Azure Storage settings to not allow Anonymous access and more.
-  * Adding new security related Azure resources or 3rd-party security COTS products whenever necessary
+  * Adding new security related Azure services or 3rd-party security COTS products whenever necessary
     * Implementing defence-in-depth principles by introducing layered defence for example: Add a DMZ VNet with NextGen Firewall/Azure Firewall to ingest all Internet         traffic, perform TLS offloading and IDPS, before further routing to Application Gateway WAF for web vulnerabilities scan.
     * And/or implement Host-based protection (a.k.a endpoint protection) to detech VM level vulnerabilities
     * And/or 3rd-party SaaS-based WAF to inspect traffic before routing traffic to web app and more
@@ -192,7 +194,7 @@ Hopefully with this generic authorization engine, many applications can take adv
    * the App Map feature could show if web app is contacting any suspicious external endpoints, detecting malware doing Commmand and Control to form backdoors and          executing data exfiltration
    * Application Insight logs could  further joined with other log types in Azure Sentinel for further investigation. Although I have not seen this in action, I think      this has potential.
    
-### During Pre-Commit Stage (while you are coding)
+### While You Code - Precommit Stage 
 
 * Secure coding practices - we follow these [secure coding practice checklists](https://owasp.org/www-pdf-archive/OWASP_SCP_Quick_Reference_Guide_v2.pdf) while we       code, some examples can be:  
   * do not disclose sensitive info in error message
@@ -202,10 +204,10 @@ Hopefully with this generic authorization engine, many applications can take adv
            
 * App secrets - if development is using .Net use the [User Secret](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-6.0&tabs=windows)   feature from .Net SDK 
 * Pre-commit hook - use Git pre=commit hook to prevent committing secrets accidentally
-* DevSkim VSCode extension - able to provide inline security assessment while writing codes on the fly. Example: using outdated Hash MD5 library get flags out while     typing.
+* Install DevSkim VSCode extension - DevSkim provides inline security assessment while writing codes on the fly, rectify any security assessment prompted by DevSkim
 * Security peer review
-  * security reviews can be done on high risk modules such as authentication, authorization, user management, cryptography and etc.  
-  * security review can also closely reference the secure coding practice checklists
+  * security reviews can be done on high risk modules such as authentication, authorization, user management, cryptography, audit logging and etc.  
+  * security review can also closely reference the *secure coding practice checklists* and try to spot violations against the checklists
 * Unit Testing - Aim for at least 90% of code coverage when writing unit test cases. Unut tests should also cover non-happy flows  
   
  ### Security In DevOps Pipelines
