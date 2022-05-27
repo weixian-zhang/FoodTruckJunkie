@@ -132,7 +132,7 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 ## Security In Software Delivery
 
 Our team strives to include security in each phase of the SDLC.   
-The following describes the software security practices our team strives to follow throughout the SDLC.
+The following describes the software security practices our team follows throughout the SDLC.
 
 ### Threat Modelling
 
@@ -152,17 +152,19 @@ The detected threats are evaluated one by one, for each threat that is mark as "
     Example App Service Environment, Integrated Service Environment
   * Adopt and industrial security benchmarks to harden Azure environment. For example Azure CIS  
 
-### Authentication
+### Authentication  
+(Not a security practice but a module we want to develop in our Project Roadmap)  
 
-In the Project Roadmap, we will want users to be able to sign-in with their Microsoft personal accounts (a.k.a Live account.
+We want users to be able to sign-in with their Microsoft personal accounts (a.k.a Live account.
 Behind the scenes, we will be implementing OpenID Connect authn protocol on Portal and ApiServer.
 * SPA authn: Portal will use the OAuth Authorization Code Flow PKCE as it is a Public Client.
 * API authn: ApiServer being a Confidential Client will be using Auhorization Code Flow
 * API authn-chain : if at that point when Food Truck Junkie has expanded to have other features which are implemented as microservices, and has the requirement to       for microservices to microservices API authentication, we will then be implementing Authorization Code Flow-On-Behalf Flow for API-to-API authentication chain         scenario.
   The concept is when an API (API-A) receive an access token from Portal, API-A uses the access token and with its ClientID/Secret, it exchange for another access       token Token-A. This Token-A will be pass on to API-B for authentication. Within Azure AD we will need to configure "Expose API" to add OAuth scopes for each           microservices. Then followed by configuring authorization in Azure AD - App - "API Permissions", specifiying which API scopes are allowed access to which               microservices.
   
-### Authorization
-
+### Authorization  
+(Not a security practice but a module we want to develop in our Project Roadmap)  
+ 
 Many systems rely on Frontend to authorize (allow and deny) calls to Backend APIs, by hiding UI elements like buttons and menu items.  
 Within APIs, many of them today uses OAuth 2.0 to perform authorization.  
 OAuth scopes can be expressed quite granularly for example in Azure AD adding a scope *API.Admin.User.Reset*, follow by configuring API Permissions to determine which App has access to the defined scope *API.Admin.User.Reset*.  
