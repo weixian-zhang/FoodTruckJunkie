@@ -129,16 +129,18 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 
 <img src="https://user-images.githubusercontent.com/43234101/170208325-93a86940-294c-434d-9c44-6b13bc3ac29a.png" width="1100" height="600" />  
 
-## Security In Software Development
+## Security In Software Delivery
 
-The following are software security practices our team strives to follow throughout the SDLC.
+Our team strives to include security in each phase of the SDLC.   
+The following describes the software security practices our team strives to follow throughout the SDLC.
 
 ### Threat Modelling
 
-* Threat modelling was done basedon the [Container Diagram](#container-diagram) and the designer file can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ThreatModel-FoodTruckJunkie.tm7).  
-Threat Modelling Report can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ThreatMode-Report-FoodTruckJunkie%20WebApp.htm)
-The detected threats are evaluated, for each threat mark with "Needs Investigation",
-a work item will be created to further explore mitigations in the form of:
+Threat modelling is done after we have the [Azure architecture diagram](#container-diagram) firmed up.  
+Threat model designer file can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ThreatModel-FoodTruckJunkie.tm7) and the exported       Report can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ThreatMode-Report-FoodTruckJunkie%20WebApp.htm).  
+  
+The detected threats are evaluated one by one, for each threat that is mark as "Needs Investigation",
+  a work item will be created to further explore mitigations in the form of:
   * code-based enhancements - for example encode HTML, Javascript output. Validate and whitelist input.
   * configuration changes to existing Azure resource - for example update App Service to not return web server information in response headers.  
     Or tweak Azure Storage settings to not allow Anonymous access and more.
