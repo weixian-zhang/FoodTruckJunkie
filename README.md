@@ -117,12 +117,12 @@ A big picture of how users use FoodTruckJunkie Web App
 
 ### Component Diagrams
 
-#### Layered Architecture Diagrams
+#### Component Diagram - Layered Architecture Diagram
 A supplementary Layered architecture diagram is added to explicitly describe the adoption of a Layered architectural style. I feel this diagram can better help developers to visualize the packages used in each Layers and the Cross-Cutting Concerns packages.
 
 <img src="https://user-images.githubusercontent.com/43234101/170198413-068eaedf-93e2-4954-87b5-7f4d03a24226.png"  width="600" height="550" />  
 
-#### Component Interaction Diagram
+#### Component Diagram - Component Interaction Diagram
 
 * API Controller layer (see [Api Specifications](#api-specifications)) is the entry point to Web App and it contains all package dependencies including cross-cutting (concerns) libraries like Serilog (logging framework). Dependency Injection is configured here to map Interfaces to their relevant concrete classes.  
 * With reference to the [12 Factor App](https://12factor.net/) guiding principles, app configuration properties and secrets will always be loaded from environment       variables. And the App Services that are used to host ApiServer, by design, already injects configurations as environemnt variable. 
