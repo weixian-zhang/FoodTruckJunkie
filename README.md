@@ -129,7 +129,7 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 
 ## Security In Software Development
 
-The following are software security practices our team strives to following throughout the SDLC.
+The following are software security practices our team strives to follow throughout the SDLC.
 
 ### Threat Modelling
 
@@ -169,7 +169,7 @@ Furthermore, authorization module need to store every feature of the system as *
 I personally believe that OAuth can be the "first layer" of authorization, and with OAuth we can get a nice secured Access Token packed with user-specifc claims. 
 Claims can contains both roles and other attributes like department, job title and more. These are the perfect infomation setup to Role-Based and Attribute-Based Access Control, RBAC + ABAC.  
 
-For the "second layer " of authroization, which usually Dev teams tend to build their own for every project,  
+For the "second layer " of authorization, which usually Dev teams tend to build their own for every project,  
 I am exploring to start a hobby project on such a hybrid policy-based authorization policy call [CanYou](https://github.com/weixian-zhang/CanYou).
 CanYou plans to use [Open Policy Agent (OPA)](https://www.openpolicyagent.org/docs/latest/) as the backend policy engine, and users can express their authorization policies using a domain-specific language call [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/), also created by the team who creates OPA.  
 Hopefully with this generic authorization engine, many applications can take advantage of it not not having to build their own, which is commonly the case.
@@ -290,16 +290,32 @@ In our project roadmap, we plan to setup the following tests:
 
 ## Project Roadmap - If I Have More Time
 
-* Software Patterns & Practices	
+* <b>Software Patterns & Practices</b>  
+  (Some of the points has be explained in detail in the above sections)  
+  
   * Backend For Frontend pattern - in future if more client types like Desktop, mobile and Cli are added, we could explore Backend-For-Frontend (BFF) pattern.
     How BFF works is that there will be a API layer where data and business logic are customized for each Frontend type.
     These BFF client-specific APIs are usually coarse-grain APIs that could be calling other microservices to aggregate data before returning to the client.
     For example, Mobile App may not have an admin module while Desktop and Web clients have it. Hence Mobile BFF API will not contain admin modules as well.
     
   * Adopts the Microservices architectural style as system grows. This will be a brown-field migration to Microservices architecture.
-    Each Bounded Context of the system domain can be an independent microservice maintained by a separate team with their own programming language and tech-stack of       their choice.
+    Each Bounded Context of the system domain can be an independent microservice maintained by a separate team with their own programming language and tech-stack of       their choice
+  
+  * Setup DevOps Build and Release Pipelines with security Pipeline Tasks
+  * Focus on Testing - Automated Smoke Test, Functional Test, Integration Test, Load Test and Fuzz Test
     
-* Technology
+* <b>Technology</b>  
+  (Some of the points has be explained in detail in the above section)  
+  
+  * a New Cli App written using Python. and perform authentication using OAuth Device Code Flow.
+  * Authentication with Azure AD OIDC
+    * Portal with Authorization Code PKCE
+    * ApiServer with Authorization Code  
+    
+  * Authorization
+    * with OAuth 2.0 as the "first layer" of authorization
+    * for "second layer", explore to start a policy-based authorization engine as a personal project call CanYou  
+    
   * Microservices are deployed on Azure Kubernetes private cluster. Service Mesh like Istio can be introduce for API Gateway capability, mutual-TLS authn, 
     and network policy built-in to constraint network reacbility amongst microservices, and more.
   * A data loading daemon app implemented using Azure Function to automatically and timely pull Food Truck permit data file and refresh static data in DB Table
@@ -310,13 +326,15 @@ In our project roadmap, we plan to setup the following tests:
     * Custom Rule to perform rate limiting
     * OWASP TOp 10 web vulnerability scanning on TLS terminated traffic, before routing to ApiServer
 
-* Functional
-  * Search by Address - search nearby food trucks by Address in addition to coordinates
+* <b>Functional</b>  
+  * Search by Address - search nearby food trucks by Address in addition to coordinates  
+  
   * Search by Food Type
     * Food type data can be isolated, compiled and save into a dedicated DB Table
     * In the Frontend, food type data can be retrieved when Frontend loads, food type can be cached in browser's local storage
     * Lastly, an auto-complete textbox is added and binds to the local storage cached food type data.  A
-      As user types in auto-complete box, food choices are actively prompted.
+      As user types in auto-complete box, food choices are actively prompted  
+      
   * Use Azure Boards to track user stories and work items
  
 <br />
