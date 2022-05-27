@@ -58,7 +58,7 @@ Azure is our hosting platform and PaaS services are preferred, over IaaS as much
 
 ## How to Contribute to Project
 
-### Branching Strategy
+### Our Branching Strategy
 
 Our team practices GitFlow branching, any feature is a short-lived branch that you can clone from Dev.
 Once your great work is done, do a pull request and find any team mate for a second pair of eyes before merging into Dev.
