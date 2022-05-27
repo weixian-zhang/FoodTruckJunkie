@@ -97,7 +97,8 @@ Notes (possibly including why you think this might be happening, or stuff you tr
 
 ## Software Architecture Design
 
-For describing software architecture, we like to use the [C4 Model](https://c4model.com/) modelling technique. We reckon that there are other mature techniques as well like [4+1 View Models](https://en.wikipedia.org/wiki/4%2B1_architectural_view_model)) and UML. We favour C4 due to its lean and simple nature for both non-technical and technial folks.  
+For describing software architecture, we like to use the [C4 Model](https://c4model.com/) modelling technique. We reckon that there are other mature techniques as well like [4+1 View Models](https://en.wikipedia.org/wiki/4%2B1_architectural_view_model) and UML instead of simple boxes and line connectors.  
+We favour C4 due to its lean and simple nature for both non-technical and technial folks.  
 The following [diagrams](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/FoodTruckJunkie-software_architecture_design.pptx) describe Food Truck Junkie's software architecture from a high-level than zooming into more design details on subsequent diagrams.
 
 ### Context Diagram
