@@ -134,12 +134,12 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 
 ## AppSec - Security In Software Delivery
 
-Our team strives to include security in each phase of the SDLC.   
+I strive to include security in each phase of the SDLC.   
 The following describes the software security practices our team follows throughout the SDLC.
 
 ### Threat Modelling
 
-Threat modelling is done after we have firmed up more or less on the [Azure architecture diagram](#container-diagram).  
+Threat modelling is done after I have completed the [Azure architecture diagram](#container-diagram).  
 Threat model designer file can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ThreatModel-FoodTruckJunkie.tm7) and the exported       Report can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ThreatMode-Report-FoodTruckJunkie%20WebApp.htm).  
   
 The detected threats are evaluated one by one, for each threat that is mark as "Needs Investigation",
@@ -160,7 +160,16 @@ a work item will be created to further explore mitigations strategies such as:
 
 ### Security Unit Testing
 
-### Secure Coding Training
+### Secure Coding & Cybersecurity Training  
+
+I am motivated to learn more secure coding techniques, hoping to experience more real-life examples of vulnerabilities in code.
+And I  believe having ethical hacking skill sets can add immernsely value to overall system protection and writing secure codes.    
+I devised a live study plan for me to stay focus in learning and dive deep in the following areas, which I believe is important to this AppSec journey of mine.
+ * OWASP Top 10 current and past web vulnerabilities
+ * Go through Secure code Warrior and/or similar gamified training programs
+ * Train with [PicoCTF](https://picoctf.org/) challenges
+ * Learn Ethical Hacking and explore Certified Ethical Hacker CEH v11
+ * Train and certified with CISSP 
 
 ### Practice Security While You Code - PreCommit Stage
 
