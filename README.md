@@ -137,8 +137,6 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 Our team strives to include security in each phase of the SDLC.   
 The following describes the software security practices our team follows throughout the SDLC.
 
-### Security "Business Requirements"
-
 ### Threat Modelling
 
 Threat modelling is done after we have firmed up more or less on the [Azure architecture diagram](#container-diagram).  
@@ -156,6 +154,13 @@ a work item will be created to further explore mitigations strategies such as:
   * Re-architect - another option could be to re-architect the design to use services that can be deployed in VNet.  
     Example App Service Environment, Integrated Service Environment
   * Adopt and industrial security benchmarks to harden Azure environment. For example Azure CIS  
+
+### Establishing Security Business Requirements
+
+### Security Unit Testing
+
+### Security Code Review
+
 
 ### Authentication  
 (Not a security practice but a module we want to develop in our Project Roadmap)  
@@ -195,9 +200,15 @@ Hopefully with this generic authorization engine, many applications can take adv
 * Application Insights SDK should always be implemented for supported languages, or always enable Application Insights on services that has direct integration with.
   Although Application Insights is a App Performance Monitoring (APM) tool
    * the App Map feature could show if web app is contacting any suspicious external endpoints, detecting malware doing Commmand and Control to form backdoors and          executing data exfiltration
-   * Application Insight logs could  further joined with other log types in Azure Sentinel for further investigation. Although I have not seen this in action, I think      this has potential.
+   * Application Insight logs could  further joined with other log types in Azure Sentinel for further investigation. Although I have not seen this in action, I think      this has potential.  
    
-### While You Code - Precommit Stage 
+### Establishing Security Business Requirements
+
+### Security Unit Testing
+
+### Security Code Review
+
+### Practice Security While You Code - PreCommit Stage
 
 * Secure coding practices - we follow these [secure coding practice checklists](https://owasp.org/www-pdf-archive/OWASP_SCP_Quick_Reference_Guide_v2.pdf) while we       code, some examples can be:  
   * do not disclose sensitive info in error message
