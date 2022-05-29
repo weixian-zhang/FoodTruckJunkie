@@ -153,7 +153,7 @@ a work item will be created to further explore mitigations strategies such as:
     * And/or 3rd-party SaaS-based WAF to inspect traffic before routing traffic to web app and more
   * Re-architect - another option could be to re-architect the design to use services that can be deployed in VNet.  
     Example App Service Environment, Integrated Service Environment
-  * Adopt and industrial security benchmarks to harden Azure environment. For example Azure CIS  
+  * Adopt industrial security benchmarks to harden Azure environment for example Azure CIS  
 
 
 ### Establishing Security Business Requirements
@@ -166,7 +166,7 @@ I am motivated to learn more secure coding techniques, hoping to experience more
 And I  believe having ethical hacking skill sets can add immense value to overall system defence and writing secure codes.    
 I devised a live study plan for me to stay focus in learning and dive deep in the following areas, which I believe is important to this AppSec journey of mine.
  * OWASP Top 10 current and past web vulnerabilities
- * Go through Secure code Warrior and/or similar gamified training programs
+ * Go through [Secure Code Warrior](https://portal.securecodewarrior.com/#/website-trial/web/injection/sql/c_sharp/web_forms) and/or similar gamified training programs
  * Train with [PicoCTF](https://picoctf.org/) challenges
  * Learn Ethical Hacking and explore Certified Ethical Hacker CEH v11
  * Train and certified with CISSP 
