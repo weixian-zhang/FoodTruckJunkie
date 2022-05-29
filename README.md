@@ -29,7 +29,7 @@ Web App is fully hosted on Azure and consist of major components including
   * [Context Diagram](#context-diagram)
   * [Container Diagram](#container-diagram)
   * [Component Diagrams](#component-diagrams)
-* [Security In Software Delivery](#security-in-software-delivery)
+* [AppSec - Security In Software Delivery](#appsec---security-in-software-delivery)
 * [ApiServer Specifications](#api-server-specifications)
 * [Database Specifications](#database-specifications)
 * [Testings](#testings)
@@ -129,7 +129,10 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 
 <img src="https://user-images.githubusercontent.com/43234101/170208325-93a86940-294c-434d-9c44-6b13bc3ac29a.png" width="1100" height="600" />  
 
-## Security In Software Delivery
+<br />
+<br />  
+
+## AppSec - Security In Software Delivery
 
 Our team strives to include security in each phase of the SDLC.   
 The following describes the software security practices our team follows throughout the SDLC.
