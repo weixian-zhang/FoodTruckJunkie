@@ -155,13 +155,30 @@ a work item will be created to further explore mitigations strategies such as:
     Example App Service Environment, Integrated Service Environment
   * Adopt and industrial security benchmarks to harden Azure environment. For example Azure CIS  
 
-### AppSec Training  
 
-### Establishing Security Business Requirements  
+### Establishing Security Business Requirements
 
-### Security Unit Testing  
+### Security Unit Testing
 
-### Security Code Review  
+### Secure Coding Training
+
+### Practice Security While You Code - PreCommit Stage
+
+* Secure coding practices - we follow these [secure coding practice checklists](https://owasp.org/www-pdf-archive/OWASP_SCP_Quick_Reference_Guide_v2.pdf) while we       code, some examples can be:  
+  * do not disclose sensitive info in error message
+  * close DB connection right after use, leaving  persisted TCP connections are like leaving a back-door for adversaries to exploit
+  * validate all inputs
+  * encode all outputs including HTML, Javascript, CSS, XML, JSON, Http Headers and more
+           
+* App secrets - if development is using .Net use the [User Secret](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-6.0&tabs=windows)   feature from .Net SDK 
+* Pre-commit hook - use Git pre=commit hook to prevent committing secrets accidentally
+* Install DevSkim VSCode extension - DevSkim provides inline security assessment while writing codes on the fly, rectify any security assessment prompted by DevSkim
+* Security peer review
+  * security reviews can be done on high risk modules such as authentication, authorization, user management, cryptography, audit logging and etc.  
+  * security review can also closely reference the *secure coding practice checklists* and try to spot violations against the checklists
+* Unit Testing - Aim for at least 90% of code coverage when writing unit test cases. Unut tests should also cover non-happy flows  
+
+### Security Code Review
 
 
 ### Authentication  
@@ -203,30 +220,8 @@ Hopefully with this generic authorization engine, many applications can take adv
   Although Application Insights is a App Performance Monitoring (APM) tool
    * the App Map feature could show if web app is contacting any suspicious external endpoints, detecting malware doing Commmand and Control to form backdoors and          executing data exfiltration
    * Application Insight logs could  further joined with other log types in Azure Sentinel for further investigation. Although I have not seen this in action, I think      this has potential.  
-   
-### Establishing Security Business Requirements
-
-### Security Unit Testing
-
-### Security Code Review
-
-### Practice Security While You Code - PreCommit Stage
-
-* Secure coding practices - we follow these [secure coding practice checklists](https://owasp.org/www-pdf-archive/OWASP_SCP_Quick_Reference_Guide_v2.pdf) while we       code, some examples can be:  
-  * do not disclose sensitive info in error message
-  * close DB connection right after use, leaving  persisted TCP connections are like leaving a back-door for adversaries to exploit
-  * validate all inputs
-  * encode all outputs including HTML, Javascript, CSS, XML, JSON, Http Headers and more
-           
-* App secrets - if development is using .Net use the [User Secret](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-6.0&tabs=windows)   feature from .Net SDK 
-* Pre-commit hook - use Git pre=commit hook to prevent committing secrets accidentally
-* Install DevSkim VSCode extension - DevSkim provides inline security assessment while writing codes on the fly, rectify any security assessment prompted by DevSkim
-* Security peer review
-  * security reviews can be done on high risk modules such as authentication, authorization, user management, cryptography, audit logging and etc.  
-  * security review can also closely reference the *secure coding practice checklists* and try to spot violations against the checklists
-* Unit Testing - Aim for at least 90% of code coverage when writing unit test cases. Unut tests should also cover non-happy flows  
   
- ### Security In DevOps Pipelines
+### Security In DevOps Pipelines
  
  We will be introducing security tasks into our Build and Release pieplines as follows
  * <b>Build Pipeline</b>
