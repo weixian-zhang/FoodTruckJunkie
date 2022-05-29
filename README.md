@@ -155,11 +155,13 @@ a work item will be created to further explore mitigations strategies such as:
     Example App Service Environment, Integrated Service Environment
   * Adopt and industrial security benchmarks to harden Azure environment. For example Azure CIS  
 
-### Establishing Security Business Requirements
+### AppSec Training  
 
-### Security Unit Testing
+### Establishing Security Business Requirements  
 
-### Security Code Review
+### Security Unit Testing  
+
+### Security Code Review  
 
 
 ### Authentication  
