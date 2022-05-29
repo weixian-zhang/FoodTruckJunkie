@@ -163,7 +163,7 @@ a work item will be created to further explore mitigations strategies such as:
 ### Secure Coding & Cybersecurity Training  
 
 I am motivated to learn more secure coding techniques, hoping to experience more real-life examples of vulnerabilities in code.
-And I  believe having ethical hacking skill sets can add immernsely value to overall system protection and writing secure codes.    
+And I  believe having ethical hacking skill sets can add immense value to overall system defence and writing secure codes.    
 I devised a live study plan for me to stay focus in learning and dive deep in the following areas, which I believe is important to this AppSec journey of mine.
  * OWASP Top 10 current and past web vulnerabilities
  * Go through Secure code Warrior and/or similar gamified training programs
