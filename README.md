@@ -8,6 +8,13 @@ Quick test URLs below
 | ------------- | ------------- |
 | Portal/Frontend  | https://webapp-foodtruckjunkie-portal.azurewebsites.net  |
 | ApiServer/Backend  | https://webapp-foodtruckjunkie-api.azurewebsites.net/api/1.0/searchfoodtrucks?latitude=37.78798865&longitude=-122.3961007&distantMiles=20&noOfResult=1  |
+| OpenAPI Portal | https://webapp-foodtruckjunkie-api.azurewebsites.net |
+| OpenAPI Json | https://webapp-foodtruckjunkie-api.azurewebsites.net/swagger/v1/swagger.json |
+| ApiServer Health endpoint | https://webapp-foodtruckjunkie-api.azurewebsites.net/health |  
+
+<img src="https://user-images.githubusercontent.com/43234101/170927018-68d9245d-a1db-41cf-9d63-4d33e2eb2e2e.png" width="1200" height="600" />  
+
+<br />
 
 ## Project Description
 
