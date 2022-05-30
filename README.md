@@ -142,7 +142,7 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 ## AppSec - Security In Software Delivery
 
 I strive to include security in each phase of the SDLC.   
-The following describes the software security practices our team follows throughout the SDLC.
+The following describes the software security practices I plan to follow throughout the SDLC.
 
 ### Threat Modelling
 
