@@ -1,6 +1,6 @@
 ## What is Food Truck Junkie
 
-Food Truck Junkie is a [Web App](https://webapp-foodtruckjunkie-portal.azurewebsites.net) that helps you search for food trucks in San Francisco and displays them on an embedded Google Map for your ease of navigation to deliciousness, but mostly for hunger. 
+Food Truck Junkie is a [Web App](https://webapp-foodtruckjunkie-portal.azurewebsites.net) that helps you search for food trucks in San Francisco and displays them visuallu on a map for your ease of navigation to deliciousness. 
 
 Quick test URLs below  
 *Note: web app is currently whitelisted (Azure App Service IP Restrictions) for security reasons and only allow access when needed.
@@ -162,7 +162,11 @@ a work item will be created to further explore mitigations strategies such as:
   * Adopt industrial security benchmarks to harden Azure environment for example Azure CIS  
 
 
-### Establishing Security Business Requirements
+### Establishing Security Requirements  
+
+From my research Documenting security requirements is often 
+security controls are build from security requirement, they can be derived from the following aspects
+* 
 
 ### Security Unit Testing
 
@@ -177,7 +181,7 @@ I devised a live study plan for me to stay focus in learning and dive deep in th
  * Learn Ethical Hacking and explore Certified Ethical Hacker CEH v11
  * Train and certified with CISSP 
 
-### Practice Security While You Code - PreCommit Stage
+### Security While I Code
 
 * Secure coding practices - we follow these [secure coding practice checklists](https://owasp.org/www-pdf-archive/OWASP_SCP_Quick_Reference_Guide_v2.pdf) while we       code, some examples can be:  
   * do not disclose sensitive info in error message
@@ -201,21 +205,22 @@ The following is a set of areas for reviews I will try to cover
   * at high-level how the App works
   * who are the users
   * Who should be able to do What
-  * major frameworks and libaries
+  * major frameworks and libaries  
+  
 * Spot for codes that violates OWASP Top 10 Web Vulnerabilities  
   <br />
   <img src="https://user-images.githubusercontent.com/43234101/170963911-ea337dff-d786-4bed-ad9d-8950429a08c0.png" width="800px" height = "500px" />  
   <img src="https://user-images.githubusercontent.com/43234101/170964121-31e62786-ba62-4210-8082-7284d45b312d.png"  width="800px" height = "500px" />
 
+* Reference [OWASP Code Review Guide](https://owasp.org/www-project-code-review-guide/assets/OWASP_Code_Review_Guide_v2.pdf)  
 
-* Reference [OWASP Code Review Guide](https://owasp.org/www-project-code-review-guide/assets/OWASP_Code_Review_Guide_v2.pdf)
 * Focus on High Risk Code Modules
   * Authentication
   * Password handling
   * Access control or authorization
   * User account management
   * Output encoding exist or not and how is it performed
-  * Input validation exist or not and how is it performed
+  * User inputs - does validation exist or not and how is it performed
   * Confidential and PII data used in App and how is it handled
   * Logging - log sensitive user info to log storage for audit
   * How is cryptography performed - in HSM or in App memory
@@ -223,8 +228,10 @@ The following is a set of areas for reviews I will try to cover
   * Outdated dependencies
   * Developers' comments - may leak sensitive data and secrets
   * Infrastructure as Code like Terraform and Bicep misconfigurations - for example allowing Anonymous access in Storage, allow Internet connectivity in Inbound and       Outbound rules and etc
-  * DevOps Pipeline declaration Yaml files
-* Frontends - including Javascript web Frontends, Mobile and Desktop Apps. The main goal to secure code reviewing Frontends is to find out any API Keys and secrets       hard-coded in codes, stored in local storage or App config files
+  * DevOps Pipeline declaration Yaml files  
+ 
+* Frontends - including Javascript web Frontends, Mobile and Desktop Apps. The main goal to secure code reviewing Frontends is to find out any API Keys and secrets       hard-coded in codes, stored in local storage or App config files  
+
 * Industrial compliance - examples
   * Azure CIS and General Best Practices
     * authenticating with an Azure service such as Storage should always use Managed Identity instead of API Key if the service supports Managed                             Identity
