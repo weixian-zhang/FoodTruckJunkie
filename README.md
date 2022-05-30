@@ -194,7 +194,34 @@ I devised a live study plan for me to stay focus in learning and dive deep in th
   * security review can also closely reference the *secure coding practice checklists* and try to spot violations against the checklists
 * Unit Testing - Aim for at least 90% of code coverage when writing unit test cases. Unut tests should also cover non-happy flows  
 
-### Security Code Review
+### Secure Code Review  
+
+This is an important step to finding security flaws in codes and is an enhancment to standard code reviews by focusing on high risk code modules, the company's security standards and industrial security compliances.  
+The following is a set of areas for reviews I will try to cover
+* Prepare for a secure code review by first understanding
+  * at high-level how the App works
+  * who are the users
+  * Who should be able to do What
+  * major frameworks and libaries
+* Focus on High Risk Code Modules
+  * Authentication
+  * Password handling
+  * Access control or authorization
+  * User account management
+  * Output encoding exist or not and how is it performed
+  * Input validation exist or not and how is it performed
+  * Any personal or confidential data used in App and how is it handled
+  * How is cryptography performed - in HSM or in App memory
+    * any insecure outdated cipher algorithms still in use
+  * Infrastructure as Code like Terraform and Bicep misconfigurations - for example allowing Anonymous access in Storage, allow Internet connectivity in Inbound and       Outbound rules and etc
+  * DevOps Pipeline declaration Yaml files
+* Frontends - including Javascript web Frontends, Mobile and Desktop Apps. The main goal to secure code reviewing Frontends is to find out any API Keys and secrets       hard-coded in codes, stored in local storage or App config files
+* Industrial compliance - examples
+  * Azure CIS and General Best Practices
+    * authenticating with an Azure service such as Storage should always use Managed Identity instead of API Key if the service supports Managed                             Identity
+    * Custom Web App should log to services such as Log Analytics, Table Storage or Data Explorer instead of logging to local disk drive which is not easily queryable
+  * 
+
 
 
 ### Authentication  
