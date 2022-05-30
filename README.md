@@ -295,8 +295,9 @@ We are able to make mocking happen due to consistent usage of Intefaces, and all
 Dependencies are always constructor injected and codes need to refactor to support unit testing if needed.
 
 In our project roadmap, we plan to setup the following tests:
+* Javascript Unit Tests - use [Jest](https://jestjs.io/docs/getting-started) framework to write unit tests for React web app
 * Automated Smoke Tests
-  * Portal: using [Cypress](https://docs.cypress.io/guides/overview/why-cypress#Setting-up-tests), [Selenium](https://www.selenium.dev/documentation/) or similar Web       UI testing tool to automate UI testing. Smoke test still follows a set of test cases consisting of       test steps, however, Smoke Test aims to test if a build is     stable and covers breadth more than depth.
+  * Portal: using [Cypress](https://docs.cypress.io/guides/overview/why-cypress#Setting-up-tests), [Selenium](https://www.selenium.dev/documentation/) or similar Web       UI testing tool to automate UI testing. Smoke test still follows a set of test cases consisting of test steps, however, Smoke Test aims to test if a build is     stable and covers breadth more than depth.
   * ApiServer: using [Artillery](https://www.artillery.io/docs/guides/getting-started/core-concepts#test-definitions) to smoke test ApiServer by pre-configuring the       querystring parameters following a set of defined test cases.
 * Functional Tests - functional tests can also be automated using Selenium, Cypress or other similar tool. Functional test follows a set of wel-defined and               comprehensive test cases to go deep into testing functionalities, as compared to Smoke Test which aims for coverage to discover instability in new features.
 * Integration Tests - This test focus on cross app domain/network component testing. It can be manual or automated at the GUI layer to trigger calls to MySQL database.
