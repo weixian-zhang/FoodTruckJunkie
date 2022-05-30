@@ -70,7 +70,7 @@ Azure is our hosting platform and PaaS services are preferred, over IaaS as much
 
 Our team practices GitFlow branching, any feature is a short-lived branch that you can clone from Dev.
 Once your great work is done, do a pull request and find any team mate for a second pair of eyes before merging into Dev.
-We like to work on bite-size feature, so it is important how the User Stories are broken down into "manageable-sized" Tasks and each Task should only do one thing.  
+I like to work on bite-size feature, so it is important how the User Stories are broken down into "manageable-sized" Tasks and each Task should only do one thing.  
 >For example implementing a Search-FoodTruck-By-FoodType User Story, updating ApiServer, Service and Repository Layers can be one task. Updating Stored Proc to accept "FoodType" parameter can be another task, lastly updating Portal can be another. This User Story can be a branch.  
 
 * Dev branch will be deployed to Staging environment to perform various tests before merging into Main over pull request
@@ -104,8 +104,7 @@ Notes (possibly including why you think this might be happening, or stuff you tr
 
 ## Software Architecture Design
 
-For describing software architecture, we like to use the [C4 Model](https://c4model.com/) modelling technique. We reckon that there are other mature techniques as well like [4+1 View Models](https://en.wikipedia.org/wiki/4%2B1_architectural_view_model) and UML instead of simple boxes and line connectors.  
-We favour C4 due to its lean and simple nature for both non-technical and technial folks.  
+For describing software architecture, we like to use the [C4 Model](https://c4model.com/) modelling technique. I reckon that there are other mature techniques as well like [4+1 View Models](https://en.wikipedia.org/wiki/4%2B1_architectural_view_model) and UML but I favour C4 due to its lean and simple nature for both non-technical and technical folks.  
 The following [diagrams](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/FoodTruckJunkie-software_architecture_design.pptx) describe Food Truck Junkie's software architecture from a high-level than zooming into more design details on subsequent diagrams.
 
 ### Context Diagram
@@ -210,7 +209,7 @@ The following is a set of areas for reviews I will try to cover
   * User account management
   * Output encoding exist or not and how is it performed
   * Input validation exist or not and how is it performed
-  * Any personal or confidential data used in App and how is it handled
+  * Confidential and PII data used in App and how is it handled
   * How is cryptography performed - in HSM or in App memory
     * any insecure outdated cipher algorithms still in use
   * Infrastructure as Code like Terraform and Bicep misconfigurations - for example allowing Anonymous access in Storage, allow Internet connectivity in Inbound and       Outbound rules and etc
@@ -221,13 +220,14 @@ The following is a set of areas for reviews I will try to cover
     * authenticating with an Azure service such as Storage should always use Managed Identity instead of API Key if the service supports Managed                             Identity
     * Custom Web App should log to services such as Log Analytics, Table Storage or Data Explorer instead of logging to local disk drive which is not easily queryable
   * PCI Data Security Standard - check if codes are storing CVV number or Expiry Dates to database  
+* Reference [OWASP Code Review Guide](https://owasp.org/www-project-code-review-guide/assets/OWASP_Code_Review_Guide_v2.pdf)
 
 
 ### Authentication  
 (Not a security practice but a module we want to develop in our Project Roadmap)  
 
-We want users to be able to sign-in with their Microsoft personal accounts (a.k.a Live account.
-Behind the scenes, we will be implementing OpenID Connect authn protocol on Portal and ApiServer.
+In Project Roadmap,users would be able to sign-in with their Microsoft personal accounts (a.k.a Live account.
+Behind the scenes, I will be implementing OpenID Connect authn protocol on Portal and ApiServer.
 * SPA authn: Portal will use the OAuth Authorization Code Flow PKCE as it is a Public Client.
 * API authn: ApiServer being a Confidential Client will be using Auhorization Code Flow
 * API authn-chain : if at that point when Food Truck Junkie has expanded to have other features which are implemented as microservices, and has the requirement to       for microservices to microservices API authentication, we will then be implementing Authorization Code Flow-On-Behalf Flow for API-to-API authentication chain         scenario.
@@ -265,7 +265,7 @@ Hopefully with this generic authorization engine, many applications can take adv
   
 ### Security In DevOps Pipelines
  
- We will be introducing security tasks into our Build and Release pieplines as follows
+ I plan to introduce security-related pipeline Tasks into our Build and Release pipelines as follows
  * <b>Build Pipeline</b>
     * Credential Scanner - detects credentials and secrets
     * SonarQube Static Code Analysis - code smells, bugs and security vulnerabilities ([rules here](https://docs.sonarqube.org/latest/user-guide/security-rules/))
@@ -303,7 +303,7 @@ ApiServer subsystem is an ASP.NET Core 3.1 web application which uses Json as th
 
 ## Database Specifications
 
-We are using Azure Database for MySQL and all setup scripts can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/tree/main/src/Scripts/DB).  
+I am using Azure Database for MySQL and all setup scripts can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/tree/main/src/Scripts/DB).  
 All scripts are written and tested using MySQL Workbench 8.0.  
 Scripts include:
 * data loading script that reads food truck data from CSV file and inserts them to the a Table
@@ -317,10 +317,10 @@ Scripts include:
 
 The current available tests are Unit Tests written using XUnit framework, unit tests covers all 3 layers including API Controller, Service and Repository.
 Additionally, Moq library is used to Mock an Interface IDbConnection which represents a connection object to MySQL DB, by mocking we are excluding actual connection to MySQL, as integration test is not part of unit testing.
-We are able to make mocking happen due to consistent usage of Intefaces, and all concrete classes must implement Interfaces.
+Mocking can happen due to the consistent usage of Interfaces and all concrete classes must implement Interfaces.
 Dependencies are always constructor injected and codes need to refactor to support unit testing if needed.
 
-In our project roadmap, we plan to setup the following tests:
+In our project roadmap, I plan to setup the following types of test:
 * Javascript Unit Tests - use [Jest](https://jestjs.io/docs/getting-started) framework to write unit tests for React web app
 * Automated Smoke Tests
   * Portal: using [Cypress](https://docs.cypress.io/guides/overview/why-cypress#Setting-up-tests), [Selenium](https://www.selenium.dev/documentation/) or similar Web       UI testing tool to automate UI testing. Smoke test still follows a set of test cases consisting of test steps, however, Smoke Test aims to test if a build is     stable and covers breadth more than depth.
