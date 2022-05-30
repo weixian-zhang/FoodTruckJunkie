@@ -9,6 +9,11 @@ namespace FoodTruckJunkie.Service
 {
     public class FoodTruckPermitService : IFoodTruckPermitService
     {
+        private const int NoOfResultLowerLimit = 5;
+        private const int NoOfResultUpperLimit = 50;
+        private const int ProximityMilesLowwerLimit = 1;
+        private const int ProximityMilesUpperLimit = 30;
+
         private IFoodTruckPermitRepository _permitRepo;
         private AppConfig _appconfig;
         private ILogger _logger;
@@ -23,13 +28,29 @@ namespace FoodTruckJunkie.Service
         public NearestFoodTruckSearchResult SearchNearestFoodTrucks
             (decimal lat, decimal longitude, int distantMiles, int noOfResult)
         {
-            if(noOfResult < 5)
-                noOfResult = 5;
-            else if (noOfResult > 50)
-                noOfResult = 50;
-
+           distantMiles = LimitProximity(distantMiles);
+           noOfResult = LimitNoOfResult(noOfResult);
+            
            var result = _permitRepo.SearchNearestFoodTrucks(lat, longitude, distantMiles, noOfResult);
            return result;           
+        }
+
+        private int LimitNoOfResult(int noOfResult) {
+            if(noOfResult < NoOfResultLowerLimit)
+                noOfResult = NoOfResultLowerLimit;
+            else if (noOfResult > NoOfResultUpperLimit)
+                noOfResult = 50;
+
+            return noOfResult;
+        }
+
+        private int LimitProximity(int distantMiles) {
+            if(distantMiles < ProximityMilesLowwerLimit)
+                distantMiles = ProximityMilesLowwerLimit;
+            else if (distantMiles > ProximityMilesUpperLimit)
+                distantMiles = ProximityMilesUpperLimit;
+
+            return distantMiles;
         }
     }
 }
