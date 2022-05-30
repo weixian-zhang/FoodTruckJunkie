@@ -196,7 +196,7 @@ I devised a live study plan for me to stay focus in learning and dive deep in th
 
 ### Secure Code Review  
 
-This is an important step to finding security flaws in codes and is an enhancment to standard code reviews by focusing on high risk code modules, the company's security standards and industrial security compliances.  
+This is an important step to finding security flaws in codes and is an enhancment to standard code reviews by focusing on high risk code modules, company's security standards and industrial security compliances.  
 The following is a set of areas for reviews I will try to cover
 * Prepare for a secure code review by first understanding
   * at high-level how the App works
@@ -220,8 +220,7 @@ The following is a set of areas for reviews I will try to cover
   * Azure CIS and General Best Practices
     * authenticating with an Azure service such as Storage should always use Managed Identity instead of API Key if the service supports Managed                             Identity
     * Custom Web App should log to services such as Log Analytics, Table Storage or Data Explorer instead of logging to local disk drive which is not easily queryable
-  * 
-
+  * PCI Data Security Standard - check if codes are storing CVV number or Expiry Dates to database  
 
 
 ### Authentication  
