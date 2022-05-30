@@ -170,6 +170,10 @@ a work item will be created to further explore mitigations strategies such as:
 From my research Documenting security requirements is often 
 security controls are build from security requirement, they can be derived from the following aspects
 * 
+* Functional Security Requirements
+* Non-Functional Security Requirements
+* Derived Security Requirements - threat modelling threats mitigations
+* Think about Abuse Cases - think like an attacker and "flip" standard use cases
 
 ### Security Unit Testing
 
