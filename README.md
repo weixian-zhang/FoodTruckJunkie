@@ -28,7 +28,10 @@ Web App is fully hosted on Azure and consist of major components including
   *  source of food truck dataset comes from [Mobile Food Facility Permit](https://data.sfgov.org/Economy-and-Community/Mobile-Food-Facility-Permit/rqzj-sfat/data)  
   *  A food truck is retrieved and plotted on map only when it's permit status is "APPROVED"
   *  Food truck result min 5, max 50
-  
+
+<br />
+<br />
+
 ## Table of Content
 * [System Deployment & Azure Resource Provisioning](#system-deployment--azure-resource-provisioning)
 * [How to Contribute to Project](#how-to-contribute-to-project)
