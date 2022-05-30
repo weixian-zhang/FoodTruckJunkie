@@ -164,6 +164,17 @@ a work item will be created to further explore mitigations strategies such as:
     Example App Service Environment, Integrated Service Environment
   * Adopt industrial security benchmarks to harden Azure environment for example Azure CIS  
 
+### AppSec Training  
+
+I am motivated to learn secure coding techniques, hoping to experience more real-life examples of vulnerabilities in code.
+And I  believe having ethical hacking skill sets can add immense value to overall system defense and write better secure codes.    
+I devised a live study plan for me to stay focus in learning and dive deep in the following areas, which I believe is important to this AppSec journey of mine.
+ * OWASP Top 10 current, past and [other](https://portswigger.net/web-security/all-materials) web vulnerabilities
+ * Go through [Secure Code Warrior](https://portal.securecodewarrior.com/#/website-trial/web/injection/sql/c_sharp/web_forms) and/or similar gamified training programs
+ * Train with [PicoCTF](https://picoctf.org/) cybersecurity challenges
+ * Learn Ethical Hacking and explore Certified Ethical Hacker CEH v11
+ * Azure Security
+ * Train and be certified with CISSP 
 
 ### Establishing Security Requirements  
 
@@ -187,17 +198,6 @@ security controls are build from security requirement, they can be derived from 
     * only certain ciphers can be used in the system such as SHA-256, RSA, AES
     * more than 128 bit for symmetric and more than 1024 for asymmetric encryption
 ### Security Unit Testing
-
-### Secure Coding & Cybersecurity Training  
-
-I am motivated to learn more secure coding techniques, hoping to experience more real-life examples of vulnerabilities in code.
-And I  believe having ethical hacking skill sets can add immense value to overall system defence and writing secure codes.    
-I devised a live study plan for me to stay focus in learning and dive deep in the following areas, which I believe is important to this AppSec journey of mine.
- * OWASP Top 10 current and past web vulnerabilities
- * Go through [Secure Code Warrior](https://portal.securecodewarrior.com/#/website-trial/web/injection/sql/c_sharp/web_forms) and/or similar gamified training programs
- * Train with [PicoCTF](https://picoctf.org/) challenges
- * Learn Ethical Hacking and explore Certified Ethical Hacker CEH v11
- * Train and certified with CISSP 
 
 ### Security While I Code
 
