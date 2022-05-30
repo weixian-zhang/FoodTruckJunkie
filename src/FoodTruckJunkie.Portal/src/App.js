@@ -4,6 +4,8 @@ import FoodTruckImage from './assets/images/foodtruck-main.png';
 import UserMarkerIcon from './assets/images/user-marker.png';
 import NearbyFoodTruckMarkerIcon from './assets/images/foodtruck-marker.png';
 import SanFrancisco from './assets/images/sanfrans.png';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 
 import { withScriptjs,
   withGoogleMap,
@@ -22,13 +24,25 @@ class App extends Component {
 
     this.state = {
       centerMap: {lat: 37.78813948, lng: -122.3925795},
+      mapZoom: 17,
+      defaultLatitude: 37.78813948,
       latitude: 37.78813948,
+      defaultLogitude: -122.3925795,
       longitude: -122.3925795,
-      distantMiles: 20,
+      distantMiles: 10,
       noOfResult: 10,
       nearestFoodTrucks: [],
-      selectedMarker: false
+      selectedMarker: false,
+      alertOpen: false
     };
+
+    this.escapeCharMap = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+   };
 
     this.foodtruckService = new FoodTruckService();
 
@@ -51,7 +65,7 @@ class App extends Component {
                       
       return (
           <GoogleMap
-            defaultZoom={17}
+            defaultZoom={this.state.mapZoom}
             onChange={this.onMapChange}
             center={this.state.centerMap}>
             
@@ -145,7 +159,7 @@ class App extends Component {
                       <form>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Search within X miles</label>
-                            <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="search within X miles" 
+                            <input type="number" min={1} max={50} class="form-control" aria-describedby="emailHelp" placeholder="search within X miles" 
                             onChange={this.distantMilesChanged} value={ this.state.distantMiles }/>
                         </div>
                       </form>
@@ -155,7 +169,7 @@ class App extends Component {
                       <form>
                             <div class="form-group">
                               <label for="exampleInputEmail1">No. of result</label>
-                                <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="no. of result" 
+                                <input type="number" min={5} max={50}  class="form-control" aria-describedby="emailHelp" placeholder="no. of result" 
                                     onChange={this.noOfResultChanged} value= { this.state.noOfResult } />
                             </div>
                         </form>
@@ -183,14 +197,36 @@ class App extends Component {
                   
                 />
               </div>
-          </div>
-      </div>
-    );
+
+              {/* Alert */}
+              <Snackbar open={this.state.alertOpen} autoHideDuration={5000} onClose={this.closeAlert} anchorOrigin={{ vertical: 'top' , horizontal: 'center'}} >
+                  <MuiAlert  onClose={this.closeAlert} severity="error">
+                    { this.state.alertMessage }
+                  </MuiAlert >
+                </Snackbar>
+                </div>
+            </div>
+
+              );
   } //render
 
   handleMarkerClick = (marker, event) => {
     // console.log({ marker })
     this.setState({ selectedMarker: marker })
+  }
+
+  closeAlert = () => {
+    this.setState({
+      alertOpen: false,
+      alertMessage: ''
+    });
+  }
+
+  promptAlert = (message) => {
+    this.setState({
+      alertOpen: true,
+      alertMessage: message
+    });
   }
 
   renderUserMapMarker() {
@@ -218,6 +254,8 @@ class App extends Component {
       )
     );
   }
+
+
 
 //   getUserCurrentLocation = () => {
 //     if (navigator.geolocation) {
@@ -271,11 +309,14 @@ noOfResultChanged = (event) => {
 
 
 searchNearestFoodTrucks = () => {
-    if(!this.state.latitude || !this.state.longitude || 
+    if( !this.state.latitude || !this.state.longitude ||
       !this.state.distantMiles || !this.state.noOfResult) {
-          alert('All fields need to be filled up');
+          this.promptAlert('All fields need to be filled up');
           return;
       }
+
+      if(this.hasMaliciousInputs())
+          return;
 
       this.renderUserMapMarker();
 
@@ -290,12 +331,80 @@ searchNearestFoodTrucks = () => {
                     alert('An error has occurred, likely input is incorrect. Try entering valid latitude and longitude');
                 }
             
-                thisComp.setState({nearestFoodTrucks:result.nearestFoodTrucks });                
+                thisComp.setState({nearestFoodTrucks:result.nearestFoodTrucks });      
+                
+                
+                thisComp.setState({mapZoom: 15});
             },
             function(error) {
                 alert(error);
             });
-}
+  }
+
+  // setDefaultLatLongInputIfEmpty() {
+  //   if(!this.state.latitude) {
+  //     this.setState({latitude: this.state.defaultLatitude});
+  //     this.promptAlert(`Latitude is empty, default to ${this.state.defaultLatitude}`)
+  //   }
+
+  //   if(!this.state.longitude) {
+  //     this.setState({longitude: this.state.defaultLogitude});
+  //     this.promptAlert(`Latitude is empty, default to ${this.state.defaultLogitude}`)
+  //   }
+  // }
+
+  hasMaliciousInputs() {
+
+    var hasMaliciousInput = false;
+
+      if(this.hasMaliciousInput(this.state.latitude)) {
+        hasMaliciousInput = true;
+        this.promptAlert('Malicious input detected in latitude textbox');
+      }
+
+      if(this.hasMaliciousInput(this.state.longitude)) {
+        hasMaliciousInput = true;
+        this.promptAlert('Malicious input detected in longitude textbox');
+      }
+
+      if(this.hasMaliciousInput(this.state.distantMiles)) {
+        hasMaliciousInput = true;
+        this.promptAlert('Malicious input detected in "Search within X miles" textbox');
+      }
+
+      if(this.hasMaliciousInput(this.state.noOfResult)) {
+        hasMaliciousInput = true;
+        this.promptAlert('Malicious input detected in No. of result textbox');
+      }
+
+      return hasMaliciousInput;
+  }
+
+  hasMaliciousInput(original) {
+
+    if(original == '' | original == undefined)
+      return false;
+
+    var originStr = String(original);
+
+    if(!originStr)
+      return {
+        hasMaliciousInput: false,
+        sanitizedInput: ''
+      };
+  
+    var thisComp = this;
+    const reg = /[&<>"'/]/ig;
+    var sanitized = originStr.toString().replace(reg, (match) => 
+      {
+        return thisComp.escapeCharMap[match];
+      });
+
+    if(sanitized != originStr)
+      return true;
+
+    return false;
+  }
 
 }
 
