@@ -159,7 +159,7 @@ class App extends Component {
                       <form>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Search within X miles</label>
-                            <input type="number" min={1} max={50} class="form-control" aria-describedby="emailHelp" placeholder="search within X miles" 
+                            <input type="number" min="1" max="30" class="form-control" aria-describedby="emailHelp" placeholder="search within X miles" 
                             onChange={this.distantMilesChanged} value={ this.state.distantMiles }/>
                         </div>
                       </form>
@@ -169,7 +169,7 @@ class App extends Component {
                       <form>
                             <div class="form-group">
                               <label for="exampleInputEmail1">No. of result</label>
-                                <input type="number" min={5} max={50}  class="form-control" aria-describedby="emailHelp" placeholder="no. of result" 
+                                <input type="number" min="5" max="50"  class="form-control" aria-describedby="emailHelp" placeholder="no. of result" 
                                     onChange={this.noOfResultChanged} value= { this.state.noOfResult } />
                             </div>
                         </form>
@@ -296,13 +296,13 @@ longitudeChanged = (event) => {
 
 distantMilesChanged = (event) => {
     this.setState({
-        distantMiles: event.target.value
+        distantMiles: event.target.value.slice(0,2)
     })
 }
 
 noOfResultChanged = (event) => {
     this.setState({
-        noOfResult: event.target.value
+        noOfResult: event.target.value.slice(0,2)
     })
 }
 
