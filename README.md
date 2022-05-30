@@ -202,6 +202,13 @@ The following is a set of areas for reviews I will try to cover
   * who are the users
   * Who should be able to do What
   * major frameworks and libaries
+* Spot for codes that violates OWASP Top 10 Web Vulnerabilities  
+  <br />
+  <img src="https://user-images.githubusercontent.com/43234101/170963911-ea337dff-d786-4bed-ad9d-8950429a08c0.png" width="800px" height = "500px" />  
+  <img src="https://user-images.githubusercontent.com/43234101/170964121-31e62786-ba62-4210-8082-7284d45b312d.png"  width="800px" height = "500px" />
+
+
+* Reference [OWASP Code Review Guide](https://owasp.org/www-project-code-review-guide/assets/OWASP_Code_Review_Guide_v2.pdf)
 * Focus on High Risk Code Modules
   * Authentication
   * Password handling
@@ -210,9 +217,11 @@ The following is a set of areas for reviews I will try to cover
   * Output encoding exist or not and how is it performed
   * Input validation exist or not and how is it performed
   * Confidential and PII data used in App and how is it handled
+  * Logging - log sensitive user info to log storage for audit
   * How is cryptography performed - in HSM or in App memory
     * any insecure outdated cipher algorithms still in use
   * Outdated dependencies
+  * Developers' comments - may leak sensitive data and secrets
   * Infrastructure as Code like Terraform and Bicep misconfigurations - for example allowing Anonymous access in Storage, allow Internet connectivity in Inbound and       Outbound rules and etc
   * DevOps Pipeline declaration Yaml files
 * Frontends - including Javascript web Frontends, Mobile and Desktop Apps. The main goal to secure code reviewing Frontends is to find out any API Keys and secrets       hard-coded in codes, stored in local storage or App config files
@@ -221,20 +230,20 @@ The following is a set of areas for reviews I will try to cover
     * authenticating with an Azure service such as Storage should always use Managed Identity instead of API Key if the service supports Managed                             Identity
     * Custom Web App should log to services such as Log Analytics, Table Storage or Data Explorer instead of logging to local disk drive which is not easily queryable
   * PCI Data Security Standard - check if codes are storing CVV number or Expiry Dates to database  
-* Reference [OWASP Code Review Guide](https://owasp.org/www-project-code-review-guide/assets/OWASP_Code_Review_Guide_v2.pdf)
 
 
-### Authentication  
-(Not a security practice but a module we want to develop in our Project Roadmap)  
 
-In Project Roadmap,users would be able to sign-in with their Microsoft personal accounts (a.k.a Live account.
+### Authentication
+(Not a security practice but a module I want to develop in our Project Roadmap)  
+
+Users would be able to sign-in with their Microsoft personal accounts (a.k.a Live account.
 Behind the scenes, I will be implementing OpenID Connect authn protocol on Portal and ApiServer.
 * SPA authn: Portal will use the OAuth Authorization Code Flow PKCE as it is a Public Client.
 * API authn: ApiServer being a Confidential Client will be using Auhorization Code Flow
 * API authn-chain : if at that point when Food Truck Junkie has expanded to have other features which are implemented as microservices, and has the requirement to       for microservices to microservices API authentication, we will then be implementing Authorization Code Flow-On-Behalf Flow for API-to-API authentication chain         scenario.
   The concept is when an API (API-A) receive an access token from Portal, API-A uses the access token and with its ClientID/Secret, it exchange for another access       token Token-A. This Token-A will be pass on to API-B for authentication. Within Azure AD we will need to configure "Expose API" to add OAuth scopes for each           microservices. Then followed by configuring authorization in Azure AD - App - "API Permissions", specifiying which API scopes are allowed access to which               microservices.
   
-### Authorization  
+### Authorization
 (Not a security practice but a module we want to develop in our Project Roadmap)  
  
 Many systems rely on Frontend to authorize (allow and deny) calls to Backend APIs, by hiding UI elements like buttons and menu items.  
