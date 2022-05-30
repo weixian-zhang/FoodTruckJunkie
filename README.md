@@ -167,14 +167,25 @@ a work item will be created to further explore mitigations strategies such as:
 
 ### Establishing Security Requirements  
 
+Quality of Security Requirements
+* Is this testable? Can we test this requirement in the final application? “Be secure” is not a testable requirement. “Encode all user-supplied output” is.
+* Is this measurable? When we test for this, can we determine coverage and effectiveness?
+* Is this complete? Are we forgetting something? Are we mandating checks for user-supplied data to databases but not logs?
+* Is this clear? Will the people responsible for designing, implementing, testing, and delivering on this requirement understand the intent of the requirement?
+* Is this unambiguous? - Could someone interpret this requirement in any other ways?
+  Are these requirements consistent? Are we approaching each security requirement in the same way to ensure that the security measures are applied consistently across   the board?
+
 From my research Documenting security requirements is often 
 security controls are build from security requirement, they can be derived from the following aspects
-* 
 * Functional Security Requirements
-* Non-Functional Security Requirements
-* Derived Security Requirements - threat modelling threats mitigations
+* Non-Functional Security Requirements - example
+  * Auditability - every transaction 
+* threat modelling threats mitigations as security requirements
 * Think about Abuse Cases - think like an attacker and "flip" standard use cases
-
+* Industry Compliance and Organization's Information Security Standards - examples
+  * cryptography
+    * only certain ciphers can be used in the system such as SHA-256, RSA, AES
+    * more than 128 bit for symmetric and more than 1024 for asymmetric encryption
 ### Security Unit Testing
 
 ### Secure Coding & Cybersecurity Training  
@@ -239,10 +250,10 @@ The following is a set of areas for reviews I will try to cover
  
 * Frontends - including Javascript web Frontends, Mobile and Desktop Apps. The main goal to secure code reviewing Frontends is to find out any API Keys and secrets       hard-coded in codes, stored in local storage or App config files  
 
-* Industrial compliance - examples
-  * Azure CIS and General Best Practices
+* Organization's Security Standard and Industrial Compliance - examples
+  * Azure Best Practices
     * authenticating with an Azure service such as Storage should always use Managed Identity instead of API Key if the service supports Managed                             Identity
-    * Custom Web App should log to services such as Log Analytics, Table Storage or Data Explorer instead of logging to local disk drive which is not easily queryable
+    * Custom Web App should log events to services such as Log Analytics, Table Storage or Data Explorer instead of logging to local disk drive which is not easily           queryable
   * PCI Data Security Standard - check if codes are storing CVV number or Expiry Dates to database  
 
 
