@@ -212,6 +212,7 @@ The following is a set of areas for reviews I will try to cover
   * Confidential and PII data used in App and how is it handled
   * How is cryptography performed - in HSM or in App memory
     * any insecure outdated cipher algorithms still in use
+  * Outdated dependencies
   * Infrastructure as Code like Terraform and Bicep misconfigurations - for example allowing Anonymous access in Storage, allow Internet connectivity in Inbound and       Outbound rules and etc
   * DevOps Pipeline declaration Yaml files
 * Frontends - including Javascript web Frontends, Mobile and Desktop Apps. The main goal to secure code reviewing Frontends is to find out any API Keys and secrets       hard-coded in codes, stored in local storage or App config files
