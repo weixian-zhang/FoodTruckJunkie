@@ -141,12 +141,11 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 <br />
 <br />  
 
-## AppSec - Security In Software Delivery
+## AppSec - Security In SDLC
 
-I strive to include security in each phase of the SDLC.   
-The following describes the software security practices I plan to follow throughout the SDLC.
+The following describes the AppSec practices I plan to execute throughout the different SDLC phases.
 
-### AppSec Training & Awareness  
+### AppSec Training & Awareness | SDLC - Planning stage
 
 I am motivated to learn secure coding techniques, hoping to experience more real-life examples of vulnerabilities in code.
 And I  believe having ethical hacking skill sets can add immense value to overall system defense and write better secure codes.    
@@ -156,28 +155,9 @@ I devised a live study plan for me to stay focus in learning and dive deep in th
  * Train with [PicoCTF](https://picoctf.org/) cybersecurity challenges
  * Learn Ethical Hacking and explore Certified Ethical Hacker CEH v11
  * Azure Security
- * Train and be certified with CISSP  
+ * Train and be certified with CISSP    
 
-### Threat Modelling
-
-Threat modelling is done after I have completed the [Azure architecture diagram](#container-diagram).  
-Threat model designer file can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ThreatModel-FoodTruckJunkie.tm7) and the exported       Report can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ThreatMode-Report-FoodTruckJunkie%20WebApp.htm).  
-  
-The detected threats are evaluated one by one, for each threat that is mark as "Needs Investigation",
-a work item will be created to further explore mitigations strategies such as:
-  * code-based enhancements - for example encode HTML, Javascript output. Validate and whitelist input.
-  * configuration changes to existing Azure resource - for example update App Service to not return web server information in response headers.  
-    Or tweak Azure Storage settings to not allow Anonymous access and more.
-  * Adding new security related Azure services or 3rd-party security COTS products whenever necessary
-    * Implementing defence-in-depth principles by introducing layered defence for example: Add a DMZ VNet with NextGen Firewall/Azure Firewall to ingest all Internet         traffic, perform TLS offloading and IDPS, before further routing to Application Gateway WAF for web vulnerabilities scan.
-    * And/or implement Host-based protection (a.k.a endpoint protection) to detech VM level vulnerabilities
-    * And/or 3rd-party SaaS-based WAF to inspect traffic before routing traffic to web app and more
-  * Re-architect - another option could be to re-architect the design to use services that can be deployed in VNet.  
-    Example App Service Environment, Integrated Service Environment
-  * Adopt industrial security benchmarks to harden Azure environment for example Azure CIS  
-  
-
-### Define Security Requirements  
+### Define Security Requirements | SDLC - Define Requirement stage
 
 Similar to defining business/functional requirements and non-functional requirements, by explicitly defining and documenting security requirements as User Stories,  
 software delivery team can ensure that security controls can be unambiguously built into the systems, according to User Stories.
@@ -197,11 +177,28 @@ Security requirements can be gather from these 3 sources, most importantly these
  * Turn security requirements into an Abuse case and act like an attacker. For example:  
    * As a attacker, I want to add massive amount of items in shopping, checkout but not proceed to payment. So that I can reserve stocks by not buying anything,            causing the system to be in low-stock conditions
    * As an attacker, I want to repeatedly hit the system's API with the same or random inputs and have the API return successful responses.  So that I want cause a          Denial of Wallet if the API is running on cloud-based serverless platform
-   
 
-### Security Unit Testing
+### Threat Modelling | SDLC - Design & Protoyping stage
 
-### Security While I Code
+Threat modelling is done after I have completed the [Azure architecture diagram](#container-diagram).  
+Threat model designer file can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ThreatModel-FoodTruckJunkie.tm7) and the exported       Report can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ThreatMode-Report-FoodTruckJunkie%20WebApp.htm).  
+  
+The detected threats are evaluated one by one, for each threat that is mark as "Needs Investigation",
+a work item will be created to further explore mitigations strategies such as:
+  * code-based enhancements - for example encode HTML, Javascript output. Validate and whitelist input.
+  * configuration changes to existing Azure resource - for example update App Service to not return web server information in response headers.  
+    Or tweak Azure Storage settings to not allow Anonymous access and more.
+  * Adding new security related Azure services or 3rd-party security COTS products whenever necessary
+    * Implementing defence-in-depth principles by introducing layered defence for example: Add a DMZ VNet with NextGen Firewall/Azure Firewall to ingest all Internet         traffic, perform TLS offloading and IDPS, before further routing to Application Gateway WAF for web vulnerabilities scan.
+    * And/or implement Host-based protection (a.k.a endpoint protection) to detech VM level vulnerabilities
+    * And/or 3rd-party SaaS-based WAF to inspect traffic before routing traffic to web app and more
+  * Re-architect - another option could be to re-architect the design to use services that can be deployed in VNet.  
+    Example App Service Environment, Integrated Service Environment
+  * Adopt industrial security benchmarks to harden Azure environment for example Azure CIS  
+
+### Security Unit Testing | SDLC - Development Stage
+
+### Security While I Code | SDLC - Development Stage
 
 * Secure coding practices - we follow these [secure coding practice checklists](https://owasp.org/www-pdf-archive/OWASP_SCP_Quick_Reference_Guide_v2.pdf) while we       code, some examples can be:  
   * do not disclose sensitive info in error message
