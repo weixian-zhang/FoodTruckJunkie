@@ -200,7 +200,7 @@ a work item will be created to further explore mitigations strategies such as:
 
 ### Security Unit Tests | SDLC - Development phase
 
-In addition to standard unit tests 
+In additional to standard unit tests, security unit tests should also be written to cover security controls developed according to [Security Requirements](#define-security-requirements--sdlc---define-requirement-phase). Security unit tests should be written to <ins>bypass</ins> security controls.
 
 ### Security While I Code | SDLC - Development phase
 
@@ -262,7 +262,7 @@ The following is a set of areas for reviews I will try to cover
 
 
 ### Authentication
-(Not a security practice but a module I want to develop in our Project Roadmap)  
+(as part of the Project Roadmap I want to include)  
 
 Users would be able to sign-in with their Microsoft personal accounts (a.k.a Live account.
 Behind the scenes, I will be implementing OpenID Connect authn protocol on Portal and ApiServer.
@@ -272,7 +272,7 @@ Behind the scenes, I will be implementing OpenID Connect authn protocol on Porta
   The concept is when an API (API-A) receive an access token from Portal, API-A uses the access token and with its ClientID/Secret, it exchange for another access       token Token-A. This Token-A will be pass on to API-B for authentication. Within Azure AD we will need to configure "Expose API" to add OAuth scopes for each           microservices. Then followed by configuring authorization in Azure AD - App - "API Permissions", specifiying which API scopes are allowed access to which               microservices.
   
 ### Authorization
-(Not a security practice but a module we want to develop in our Project Roadmap)  
+(as part of the Project Roadmap I want to include)  
  
 Many systems rely on Frontend to authorize (allow and deny) calls to Backend APIs, by hiding UI elements like buttons and menu items.  
 Within APIs, many of them today uses OAuth 2.0 to perform authorization.  
