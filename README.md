@@ -169,9 +169,8 @@ I hope to learn more secure coding techniques and be experience in spotting vuln
 
 ### Define Security Requirements | SDLC - Define Requirement phase
 
-Similar to defining business/functional requirements and non-functional requirements, by explicitly defining and documenting security requirements as User Stories,  
-software delivery team can ensure that security controls can be unambiguously built into the systems, according to User Stories.
-Security requirements can be gather from these 3 sources, most importantly these 2 security requirement sources can be repeatedly applied to every future projects.  
+Similar to defining business/functional requirements and non-functional requirements, by explicitly defining and documenting security requirements as User Stories, software delivery team can ensure that security controls can be unambiguously built into the systems, just like any other functional requirements.  
+Security requirements can be gather from generally 3 sources in my studies, but most importantly these security requirement gathering sources can be repeatedly applied to future projects.   
 
  * Derive from business requirements for example: A system has a requirement that needs 2 admins to approve before a transaction can continue.  
    This 2-Admin Approval is a security requirement derived from business requirement.  
