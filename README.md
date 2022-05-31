@@ -176,8 +176,16 @@ I devised a live study plan for me to stay focus in learning and dive deep in th
  * Azure Security
  * Train and be certified with CISSP 
 
-### Establishing Security Requirements  
+### Define Security Requirements  
 
+Similar to defining business/functional requirements and non-functional requirements, by explicitly defining and documenting security requirements as User Stories,  
+software delivery team can ensure that security controls pertaining to the User Stories can be unambiguously built into the systems.
+Security requirements can be gather from various sources firstly, from deriving from business requirements for example:  
+the system has an Admin module can a feature in Admin module, requires 2 admins to approve before a transaction can continue.  
+This 2-Admin Approval is a security requirement derived from business requirement.  
+Other methods of gather security requirements can largly be from organization's security standard and industry standards and compliances like for example:  
+PCI compliance states not to save CVV and Expiry Date, this clause can be made into a User Story so that developer can ensure that CVV and Expiry Date are not store in Databse and Logs
+In order to make secuirty requirements gathering
 Quality of Security Requirements
 * Is this testable? Can we test this requirement in the final application? “Be secure” is not a testable requirement. “Encode all user-supplied output” is.
 * Is this measurable? When we test for this, can we determine coverage and effectiveness?
