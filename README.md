@@ -39,7 +39,7 @@ Web App is fully hosted on Azure and consist of major components including
   * [Context Diagram](#context-diagram)
   * [Container Diagram](#container-diagram)
   * [Component Diagrams](#component-diagrams)
-* [AppSec - Security In Software Delivery](#appsec---security-in-software-delivery)
+* [AppSec - Security In SDLC](#appsec---security-in-sdlc)
 * [ApiServer Specifications](#api-server-specifications)
 * [Database Specifications](#database-specifications)
 * [Testings](#testings)
