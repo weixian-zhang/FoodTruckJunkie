@@ -175,7 +175,7 @@ a work item will be created to further explore mitigations strategies such as:
   * Re-architect - another option could be to re-architect the design to use services that can be deployed in VNet.  
     Example App Service Environment, Integrated Service Environment
   * Adopt industrial security benchmarks to harden Azure environment for example Azure CIS  
-  * 
+  
 
 ### Define Security Requirements  
 
@@ -198,27 +198,7 @@ Security requirements can be gather from these 3 sources, most importantly these
    * As a attacker, I want to add massive amount of items in shopping, checkout but not proceed to payment. So that I can reserve stocks by not buying anything,            causing the system to be in low-stock conditions
    * As an attacker, I want to repeatedly hit the system's API with the same or random inputs and have the API return successful responses.  So that I want cause a          Denial of Wallet if the API is running on cloud-based serverless platform
    
-   
-In order to make secuirty requirements gathering
-Quality of Security Requirements
-* Is this testable? Can we test this requirement in the final application? “Be secure” is not a testable requirement. “Encode all user-supplied output” is.
-* Is this measurable? When we test for this, can we determine coverage and effectiveness?
-* Is this complete? Are we forgetting something? Are we mandating checks for user-supplied data to databases but not logs?
-* Is this clear? Will the people responsible for designing, implementing, testing, and delivering on this requirement understand the intent of the requirement?
-* Is this unambiguous? - Could someone interpret this requirement in any other ways?
-  Are these requirements consistent? Are we approaching each security requirement in the same way to ensure that the security measures are applied consistently across   the board?
 
-From my research Documenting security requirements is often 
-security controls are build from security requirement, they can be derived from the following aspects
-* Functional Security Requirements
-* Non-Functional Security Requirements - example
-  * Auditability - every transaction 
-* threat modelling threats mitigations as security requirements
-* Think about Abuse Cases - think like an attacker and "flip" standard use cases
-* Industry Compliance and Organization's Information Security Standards - examples
-  * cryptography
-    * only certain ciphers can be used in the system such as SHA-256, RSA, AES
-    * more than 128 bit for symmetric and more than 1024 for asymmetric encryption
 ### Security Unit Testing
 
 ### Security While I Code
