@@ -143,7 +143,7 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 
 ## AppSec - Security In SDLC
 
-The following describes the AppSec practices I plan to execute in different SDLC phases. From my AppSec research and studies, I have came up with a simple table that states the AppSec practices for each SDLC phase. These sectons are constantly updated as my research and studies progess.
+The following describes the AppSec practices I plan to execute in different SDLC phases. From my AppSec exploration and studies, I have came up with a simple table that describes my AppSec practices for each SDLC phase. These sections are constantly updated as my studies progess.
 
 | SDLC | AppSec Practices |
 |----------|----------|
