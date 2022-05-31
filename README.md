@@ -143,21 +143,29 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 
 ## AppSec - Security In SDLC
 
-The following describes the AppSec practices I plan to execute throughout the different SDLC phases. From my AppSec research and studies, I have came up with a simple matrix that states the AppSec practices for each SDLC phase. These sectons of writeups will be constantly updated and my research and studies progess.
+The following describes the AppSec practices I plan to execute in different SDLC phases. From my AppSec research and studies, I have came up with a simple table that states the AppSec practices for each SDLC phase. These sectons are constantly updated as my research and studies progess.
 
+| SDLC | AppSec Practices |
+|----------|----------|
+| Planning | AppSec Training & Awareness |
+| Define Requirement | Define Security Requirements |
+| Design & Protoyping | Threat Modelling |
+| Development | Security Unit Tests, Secure Coding and  Secure Code Review |
+| Testing | SAST, Vulnerability Scans, Peneration Tests and  Fuzz Tests |
+| Deployment | DevSecOps |
 
 
 ### AppSec Training & Awareness | SDLC - Planning phase
 
-I am motivated to learn secure coding techniques, hoping to experience more real-life examples of vulnerabilities in code.
-And I  believe having ethical hacking skill sets can add immense value to overall system defense and write better secure codes.    
-I devised a live study plan for me to stay focus in learning and dive deep in the following areas, which I believe is important to this AppSec journey of mine.
+I am motivated to learn secure coding techniques, hoping to experience more real-life examples of vulnerabilities in code.   
+I devised a live study plan for me to stay focus in learning and dive deep in the following areas (not in learning order), which I believe is important to this AppSec journey.
  * OWASP Top 10 current, past and [other](https://portswigger.net/web-security/all-materials) web vulnerabilities
  * Go through [Secure Code Warrior](https://portal.securecodewarrior.com/#/website-trial/web/injection/sql/c_sharp/web_forms) and/or similar gamified training programs
  * Train with [PicoCTF](https://picoctf.org/) cybersecurity challenges
  * Learn Ethical Hacking and explore Certified Ethical Hacker CEH v11
+ * AppSec training
  * Azure Security
- * Train and be certified with CISSP    
+ * Get CISSP certification    
 
 ### Define Security Requirements | SDLC - Define Requirement phase
 
@@ -202,7 +210,7 @@ a work item will be created to further explore mitigations strategies such as:
 
 In additional to standard unit tests, security unit tests should also be written to cover security controls developed according to [Security Requirements](#define-security-requirements--sdlc---define-requirement-phase). Security unit tests should be written to <ins>bypass</ins> security controls.
 
-### Security While I Code | SDLC - Development phase
+### Secure Coding | SDLC - Development phase
 
 * Secure coding practices - we follow these [secure coding practice checklists](https://owasp.org/www-pdf-archive/OWASP_SCP_Quick_Reference_Guide_v2.pdf) while we       code, some examples can be:  
   * do not disclose sensitive info in error message
