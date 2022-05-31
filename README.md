@@ -160,8 +160,8 @@ The following describes the AppSec practices I plan to execute in different SDLC
 I devised a study plan for me to stay focus in learning and dive deep in the AppSec areas, which I believe is important in my AppSec journey.
 I hope to learn more secure coding techniques and be experience in spotting vulnerabilities in code through trainings below.
  * OWASP Top 10 current, past and [other](https://portswigger.net/web-security/all-materials) web vulnerabilities
- * Go through [Secure Code Warrior](https://portal.securecodewarrior.com/#/website-trial/web/injection/sql/c_sharp/web_forms) and/or similar gamified training programs
- * Train with [PicoCTF](https://picoctf.org/) cybersecurity challenges
+ * Go through [Secure Code Warrior](https://portal.securecodewarrior.com/#/website-trial/web/injection/sql/c_sharp/web_forms) or similar gamified training programs
+ * Train using [PicoCTF](https://picoctf.org/) cybersecurity challenges
  * Learn Ethical Hacking and explore Certified Ethical Hacker CEH v11
  * AppSec training
  * Azure Security
