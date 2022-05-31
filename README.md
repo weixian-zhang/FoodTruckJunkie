@@ -212,18 +212,17 @@ In additional to standard unit tests, security unit tests should also be written
 
 ### Secure Coding | SDLC - Development phase
 
-* Secure coding practices - we follow these [secure coding practice checklists](https://owasp.org/www-pdf-archive/OWASP_SCP_Quick_Reference_Guide_v2.pdf) while we       code, some examples can be:  
+* Secure coding practices - I plan to familiarize with [secure coding practice checklists](https://owasp.org/www-pdf-archive/OWASP_SCP_Quick_Reference_Guide_v2.pdf)     and follow the guidelines as I write software, some examples:    
   * do not disclose sensitive info in error message
   * close DB connection right after use, leaving  persisted TCP connections are like leaving a back-door for adversaries to exploit
   * validate all inputs
   * encode all outputs including HTML, Javascript, CSS, XML, JSON, Http Headers and more
            
-* App secrets - if development is using .Net use the [User Secret](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-6.0&tabs=windows)   feature from .Net SDK 
-* Pre-commit hook - use Git pre=commit hook to prevent committing secrets accidentally
+* App secrets
+  * if development is using .Net use the [User Secret](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-6.0&tabs=windows)   feature       from .Net SDK
+  * App secrets should be kept in Azure App Configuration, Azure Key Vault or gets injected as Environment Variables by some Azure services
+* Pre-commit Git Hook - use Git pre-commit hook like [GitGuardian Shield](https://blog.gitguardian.com/setting-up-a-pre-commit-git-hook-with-gitguardian-shield-to-scan-for-secrets/) to prevent committing secrets accidentally
 * Install DevSkim VSCode extension - DevSkim provides inline security assessment while writing codes on the fly, rectify any security assessment prompted by DevSkim
-* Security peer review
-  * security reviews can be done on high risk modules such as authentication, authorization, user management, cryptography, audit logging and etc.  
-  * security review can also closely reference the *secure coding practice checklists* and try to spot violations against the checklists
 * Unit Testing - Aim for at least 90% of code coverage when writing unit test cases. Unut tests should also cover non-happy flows  
 
 ### Secure Code Review  | SDLC - Development phase
