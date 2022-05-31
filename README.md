@@ -176,7 +176,7 @@ Security requirements can be gather from these 3 sources, most importantly these
  * Derive from business requirements for example: A system has a requirement that needs 2 admins to approve before a transaction can continue.  
    This 2-Admin Approval is a security requirement derived from business requirement.  
    
- * Derive from "applicable" guidline line items from [OWASP Application Security Verification Standard](https://owasp.org/www-project-application-security-                verification-standard)  
+ * Derive from "applicable" guidline line items from [OWASP Application Security Verification Standard](https://owasp.org/www-project-application-security-verification-standard).  
    Applicable means to include relevant guidelines for instance guideline item: "File upload - app should not accept large files larger than storage can hold, causing    a denial of service". If the system does not have any requirement about upload files, then this guideline item is not applicable as a security requirement.  
    Example of security requirements from OWASP Application Security Verification Standard:  
    * As a user, I should be able to view and edit my profile. I should not be able to view or edit anyone else's profile
