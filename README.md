@@ -12,7 +12,7 @@ Quick test URLs below
 | OpenAPI Json | https://webapp-foodtruckjunkie-api.azurewebsites.net/swagger/v1/swagger.json |
 | ApiServer Health endpoint | https://webapp-foodtruckjunkie-api.azurewebsites.net/health |  
 
-<img src="https://user-images.githubusercontent.com/43234101/170927395-5df23ba5-f36f-43f3-9c62-a86f92cf16f8.png" width="1200" height="600" />  
+[![Food Truck Junkie](https://user-images.githubusercontent.com/43234101/170927395-5df23ba5-f36f-43f3-9c62-a86f92cf16f8.png)](https://webapp-foodtruckjunkie-portal.azurewebsites.net)
 
 <br />
 
