@@ -143,9 +143,11 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 
 ## AppSec - Security In SDLC
 
-The following describes the AppSec practices I plan to execute throughout the different SDLC phases.
+The following describes the AppSec practices I plan to execute throughout the different SDLC phases. From my AppSec research and studies, I have came up with a simple matrix that states the AppSec practices for each SDLC phase. These sectons of writeups will be constantly updated and my research and studies progess.
 
-### AppSec Training & Awareness | SDLC - Planning stage
+
+
+### AppSec Training & Awareness | SDLC - Planning phase
 
 I am motivated to learn secure coding techniques, hoping to experience more real-life examples of vulnerabilities in code.
 And I  believe having ethical hacking skill sets can add immense value to overall system defense and write better secure codes.    
@@ -157,7 +159,7 @@ I devised a live study plan for me to stay focus in learning and dive deep in th
  * Azure Security
  * Train and be certified with CISSP    
 
-### Define Security Requirements | SDLC - Define Requirement stage
+### Define Security Requirements | SDLC - Define Requirement phase
 
 Similar to defining business/functional requirements and non-functional requirements, by explicitly defining and documenting security requirements as User Stories,  
 software delivery team can ensure that security controls can be unambiguously built into the systems, according to User Stories.
@@ -178,7 +180,7 @@ Security requirements can be gather from these 3 sources, most importantly these
    * As a attacker, I want to add massive amount of items in shopping, checkout but not proceed to payment. So that I can reserve stocks by not buying anything,            causing the system to be in low-stock conditions
    * As an attacker, I want to repeatedly hit the system's API with the same or random inputs and have the API return successful responses.  So that I want cause a          Denial of Wallet if the API is running on cloud-based serverless platform
 
-### Threat Modelling | SDLC - Design & Protoyping stage
+### Threat Modelling | SDLC - Design & Protoyping phase
 
 Threat modelling is done after I have completed the [Azure architecture diagram](#container-diagram).  
 Threat model designer file can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ThreatModel-FoodTruckJunkie.tm7) and the exported       Report can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ThreatMode-Report-FoodTruckJunkie%20WebApp.htm).  
@@ -196,9 +198,9 @@ a work item will be created to further explore mitigations strategies such as:
     Example App Service Environment, Integrated Service Environment
   * Adopt industrial security benchmarks to harden Azure environment for example Azure CIS  
 
-### Security Unit Testing | SDLC - Development Stage
+### Security Unit Tests | SDLC - Development phase
 
-### Security While I Code | SDLC - Development Stage
+### Security While I Code | SDLC - Development phase
 
 * Secure coding practices - we follow these [secure coding practice checklists](https://owasp.org/www-pdf-archive/OWASP_SCP_Quick_Reference_Guide_v2.pdf) while we       code, some examples can be:  
   * do not disclose sensitive info in error message
@@ -214,7 +216,7 @@ a work item will be created to further explore mitigations strategies such as:
   * security review can also closely reference the *secure coding practice checklists* and try to spot violations against the checklists
 * Unit Testing - Aim for at least 90% of code coverage when writing unit test cases. Unut tests should also cover non-happy flows  
 
-### Secure Code Review  
+### Secure Code Review  | SDLC - Development phase
 
 This is an important step to finding security flaws in codes and is an enhancment to standard code reviews by focusing on high risk code modules, company's security standards and industrial security compliances.  
 The following is a set of areas for reviews I will try to cover
