@@ -206,13 +206,9 @@ a work item will be created to further explore mitigations strategies such as:
     Example App Service Environment, Integrated Service Environment
   * Adopt industrial security benchmarks to harden Azure environment for example Azure CIS  
 
-### Security Unit Tests | SDLC - Development phase
-
-In additional to standard unit tests, security unit tests should also be written to cover security controls developed according to [Security Requirements](#define-security-requirements--sdlc---define-requirement-phase). Security unit tests should be written to <ins>bypass</ins> security controls.
-
 ### Secure Coding | SDLC - Development phase
 
-* Secure coding practices - I plan to familiarize with [secure coding practice checklists](https://owasp.org/www-pdf-archive/OWASP_SCP_Quick_Reference_Guide_v2.pdf)     and follow the guidelines as I write software, some examples:    
+* Secure coding practices - I plan to familiarize with [secure coding practice checklists](https://owasp.org/www-pdf-archive/OWASP_SCP_Quick_Reference_Guide_v2.pdf)     and follow the guidelines as I write software, some examples include:    
   * do not disclose sensitive info in error message
   * close DB connection right after use, leaving  persisted TCP connections are like leaving a back-door for adversaries to exploit
   * validate all inputs
@@ -225,22 +221,26 @@ In additional to standard unit tests, security unit tests should also be written
 * Install DevSkim VSCode extension - DevSkim provides inline security assessment while writing codes on the fly, rectify any security assessment prompted by DevSkim
 * Unit Testing - Aim for at least 90% of code coverage when writing unit test cases. Unut tests should also cover non-happy flows  
 
+### Security Unit Tests | SDLC - Development phase
+
+In additional to standard unit tests, security unit tests should also be written to cover security controls developed according to [Security Requirements](#define-security-requirements--sdlc---define-requirement-phase). Security unit tests should be written to <ins>bypass</ins> security controls.
+
 ### Secure Code Review  | SDLC - Development phase
 
 This is an important step to finding security flaws in codes and is an enhancment to standard code reviews by focusing on high risk code modules, company's security standards and industrial security compliances.  
-The following is a set of areas for reviews I will try to cover
+The following is a set of areas for reviews I will try to cover depending on the amount of time spent in review.  
 * Prepare for a secure code review by first understanding
   * at high-level how the App works
   * who are the users
   * Who should be able to do What
   * major frameworks and libaries  
   
-* Spot for codes that violates OWASP Top 10 Web Vulnerabilities  
+* Spot vulnerabilities in codes based on OWASP Top 10 Web Vulnerabilities, examples:
   <br />
   <img src="https://user-images.githubusercontent.com/43234101/170963911-ea337dff-d786-4bed-ad9d-8950429a08c0.png" width="800px" height = "500px" />  
   <img src="https://user-images.githubusercontent.com/43234101/170964121-31e62786-ba62-4210-8082-7284d45b312d.png"  width="800px" height = "500px" />
 
-* Reference [OWASP Code Review Guide](https://owasp.org/www-project-code-review-guide/assets/OWASP_Code_Review_Guide_v2.pdf)  
+* Referencing [OWASP Code Review Guide](https://owasp.org/www-project-code-review-guide/assets/OWASP_Code_Review_Guide_v2.pdf)  
 
 * Focus on High Risk Code Modules
   * Authentication
@@ -269,7 +269,7 @@ The following is a set of areas for reviews I will try to cover
 
 
 ### Authentication
-(as part of the Project Roadmap I want to include)  
+(as part of the Project Roadmap I plan to include)  
 
 Users would be able to sign-in with their Microsoft personal accounts (a.k.a Live account.
 Behind the scenes, I will be implementing OpenID Connect authn protocol on Portal and ApiServer.
@@ -278,8 +278,8 @@ Behind the scenes, I will be implementing OpenID Connect authn protocol on Porta
 * API authn-chain : if at that point when Food Truck Junkie has expanded to have other features which are implemented as microservices, and has the requirement to       for microservices to microservices API authentication, we will then be implementing Authorization Code Flow-On-Behalf Flow for API-to-API authentication chain         scenario.
   The concept is when an API (API-A) receive an access token from Portal, API-A uses the access token and with its ClientID/Secret, it exchange for another access       token Token-A. This Token-A will be pass on to API-B for authentication. Within Azure AD we will need to configure "Expose API" to add OAuth scopes for each           microservices. Then followed by configuring authorization in Azure AD - App - "API Permissions", specifiying which API scopes are allowed access to which               microservices.
   
-### Authorization
-(as part of the Project Roadmap I want to include)  
+### Authorization 
+(as part of the Project Roadmap I plan to include)  
  
 Many systems rely on Frontend to authorize (allow and deny) calls to Backend APIs, by hiding UI elements like buttons and menu items.  
 Within APIs, many of them today uses OAuth 2.0 to perform authorization.  
@@ -298,6 +298,7 @@ Hopefully with this generic authorization engine, many applications can take adv
 
 
 ### Azure Development Security Guidelines
+Based on my experience as an Azure practiioner and not limited to:  
 * Always use Azure Managed Identity (wherever supported) as the authentication mechanism when accessing Azure services
 * All Secrets, Asymmetric and Symmetric keys and x.509 Certifications should store in Azure Key Vault
 * Always use Private Endpoints whenever the service supports it
@@ -310,7 +311,7 @@ Hopefully with this generic authorization engine, many applications can take adv
   
 ### Security In DevOps Pipelines
  
- I plan to introduce security-related pipeline Tasks into our Build and Release pipelines as follows
+ I plan to introduce security-related pipeline Tasks into our Build and Release pipelines as follows (not limited to),
  * <b>Build Pipeline</b>
     * Credential Scanner - detects credentials and secrets
     * SonarQube Static Code Analysis - code smells, bugs and security vulnerabilities ([rules here](https://docs.sonarqube.org/latest/user-guide/security-rules/))
