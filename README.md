@@ -200,6 +200,8 @@ a work item will be created to further explore mitigations strategies such as:
 
 ### Security Unit Tests | SDLC - Development phase
 
+In addition to standard unit tests 
+
 ### Security While I Code | SDLC - Development phase
 
 * Secure coding practices - we follow these [secure coding practice checklists](https://owasp.org/www-pdf-archive/OWASP_SCP_Quick_Reference_Guide_v2.pdf) while we       code, some examples can be:  
