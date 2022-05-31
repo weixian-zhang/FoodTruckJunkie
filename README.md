@@ -157,8 +157,8 @@ The following describes the AppSec practices I plan to execute in different SDLC
 
 ### AppSec Training & Awareness | SDLC - Planning phase
 
-I am motivated to learn secure coding techniques, hoping to experience more real-life examples of vulnerabilities in code.   
-I devised a live study plan for me to stay focus in learning and dive deep in the following areas (not in learning order), which I believe is important to this AppSec journey.
+I devised a study plan for me to stay focus in learning and dive deep in the AppSec areas, which I believe is important in my AppSec journey.
+I hope to learn more secure coding techniques and be experience in spotting vulnerabilities in code through trainings below.
  * OWASP Top 10 current, past and [other](https://portswigger.net/web-security/all-materials) web vulnerabilities
  * Go through [Secure Code Warrior](https://portal.securecodewarrior.com/#/website-trial/web/injection/sql/c_sharp/web_forms) and/or similar gamified training programs
  * Train with [PicoCTF](https://picoctf.org/) cybersecurity challenges
