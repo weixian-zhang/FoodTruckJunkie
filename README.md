@@ -252,7 +252,7 @@ The following is a set of areas for reviews I will try to cover depending on the
   * Confidential and PII data used in App and how is it handled
   * Logging - log sensitive user info to log storage for audit
   * How is cryptography performed - in HSM or in App memory
-    * any insecure outdated cipher algorithms still in use
+    * any insecure outdated cipher still in use
   * Outdated dependencies
   * Developers' comments - may leak sensitive data and secrets
   * Infrastructure as Code like Terraform and Bicep misconfigurations - for example allowing Anonymous access in Storage, allow Internet connectivity in Inbound and       Outbound rules and etc
