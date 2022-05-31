@@ -146,6 +146,18 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 I strive to include security in each phase of the SDLC.   
 The following describes the software security practices I plan to follow throughout the SDLC.
 
+### AppSec Training & Awareness  
+
+I am motivated to learn secure coding techniques, hoping to experience more real-life examples of vulnerabilities in code.
+And I  believe having ethical hacking skill sets can add immense value to overall system defense and write better secure codes.    
+I devised a live study plan for me to stay focus in learning and dive deep in the following areas, which I believe is important to this AppSec journey of mine.
+ * OWASP Top 10 current, past and [other](https://portswigger.net/web-security/all-materials) web vulnerabilities
+ * Go through [Secure Code Warrior](https://portal.securecodewarrior.com/#/website-trial/web/injection/sql/c_sharp/web_forms) and/or similar gamified training programs
+ * Train with [PicoCTF](https://picoctf.org/) cybersecurity challenges
+ * Learn Ethical Hacking and explore Certified Ethical Hacker CEH v11
+ * Azure Security
+ * Train and be certified with CISSP  
+
 ### Threat Modelling
 
 Threat modelling is done after I have completed the [Azure architecture diagram](#container-diagram).  
@@ -163,28 +175,30 @@ a work item will be created to further explore mitigations strategies such as:
   * Re-architect - another option could be to re-architect the design to use services that can be deployed in VNet.  
     Example App Service Environment, Integrated Service Environment
   * Adopt industrial security benchmarks to harden Azure environment for example Azure CIS  
-
-### AppSec Training  
-
-I am motivated to learn secure coding techniques, hoping to experience more real-life examples of vulnerabilities in code.
-And I  believe having ethical hacking skill sets can add immense value to overall system defense and write better secure codes.    
-I devised a live study plan for me to stay focus in learning and dive deep in the following areas, which I believe is important to this AppSec journey of mine.
- * OWASP Top 10 current, past and [other](https://portswigger.net/web-security/all-materials) web vulnerabilities
- * Go through [Secure Code Warrior](https://portal.securecodewarrior.com/#/website-trial/web/injection/sql/c_sharp/web_forms) and/or similar gamified training programs
- * Train with [PicoCTF](https://picoctf.org/) cybersecurity challenges
- * Learn Ethical Hacking and explore Certified Ethical Hacker CEH v11
- * Azure Security
- * Train and be certified with CISSP 
+  * 
 
 ### Define Security Requirements  
 
 Similar to defining business/functional requirements and non-functional requirements, by explicitly defining and documenting security requirements as User Stories,  
-software delivery team can ensure that security controls pertaining to the User Stories can be unambiguously built into the systems.
-Security requirements can be gather from various sources firstly, from deriving from business requirements for example:  
-the system has an Admin module can a feature in Admin module, requires 2 admins to approve before a transaction can continue.  
-This 2-Admin Approval is a security requirement derived from business requirement.  
-Other methods of gather security requirements can largly be from organization's security standard and industry standards and compliances like for example:  
-PCI compliance states not to save CVV and Expiry Date, this clause can be made into a User Story so that developer can ensure that CVV and Expiry Date are not store in Databse and Logs
+software delivery team can ensure that security controls can be unambiguously built into the systems, according to User Stories.
+Security requirements can be gather from these 3 sources, most importantly these 2 security requirement sources can be repeatedly applied to every future projects.  
+
+ * Derive from business requirements for example: A system has a requirement that needs 2 admins to approve before a transaction can continue.  
+   This 2-Admin Approval is a security requirement derived from business requirement.  
+   
+ * Derive from "applicable" guidline line items from [OWASP Application Security Verification Standard](https://owasp.org/www-project-application-security-                verification-standard)  
+   Applicable means to include relevant guidelines for instance guideline item: "File upload - app should not accept large files larger than storage can hold, causing    a denial of service". If the system does not have any requirement about upload files, then this guideline item is not applicable as a security requirement.  
+   Example of security requirements from OWASP Application Security Verification Standard:  
+   * As a user, I should be able to view and edit my profile. I should not be able to view or edit anyone else's profile
+   * As a user, I should be able to signin to the system using my user name and password, with a password complexity of 12 alphanumeric characters with any one             alphabetic character capitalize
+   * As a developer, I should store all secrets, symmetric and asymmetric public/private keys and certificates in Azure App Configuration or Azure Key Vault.  
+     I should not store them anywhere else  
+     
+ * Turn security requirements into an Abuse case and act like an attacker. For example:  
+   * As a attacker, I want to add massive amount of items in shopping, checkout but not proceed to payment. So that I can reserve stocks by not buying anything,            causing the system to be in low-stock conditions
+   * As an attacker, I want to repeatedly hit the system's API with the same or random inputs and have the API return successful responses.  So that I want cause a          Denial of Wallet if the API is running on cloud-based serverless platform
+   
+   
 In order to make secuirty requirements gathering
 Quality of Security Requirements
 * Is this testable? Can we test this requirement in the final application? “Be secure” is not a testable requirement. “Encode all user-supplied output” is.
