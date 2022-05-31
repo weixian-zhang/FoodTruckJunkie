@@ -143,7 +143,8 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 
 ## AppSec - Security In SDLC
 
-The following describes the AppSec practices I plan to execute in different SDLC phases. From my AppSec exploration and studies, I have came up with a simple table that describes my AppSec practices for each SDLC phase. These sections are constantly updated as my studies progess.
+From my AppSec exploration and studies, I have came up with the following sections that describe the AppSec practices I plan to execute for each SDLC phase.  
+These sections are constantly updated as my studies progess.
 
 | SDLC | AppSec Practices |
 |----------|----------|
@@ -157,7 +158,7 @@ The following describes the AppSec practices I plan to execute in different SDLC
 
 ### AppSec Training & Awareness | SDLC - Planning phase
 
-I devised a study plan for me to stay focus in learning and dive deep in the AppSec areas, which I believe is important in my AppSec journey.
+I devised a study plan for me to stay focus in learning and dive deep into the AppSec areas I believe is important in my AppSec journey.
 I hope to learn more secure coding techniques and be experience in spotting vulnerabilities in code through trainings below.
  * OWASP Top 10 current, past and [other](https://portswigger.net/web-security/all-materials) web vulnerabilities
  * Go through [Secure Code Warrior](https://portal.securecodewarrior.com/#/website-trial/web/injection/sql/c_sharp/web_forms) or similar gamified training programs
@@ -172,20 +173,20 @@ I hope to learn more secure coding techniques and be experience in spotting vuln
 Similar to defining business/functional requirements and non-functional requirements, by explicitly defining and documenting security requirements as User Stories, software delivery team can ensure that security controls can be unambiguously built into the systems, just like any other functional requirements.  
 Security requirements can be gather from generally 3 sources in my studies, but most importantly these security requirement gathering sources can be repeatedly applied to future projects.   
 
- * Derive from business requirements for example: A system has a requirement that needs 2 admins to approve before a transaction can continue.  
+ * Derive from business requirements - for example a system has a requirement that needs 2 admins to approve before a transaction can continue.  
    This 2-Admin Approval is a security requirement derived from business requirement.  
    
- * Derive from "applicable" guidline line items from [OWASP Application Security Verification Standard](https://owasp.org/www-project-application-security-verification-standard).  
-   Applicable means to include relevant guidelines for instance guideline item: "File upload - app should not accept large files larger than storage can hold, causing    a denial of service". If the system does not have any requirement about upload files, then this guideline item is not applicable as a security requirement.  
-   Example of security requirements from OWASP Application Security Verification Standard:  
+ * Derive from "applicable" guidline line items from [OWASP Application Security Verification Standard](https://owasp.org/www-project-application-security-verification-standard) -  
+   Applicable means to include relevant guidelines for instance guideline item: "File upload - app should not accept large files larger than storage can hold, causing    a denial of service".  
+   If the system does not have any requirement on upload files then this guideline item is not applicable.  
+   Examples of security requirements from OWASP Application Security Verification Standard:  
    * As a user, I should be able to view and edit my profile. I should not be able to view or edit anyone else's profile
-   * As a user, I should be able to signin to the system using my user name and password, with a password complexity of 12 alphanumeric characters with any one             alphabetic character capitalize
-   * As a developer, I should store all secrets, symmetric and asymmetric public/private keys and certificates in Azure App Configuration or Azure Key Vault.  
-     I should not store them anywhere else  
+   * As a user, I should be able to signin to the system using my user name and password, with a password complexity of 12 alphanumeric characters with any one             of the word character being capitalized
+   * As a developer, I should store all secrets, symmetric and asymmetric public/private keys and certificates in Azure App Configuration or Azure Key Vault. I should not store them anywhere else  
      
- * Turn security requirements into an Abuse case and act like an attacker. For example:  
-   * As a attacker, I want to add massive amount of items in shopping, checkout but not proceed to payment. So that I can reserve stocks by not buying anything,            causing the system to be in low-stock conditions
-   * As an attacker, I want to repeatedly hit the system's API with the same or random inputs and have the API return successful responses.  So that I want cause a          Denial of Wallet if the API is running on cloud-based serverless platform
+ * Turn security requirements into an <ins>Abuse Case</ins> and act like an attacker -    
+   * As an attacker, I want to add massive amount of items in shopping cart and checkout without proceeding to payment, so that I can reserve stocks by not buying            anything, causing the system to be in low-stock conditions
+   * As an attacker, I want to repeatedly hit the system's API with the same or random inputs and have the API return successful responses, so that I can cause a          Denial of Wallet, when the API is running on a serverless platform
 
 ### Threat Modelling | SDLC - Design & Protoyping phase
 
