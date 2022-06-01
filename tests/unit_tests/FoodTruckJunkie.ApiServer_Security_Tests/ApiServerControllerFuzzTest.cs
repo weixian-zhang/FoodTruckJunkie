@@ -22,7 +22,8 @@ namespace FoodTruckJunkie.ApiServer_Security_Tests
                 .CreateLogger();
 
             var mockService = new Mock<IFoodTruckPermitService>();
-            mockService.Setup(x => x.SearchNearestFoodTrucks(It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<int>(), It.IsAny<int>()));
+            mockService
+                .Setup(x => x.SearchNearestFoodTrucks(It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<int>(), It.IsAny<int>()));
             
             var concreteMockService = mockService.Object;
                  
@@ -30,9 +31,14 @@ namespace FoodTruckJunkie.ApiServer_Security_Tests
 
             IActionResult result =  controller.SearchNearestFoodTrucks(latitude, logitude, distantMiles, noOfResults);
 
-            var okResult = result as OkObjectResult;
+            var okObjResult = result as OkObjectResult;
+            var badReqObjResult = result as BadRequestObjectResult;
 
-            Assert.True(okResult.StatusCode == 200);
+            if(okObjResult != null)
+                Assert.True(okObjResult.StatusCode == 200);
+
+            if(badReqObjResult != null)
+                Assert.True(badReqObjResult.StatusCode == 400);
             
         }
     }

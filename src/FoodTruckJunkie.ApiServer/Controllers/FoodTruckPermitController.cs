@@ -25,7 +25,7 @@ namespace FoodTruckJunkie.ApiServer.Controllers
         [MapToApiVersion("1.0")]
         public IActionResult SearchNearestFoodTrucks
             ([FromQuery] decimal latitude, decimal longitude, int distantMiles, int noOfResult )
-        {
+        {           
             string validationMessage = "";
             if(!IsLatitudeLongitudeValid(latitude, longitude, out validationMessage)) {
                 return BadRequest(validationMessage);

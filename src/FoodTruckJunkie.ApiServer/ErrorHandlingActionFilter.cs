@@ -4,6 +4,7 @@ using System;
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
+using System.Net.Http;
 
 namespace FoodTruckJunkie.ApiServer
 {
@@ -20,8 +21,9 @@ namespace FoodTruckJunkie.ApiServer
         {
             _logger.Error(context.Exception, context.Exception.ToString());
 
-            HandleExceptionAsync(context);
-            context.ExceptionHandled = true;
+            context.Result = new BadRequestObjectResult(new ObjectResult(context.Exception.Message));
+
+            base.OnException(context);
         }
 
         private static void HandleExceptionAsync(ExceptionContext context)

@@ -7,7 +7,8 @@ namespace FoodTruckJunkie.ApiServer.Controllers
     [ApiVersion("1.0")]
     public class MonitorController : ControllerBase
     {
-        [HttpGet("health")]
+        [HttpGet("health/{version:apiVersion}")]
+        [MapToApiVersion("1.0")]
         public JsonResult GetHealth()
         {
             dynamic result = new {
