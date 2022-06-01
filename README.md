@@ -258,8 +258,8 @@ a work item will be created to further explore mitigations strategies such as:
 
 ### Security Unit Tests | SDLC - Development Phase
 
-In additional to standard unit tests, security unit tests should also be written to cover security controls developed according to [Security Requirements](#define-security-requirements--sdlc---define-requirement-phase). Security unit tests should be written to <ins>bypass</ins> security controls.  
-I wrote a simple [Fuzzing Unit Test](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/tests/unit_tests/FoodTruckJunkie.ApiServer_Security_Tests/ApiServerControllerFuzzTest.cs) to test Web API operation that takes in 4 parameters. The unit test also extnds XUnit framework to load fuzz data from [SecList](https://github.com/danielmiessler/SecLists/blob/master/Fuzzing/6-digits-000000-999999.txt).  
+In additional to standard unit tests, security unit tests should also be written to cover security controls developed according to [Security Requirements](#define-security-requirements--sdlc---define-requirement-phase). Security unit tests should try to <ins>bypass</ins> security controls.  
+I wrote a simple [Fuzzing Unit Test](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/tests/unit_tests/FoodTruckJunkie.ApiServer_Security_Tests/ApiServerControllerFuzzTest.cs) to test a Web API operation that takes in 4 parameters. The unit test also extends XUnit framework to load fuzz data from [SecList](https://github.com/danielmiessler/SecLists/blob/master/Fuzzing/6-digits-000000-999999.txt).  
 <br />
 ![image](https://user-images.githubusercontent.com/43234101/171370425-a21ca1a6-8305-4cfb-bde2-3d46a3ed0e34.png)
 
