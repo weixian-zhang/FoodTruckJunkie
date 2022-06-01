@@ -39,7 +39,7 @@ Web App is fully hosted on Azure and consist of major components including
   * [Context Diagram](#context-diagram)
   * [Container Diagram](#container-diagram)
   * [Component Diagrams](#component-diagrams)
-* [AppSec - Security In SDLC](#appsec---security-in-sdlc)
+* [AppSec](#appsec)
 * [ApiServer Specifications](#api-server-specifications)
 * [Database Specifications](#database-specifications)
 * [Testings](#testings)
@@ -141,9 +141,30 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 <br />
 <br />  
 
-## AppSec - Security In SDLC
+## AppSec
 
-From my AppSec exploration and studies, I have came up with the following sections that describe the AppSec practices I plan to execute for each SDLC phase. These sections are constantly updated as my studies progess.
+
+### AppSec Hobby Projects  
+
+During this time of learning AppSec, I am inspired to build some hobby projects on fuzzing and authorization, the following projects are what I have in mind to start: 
+
+* Fuzzie - Fuzzie is a Visual Studio Code Extension that brings Web API fuzzing closest to where developers code, the IDE.  
+  Fuzzing can happen right within IDE without having to wait until Fuzzer task runs in DevOps pipeline, this can greatly reduce overall bug fix time.  
+  
+  For Fuzzie to know the API paths and parameters, I am thinking of a simple Yaml configuration that Fuzzie will read and process. VSCode Extension is just a shell to   execute the Fuzzie-Core module which is an independent module that can be reused anywhere in future, even in DevOps pipelines.  
+  
+  As for data, Fuzzie will download fuzz data from an Azure Storage I own so I have full control of the data, however, the data is sourced externally from sources like [Big ListOf Naughty Strings](https://github.com/minimaxir/big-list-of-naughty-strings) and [SecList](https://github.com/danielmiessler/SecLists).
+  
+* CanYou - A policy-based authorization policy call [CanYou](https://github.com/weixian-zhang/CanYou) that supports a hybrid of Role-Based Access Control and Attribute-Based Access Control. CanYou offers Web APIs as Backend and a Web Frontend for admins to setup and configure role, actions/features and role-feature mappings.  
+
+  CanYou plans to use [Open Policy Agent (OPA)](https://www.openpolicyagent.org/docs/latest/) as the backend policy engine, and users can express their authorization     policies using a domain-specific language call [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/). The Web Frontend also allows admins to write and   test their Rego policies, policies can include attributes like department, team, reporting manager and more, which is the vital data for Attribute-Based Access         Control.  
+  
+  CanYou assumes the systems handle authentication on their own, a good authn candidate can be a Token-based authentication where roles and attributes of users are       stored in claims or OIDC-ID tokens. Systems can call CanYou's APIs passing in these user attributes and the Rego policies are executed to make authorization Permit/Deny decisions.
+  Hopefully with this generic authorization engine, many applications can take advantage of it not not having to build their own, which is commonly the case.
+
+### AppSec Practices in SDLC  
+
+Through my recent AppSec exploration and studies, I have came up with the following sections that describe the AppSec practices I plan to execute for each SDLC phase. These sections are constantly updated as my studies progess.  
 
 | SDLC | AppSec Practices |
 |----------|----------|
@@ -222,7 +243,11 @@ a work item will be created to further explore mitigations strategies such as:
 
 ### Security Unit Tests | SDLC - Development phase
 
-In additional to standard unit tests, security unit tests should also be written to cover security controls developed according to [Security Requirements](#define-security-requirements--sdlc---define-requirement-phase). Security unit tests should be written to <ins>bypass</ins> security controls.
+In additional to standard unit tests, security unit tests should also be written to cover security controls developed according to [Security Requirements](#define-security-requirements--sdlc---define-requirement-phase). Security unit tests should be written to <ins>bypass</ins> security controls.  
+I wrote a simple Fuzz test as a security unit test to the FoddTruckJunkie API Controller class, fuzz data from [SecList](https://github.com/danielmiessler/SecLists/blob/master/Fuzzing/6-digits-000000-999999.txt).  
+![image](https://user-images.githubusercontent.com/43234101/171370425-a21ca1a6-8305-4cfb-bde2-3d46a3ed0e34.png)
+
+
 
 ### Secure Code Review  | SDLC - Development phase
 
@@ -236,9 +261,12 @@ The following is a set of areas for reviews I will try to cover depending on the
   
 * Spot vulnerabilities in codes based on OWASP Top 10 Web Vulnerabilities, examples:
   <br />
-  A mistake made on purpose to demostrate data exposure vulnerability, code can found here.  
+
+  A mistake made on purpose to demonstrate data exposure vulnerability, code can found here.   
   <img src="https://user-images.githubusercontent.com/43234101/171358368-a0228308-7c2d-4676-99b5-67cb7fb489c3.png" width="800px" height = "500px" />  
+  <br />
   <img src="https://user-images.githubusercontent.com/43234101/170963911-ea337dff-d786-4bed-ad9d-8950429a08c0.png" width="800px" height = "500px" />  
+  <br />
   <img src="https://user-images.githubusercontent.com/43234101/170964121-31e62786-ba62-4210-8082-7284d45b312d.png"  width="800px" height = "500px" />
 
 * Referencing [OWASP Code Review Guide](https://owasp.org/www-project-code-review-guide/assets/OWASP_Code_Review_Guide_v2.pdf)  
@@ -292,10 +320,7 @@ Furthermore, authorization module need to store every feature of the system as *
 I personally believe that OAuth can be the "first layer" of authorization, and with OAuth we can get a nice secured Access Token packed with user-specifc claims. 
 Claims can contains both roles and other attributes like department, job title and more. These are the perfect infomation setup to Role-Based and Attribute-Based Access Control, RBAC + ABAC.  
 
-For the "second layer " of authorization, which usually Dev teams tend to build their own for every project,  
-I am exploring to start a hobby project on such a hybrid policy-based authorization policy call [CanYou](https://github.com/weixian-zhang/CanYou).
-CanYou plans to use [Open Policy Agent (OPA)](https://www.openpolicyagent.org/docs/latest/) as the backend policy engine, and users can express their authorization policies using a domain-specific language call [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/), also created by the team who creates OPA.  
-Hopefully with this generic authorization engine, many applications can take advantage of it not not having to build their own, which is commonly the case.
+For the "second layer " of authorization, which usually Dev teams tend to build their own for every project, I am planning to implement CanYou.
 
 
 ### Azure Development Security Guidelines
