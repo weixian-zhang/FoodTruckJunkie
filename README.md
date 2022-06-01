@@ -40,6 +40,8 @@ Web App is fully hosted on Azure and consist of major components including
   * [Container Diagram](#container-diagram)
   * [Component Diagrams](#component-diagrams)
 * [AppSec](#appsec)
+   * [AppSec Hobby Projects](#appsec-hobby-projects)
+   * [AppSec Practices in SDLC](#appsec-practices-in-sdlc)
 * [ApiServer Specifications](#api-server-specifications)
 * [Database Specifications](#database-specifications)
 * [Testings](#testings)
@@ -160,7 +162,7 @@ During this time of learning AppSec, I am inspired to build some hobby projects 
   CanYou plans to use [Open Policy Agent (OPA)](https://www.openpolicyagent.org/docs/latest/) as the backend policy engine, and users can express their authorization     policies using a domain-specific language call [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/). The Web Frontend also allows admins to write and   test their Rego policies, policies can include attributes like department, team, reporting manager and more, which is the vital data for Attribute-Based Access         Control.  
   
   CanYou assumes the systems handle authentication on their own, a good authn candidate can be a Token-based authentication where roles and attributes of users are       stored in claims or OIDC-ID tokens. Systems can call CanYou's APIs passing in these user attributes and the Rego policies are executed to make authorization Permit/Deny decisions.
-  Hopefully with this generic authorization engine, many applications can take advantage of it not not having to build their own, which is commonly the case.
+  Hopefully with this generic authorization engine, many applications can take advantage of it and not having to build their own, which is commonly the case.
 
 ### AppSec Practices in SDLC  
 
