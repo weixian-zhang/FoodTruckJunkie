@@ -48,10 +48,11 @@ Web App is fully hosted on Azure and consist of major components including
    * [Secure Coding | SDLC - Development phase](#secure-coding--sdlc---development-phase)
    * [Security Unit Tests | SDLC - Development phase](#security-unit-tests--sdlc---development-phase)
    * [Secure Code Review | SDLC - Development phase](#secure-code-review--sdlc---development-phase)
+   * [DevSecOps | SDLC - Deployment](#devsecops--sdlc---deployment)
    * [Authentication](#authentication)
    * [Authorization](#authorization)
    * [AppSec Guidelines in Azure Software Development](#appsec-guidelines-in-azure-software-development)
-   * [Security In DevOps Pipelines](#security-in-devops-pipelines)
+   
 * [ApiServer Specifications](#api-server-specifications)
 * [Database Specifications](#database-specifications)
 * [Testings](#testings)
@@ -310,6 +311,22 @@ The following is a set of areas for reviews I will try to cover depending on the
   * PCI Data Security Standard - check if codes are storing CVV number or Expiry Dates to database  
 
 
+### DevSecOps | SDLC - Deployment
+ 
+ I plan to introduce security-related pipeline Tasks into our Build and Release pipelines as follows (not limited to),
+ * <b>Build Pipeline</b>
+    * Credential Scanner - detects credentials and secrets
+    * SonarQube Static Code Analysis - code smells, bugs and security vulnerabilities ([rules here](https://docs.sonarqube.org/latest/user-guide/security-rules/))
+    * WhiteSource Bolt - detects vulnerabilities in open source components and provides fixes and checks licensing
+    * OWasp Dependency Checks - detects publicly disclosed vulnerabilities contained within a project’s dependencies
+    * Anchore Image Scanner - For scanning Docker images for vulnerabilities, if any team member decides to containerize some sub-systems
+    * Run Unit Tests
+    
+ * <b>Release Pipeline</b>
+    * OWASP ZAP - integrated penetration testing tool to detect web vulnerabilities in web apps
+    * Fuzz Test - explore the introduction of Fuzzing with web fuzzers like [FFUS](https://github.com/ffuf/ffuf) or [OneFuzz](https://github.com/microsoft/onefuzz/blob/main/README.md)  
+
+
 
 ### Authentication
 (as part of the Project Roadmap I plan to include)  
@@ -348,21 +365,6 @@ Based on my experience as an Azure practiioner and not limited to:
   Although Application Insights is a App Performance Monitoring (APM) tool
    * the App Map feature could show if web app is contacting any suspicious external endpoints, detecting malware doing Commmand and Control to form backdoors and          executing data exfiltration
    * Application Insight logs could  further joined with other log types in Azure Sentinel for further investigation. Although I have not seen this in action, I think      this has potential.  
-  
-### Security In DevOps Pipelines
- 
- I plan to introduce security-related pipeline Tasks into our Build and Release pipelines as follows (not limited to),
- * <b>Build Pipeline</b>
-    * Credential Scanner - detects credentials and secrets
-    * SonarQube Static Code Analysis - code smells, bugs and security vulnerabilities ([rules here](https://docs.sonarqube.org/latest/user-guide/security-rules/))
-    * WhiteSource Bolt - detects vulnerabilities in open source components and provides fixes and checks licensing
-    * OWasp Dependency Checks - detects publicly disclosed vulnerabilities contained within a project’s dependencies
-    * Anchore Image Scanner - For scanning Docker images for vulnerabilities, if any team member decides to containerize some sub-systems
-    * Run Unit Tests
-    
- * <b>Release Pipeline</b>
-    * OWASP ZAP - integrated penetration testing tool to detect web vulnerabilities in web apps
-    * Fuzz Test - explore the introduction of Fuzzing with web fuzzers like [FFUS](https://github.com/ffuf/ffuf) or [OneFuzz](https://github.com/microsoft/onefuzz/blob/main/README.md)
      
 <br />
 <br />
