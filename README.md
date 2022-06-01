@@ -164,8 +164,8 @@ During this time of learning AppSec, I am inspired to start a couple of hobby pr
 * Fuzzie - Fuzzie is a Visual Studio Code Extension that brings Web API fuzzing closest to where developers code, the IDE.  
   Fuzzing can happen right within IDE without having to wait until Fuzzer task runs in DevOps pipeline, this can greatly reduce overall bug fix time.  
   
-  For Fuzzie to know the API paths and parameters, I am thinking of a main Yaml config file to allow developers to specify one or more "Fuzzing Profiles", and each       Fuzzing Profile contains OpenAPI definition file path/Url and other info like authentication methods.  
-  VSCode Extension is just a shell to execute the Fuzzie-Core module which is an independent module that can be reused anywhere in future, even in DevOps pipelines.  
+  For Fuzzie to know the API paths and parameters, I am thinking of VSCode Side Bar GUI to allow developers to specify one or more "Fuzzing Profiles", and each           Fuzzing Profile contains API Urls and/or OpenAPI definition file paths/Urls and other info like authentication methods.
+  Fuzzing Profiles ultimately gets save as a Yaml file where the Fuzzie-Core module, which is an independent module can take the Yaml config and run any where, even as   a DevOps Task. VSCode Extension is just a shell to execute Fuzzie-Core module.
   
   As for data, Fuzzie will download fuzz data from an Azure Storage I own so I have full control of the data, however, the data is sourced externally from sources like [Big List Of Naughty Strings](https://github.com/minimaxir/big-list-of-naughty-strings) and [SecList](https://github.com/danielmiessler/SecLists).
   
