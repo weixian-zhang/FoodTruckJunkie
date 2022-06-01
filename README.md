@@ -159,12 +159,13 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 
 ### AppSec Hobby Projects  
 
-During this time of learning AppSec, I am inspired to start a couple of hobby projects on fuzzing and authorization, the following projects are what I have in mind to start: 
+During this time of learning AppSec, I am inspired to start a couple of hobby projects on fuzzing and authorization, the following projects are what I have in mind at high level: 
 
 * Fuzzie - Fuzzie is a Visual Studio Code Extension that brings Web API fuzzing closest to where developers code, the IDE.  
   Fuzzing can happen right within IDE without having to wait until Fuzzer task runs in DevOps pipeline, this can greatly reduce overall bug fix time.  
   
-  For Fuzzie to know the API paths and parameters, I am thinking of a simple Yaml configuration that Fuzzie will read and process. VSCode Extension is just a shell to   execute the Fuzzie-Core module which is an independent module that can be reused anywhere in future, even in DevOps pipelines.  
+  For Fuzzie to know the API paths and parameters, I am thinking of a main Yaml config file to allow developers to specify one or more "Fuzzing Profiles", and each       Fuzzing Profile contains OpenAPI definition file path/Url and other info like authentication methods.  
+  VSCode Extension is just a shell to execute the Fuzzie-Core module which is an independent module that can be reused anywhere in future, even in DevOps pipelines.  
   
   As for data, Fuzzie will download fuzz data from an Azure Storage I own so I have full control of the data, however, the data is sourced externally from sources like [Big List Of Naughty Strings](https://github.com/minimaxir/big-list-of-naughty-strings) and [SecList](https://github.com/danielmiessler/SecLists).
   
