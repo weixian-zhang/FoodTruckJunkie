@@ -10,7 +10,7 @@ Quick test URLs below
 | ApiServer/Backend  | https://webapp-foodtruckjunkie-api.azurewebsites.net/api/1.0/searchfoodtrucks?latitude=37.78798865&longitude=-122.3961007&distantMiles=20&noOfResult=1  |
 | OpenAPI Portal | https://webapp-foodtruckjunkie-api.azurewebsites.net |
 | OpenAPI Json | https://webapp-foodtruckjunkie-api.azurewebsites.net/swagger/v1/swagger.json |
-| ApiServer Health endpoint | https://webapp-foodtruckjunkie-api.azurewebsites.net/health |  
+| ApiServer Health endpoint | https://webapp-foodtruckjunkie-api.azurewebsites.net/health/1.0 |  
 
 [![Food Truck Junkie](https://user-images.githubusercontent.com/43234101/170927395-5df23ba5-f36f-43f3-9c62-a86f92cf16f8.png)](https://webapp-foodtruckjunkie-portal.azurewebsites.net)
 
@@ -236,6 +236,8 @@ The following is a set of areas for reviews I will try to cover depending on the
   
 * Spot vulnerabilities in codes based on OWASP Top 10 Web Vulnerabilities, examples:
   <br />
+  A mistake made on purpose to demostrate data exposure vulnerability, code can found here.  
+  <img src="https://user-images.githubusercontent.com/43234101/171358368-a0228308-7c2d-4676-99b5-67cb7fb489c3.png" width="800px" height = "500px" />  
   <img src="https://user-images.githubusercontent.com/43234101/170963911-ea337dff-d786-4bed-ad9d-8950429a08c0.png" width="800px" height = "500px" />  
   <img src="https://user-images.githubusercontent.com/43234101/170964121-31e62786-ba62-4210-8082-7284d45b312d.png"  width="800px" height = "500px" />
 
@@ -339,7 +341,7 @@ ApiServer subsystem is an ASP.NET Core 3.1 web application which uses Json as th
 | Verbs | API Paths | QueryStrings | Description | Status Code | Data Returned | 
 | ------------- | ------------- | ------------- | ------------- | ------------- |  ------------- |
 | GET | /api/<b>1.0</b>/searchfoodtrucks | latitude={decimal}&longitude={decimal}&distantMiles={int}&noOfResult={int} | search food truck info by given {latitude} + {longitude} within {distantMiles} | 200, 400 | "applicant": {string}, "foodItems": {string}, "latitude": {decimal}, "longitude": {decimal}, "address": {string},   "locationDescription": {string} |
-| GET | /health |  | health status and monitoring information | 200 | |
+| GET | /health/1.0 |  | health status and monitoring information | 200 | |
 | GET | / |  | OpenAPI/Swagger UI | 200 | |
 | GET | /swagger/v1/swagger.json | | OpenAPI/Swagger Json | 200 | |
 
