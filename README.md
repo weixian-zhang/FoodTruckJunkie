@@ -277,9 +277,10 @@ The following is a set of areas for reviews I will try to cover depending on the
 * Spot vulnerabilities in codes based on OWASP Top 10 Web Vulnerabilities, examples:
   <br />
 
-  A mistake made on purpose to demonstrate data exposure vulnerability, code can found here.   
+  A mistake made on purpose to demonstrate data exposure vulnerability, code can found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/src/FoodTruckJunkie.ApiServer/ErrorHandlingActionFilter.cs).   
   <img src="https://user-images.githubusercontent.com/43234101/171358368-a0228308-7c2d-4676-99b5-67cb7fb489c3.png" width="800px" height = "500px" />  
   <br />
+  Examples of vulnerabilities I attempted to find from some random codes online  
   <img src="https://user-images.githubusercontent.com/43234101/170963911-ea337dff-d786-4bed-ad9d-8950429a08c0.png" width="800px" height = "500px" />  
   <br />
   <img src="https://user-images.githubusercontent.com/43234101/170964121-31e62786-ba62-4210-8082-7284d45b312d.png"  width="800px" height = "500px" />
