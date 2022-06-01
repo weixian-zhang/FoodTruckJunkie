@@ -42,13 +42,13 @@ Web App is fully hosted on Azure and consist of major components including
 * [AppSec](#appsec)
    * [AppSec Hobby Projects](#appsec-hobby-projects)
    * [AppSec Practices in SDLC](#appsec-practices-in-sdlc)
-   * [AppSec Training & Awareness | SDLC - Planning phase](#appsec-training--awareness--sdlc---planning-phase)
-   * [Define Security Requirements | SDLC - Define Requirement phase](#define-security-requirements--sdlc---define-requirement-phase)
-   * [Threat Modelling | SDLC - Design & Protoyping phase](#threat-modelling--sdlc---design--protoyping-phase)
-   * [Secure Coding | SDLC - Development phase](#secure-coding--sdlc---development-phase)
-   * [Security Unit Tests | SDLC - Development phase](#security-unit-tests--sdlc---development-phase)
-   * [Secure Code Review | SDLC - Development phase](#secure-code-review--sdlc---development-phase)
-   * [DevSecOps | SDLC - Deployment](#devsecops--sdlc---deployment)
+   * [AppSec Training & Awareness | SDLC - Planning Phase](#appsec-training--awareness--sdlc---planning-phase)
+   * [Define Security Requirements | SDLC - Define Requirement Phase](#define-security-requirements--sdlc---define-requirement-phase)
+   * [Threat Modelling | SDLC - Design & Protoyping Phase](#threat-modelling--sdlc---design--protoyping-phase)
+   * [Secure Coding | SDLC - Development Phase](#secure-coding--sdlc---development-phase)
+   * [Security Unit Tests | SDLC - Development Phase](#security-unit-tests--sdlc---development-phase)
+   * [Secure Code Review | SDLC - Development Phase](#secure-code-review--sdlc---development-phase)
+   * [DevSecOps | SDLC - Deployment Phase](#devsecops--sdlc---deployment-phase)
    * [Authentication](#authentication)
    * [Authorization](#authorization)
    * [AppSec Guidelines in Azure Software Development](#appsec-guidelines-in-azure-software-development)
@@ -191,7 +191,7 @@ Through my recent AppSec exploration and studies, I have came up with the follow
 | Deployment | DevSecOps |
 
 
-### AppSec Training & Awareness | SDLC - Planning phase
+### AppSec Training & Awareness | SDLC - Planning Phase
 
 I devised a study plan for me to stay focus in learning and dive deep into the AppSec areas I believe is important in my AppSec journey.
 I hope to learn more secure coding techniques and be experience in spotting vulnerabilities in code through trainings below.
@@ -203,7 +203,7 @@ I hope to learn more secure coding techniques and be experience in spotting vuln
  * Azure Security
  * Get CISSP certification    
 
-### Define Security Requirements | SDLC - Define Requirement phase
+### Define Security Requirements | SDLC - Define Requirement Phase
 
 Similar to defining business/functional requirements and non-functional requirements, by explicitly defining and documenting security requirements as User Stories, software delivery team can ensure that security controls can be unambiguously built into the systems, just like any other functional requirements.  
 Security requirements can be gather from generally 3 sources in my studies, but most importantly these security requirement gathering sources can be repeatedly applied to future projects.   
@@ -223,7 +223,7 @@ Security requirements can be gather from generally 3 sources in my studies, but 
    * As an attacker, I want to add massive amount of items in shopping cart and checkout without proceeding to payment, so that I can reserve stocks by not buying            anything, causing the system to be in low-stock conditions
    * As an attacker, I want to repeatedly hit the system's API with the same or random inputs and have the API return successful responses, so that I can cause a          Denial of Wallet, when the API is running on a serverless platform
 
-### Threat Modelling | SDLC - Design & Protoyping phase
+### Threat Modelling | SDLC - Design & Protoyping Phase
 
 Threat modelling is done after I have completed the [Azure architecture diagram](#container-diagram).  
 Threat model designer file can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ThreatModel-FoodTruckJunkie.tm7) and the exported       Report can be found [here](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/docs/ThreatMode-Report-FoodTruckJunkie%20WebApp.htm).  
@@ -241,7 +241,7 @@ a work item will be created to further explore mitigations strategies such as:
     Example App Service Environment, Integrated Service Environment
   * Adopt industrial security benchmarks to harden Azure environment for example Azure CIS  
 
-### Secure Coding | SDLC - Development phase
+### Secure Coding | SDLC - Development Phase
 
 * Secure coding practices - I plan to familiarize with [secure coding practice checklists](https://owasp.org/www-pdf-archive/OWASP_SCP_Quick_Reference_Guide_v2.pdf)     and follow the guidelines as I write software, some examples include:    
   * do not disclose sensitive info in error message
@@ -256,7 +256,7 @@ a work item will be created to further explore mitigations strategies such as:
 * Install DevSkim VSCode extension - DevSkim provides inline security assessment while writing codes on the fly, rectify any security assessment prompted by DevSkim
 * Unit Testing - Aim for at least 90% of code coverage when writing unit test cases. Unut tests should also cover non-happy flows  
 
-### Security Unit Tests | SDLC - Development phase
+### Security Unit Tests | SDLC - Development Phase
 
 In additional to standard unit tests, security unit tests should also be written to cover security controls developed according to [Security Requirements](#define-security-requirements--sdlc---define-requirement-phase). Security unit tests should be written to <ins>bypass</ins> security controls.  
 I wrote a simple [Fuzzing Unit Test](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/tests/unit_tests/FoodTruckJunkie.ApiServer_Security_Tests/ApiServerControllerFuzzTest.cs) to test Web API operation that takes in 4 parameters. The unit test also extnds XUnit framework to load fuzz data from [SecList](https://github.com/danielmiessler/SecLists/blob/master/Fuzzing/6-digits-000000-999999.txt).  
@@ -264,7 +264,7 @@ I wrote a simple [Fuzzing Unit Test](https://github.com/weixian-zhang/FoodTruckJ
 ![image](https://user-images.githubusercontent.com/43234101/171370425-a21ca1a6-8305-4cfb-bde2-3d46a3ed0e34.png)
 
 
-### Secure Code Review | SDLC - Development phase
+### Secure Code Review | SDLC - Development Phase
 
 This is an important step to finding security flaws in codes and is an enhancment to standard code reviews by focusing on high risk code modules, company's security standards and industrial security compliances.  
 The following is a set of areas for reviews I will try to cover depending on the amount of time spent in review.  
@@ -311,7 +311,7 @@ The following is a set of areas for reviews I will try to cover depending on the
   * PCI Data Security Standard - check if codes are storing CVV number or Expiry Dates to database  
 
 
-### DevSecOps | SDLC - Deployment
+### DevSecOps | SDLC - Deployment Phase
  
  I plan to introduce security-related pipeline Tasks into our Build and Release pipelines as follows (not limited to),
  * <b>Build Pipeline</b>
