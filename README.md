@@ -50,7 +50,8 @@ Web App is fully hosted on Azure and consist of major components including
    * [Secure Code Review | SDLC - Development phase](#secure-code-review--sdlc---development-phase)
    * [Authentication](#authentication)
    * [Authorization](#authorization)
-   * [Azure Development Security Guidelines](#azure-development-security-guidelines)
+   * [AppSec Guidelines in Azure Software Development](#appsec-guidelines-in-azure-software-development)
+   * [Security In DevOps Pipelines](#security-in-devops-pipelines)
 * [ApiServer Specifications](#api-server-specifications)
 * [Database Specifications](#database-specifications)
 * [Testings](#testings)
@@ -334,7 +335,7 @@ Claims can contains both roles and other attributes like department, job title a
 For the "second layer " of authorization, I am planning to implement [CanYou](#appsec-hobby-projects).
 
 
-### Azure Development Security Guidelines
+### AppSec Guidelines in Azure Software Development
 Based on my experience as an Azure practiioner and not limited to:  
 * Always use Azure Managed Identity (wherever supported) as the authentication mechanism when accessing Azure services
 * All Secrets, Asymmetric and Symmetric keys and x.509 Certifications should store in Azure Key Vault
