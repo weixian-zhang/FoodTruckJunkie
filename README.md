@@ -158,21 +158,23 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 
 ### AppSec Hobby Projects  
 
-During this time of learning AppSec, I am inspired to build some hobby projects on fuzzing and authorization, the following projects are what I have in mind to start: 
+During this time of learning AppSec, I am inspired to start a couple of hobby projects on fuzzing and authorization, the following projects are what I have in mind to start: 
 
 * Fuzzie - Fuzzie is a Visual Studio Code Extension that brings Web API fuzzing closest to where developers code, the IDE.  
   Fuzzing can happen right within IDE without having to wait until Fuzzer task runs in DevOps pipeline, this can greatly reduce overall bug fix time.  
   
   For Fuzzie to know the API paths and parameters, I am thinking of a simple Yaml configuration that Fuzzie will read and process. VSCode Extension is just a shell to   execute the Fuzzie-Core module which is an independent module that can be reused anywhere in future, even in DevOps pipelines.  
   
-  As for data, Fuzzie will download fuzz data from an Azure Storage I own so I have full control of the data, however, the data is sourced externally from sources like [Big ListOf Naughty Strings](https://github.com/minimaxir/big-list-of-naughty-strings) and [SecList](https://github.com/danielmiessler/SecLists).
+  As for data, Fuzzie will download fuzz data from an Azure Storage I own so I have full control of the data, however, the data is sourced externally from sources like [Big List Of Naughty Strings](https://github.com/minimaxir/big-list-of-naughty-strings) and [SecList](https://github.com/danielmiessler/SecLists).
   
-* CanYou - A policy-based authorization policy call [CanYou](https://github.com/weixian-zhang/CanYou) that supports a hybrid of Role-Based Access Control and Attribute-Based Access Control. CanYou offers Web APIs as Backend and a Web Frontend for admins to setup and configure role, actions/features and role-feature mappings.  
+* CanYou - A policy-based authorization engine that supports a hybrid of Role-Based Access Control and Attribute-Based Access Control design and offers
+  * REST APIs as Backend 
+  * a Web Frontend for admins to setup and configure role, actions/features and role-feature mappings
 
   CanYou plans to use [Open Policy Agent (OPA)](https://www.openpolicyagent.org/docs/latest/) as the backend policy engine, and users can express their authorization     policies using a domain-specific language call [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/). The Web Frontend also allows admins to write and   test their Rego policies, policies can include attributes like department, team, reporting manager and more, which is the vital data for Attribute-Based Access         Control.  
   
-  CanYou assumes the systems handle authentication on their own, a good authn candidate can be a Token-based authentication where roles and attributes of users are       stored in claims or OIDC-ID tokens. Systems can call CanYou's APIs passing in these user attributes and the Rego policies are executed to make authorization Permit/Deny decisions.
-  Hopefully with this generic authorization engine, many applications can take advantage of it and not having to build their own, which is commonly the case.
+  CanYou assumes the systems handle authentication on their own, a good authn candidate can be a Token-based authentication where roles and attributes of users are       stored in claims or OIDC-ID tokens. Systems can pass these user attributes to call CanYou API, and Rego policies are executed to make authorization Permit/Deny         decisions.
+  Hopefully, with this generic authorization engine, many applications can take advantage of it and not having to build their own, which is commonly the case.
 
 ### AppSec Practices in SDLC  
 
