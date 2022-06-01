@@ -45,6 +45,12 @@ Web App is fully hosted on Azure and consist of major components including
    * [AppSec Training & Awareness | SDLC - Planning phase](#appsec-training--awareness--sdlc---planning-phase)
    * [Define Security Requirements | SDLC - Define Requirement phase](#define-security-requirements--sdlc---define-requirement-phase)
    * [Threat Modelling | SDLC - Design & Protoyping phase](#threat-modelling--sdlc---design--protoyping-phase)
+   * [Secure Coding | SDLC - Development phase](#secure-coding--sdlc---development-phase)
+   * [Security Unit Tests | SDLC - Development phase](#security-unit-tests--sdlc---development-phase)
+   * [Secure Code Review | SDLC - Development phase](#secure-code-review--sdlc---development-phase)
+   * [Authentication](#authentication)
+   * [Authorization](#authorization)
+   * [Azure Development Security Guidelines](#azure-development-security-guidelines)
 * [ApiServer Specifications](#api-server-specifications)
 * [Database Specifications](#database-specifications)
 * [Testings](#testings)
@@ -254,7 +260,7 @@ I wrote a simple [Fuzzing Unit Test](https://github.com/weixian-zhang/FoodTruckJ
 ![image](https://user-images.githubusercontent.com/43234101/171370425-a21ca1a6-8305-4cfb-bde2-3d46a3ed0e34.png)
 
 
-### Secure Code Review  | SDLC - Development phase
+### Secure Code Review | SDLC - Development phase
 
 This is an important step to finding security flaws in codes and is an enhancment to standard code reviews by focusing on high risk code modules, company's security standards and industrial security compliances.  
 The following is a set of areas for reviews I will try to cover depending on the amount of time spent in review.  
@@ -323,9 +329,9 @@ In my opinion (purely my opinion), I feel its very difficult to configure an ent
 Furthermore, authorization module need to store every feature of the system as *action/operation* (UI element or URL paths) in order to process them with policies to derive the permission, hence, making authorization very intimate to the system, yet holds no domain functional value.  
 
 I personally believe that OAuth can be the "first layer" of authorization, and with OAuth we can get a nice secured Access Token packed with user-specifc claims. 
-Claims can contains both roles and other attributes like department, job title and more. These are the perfect infomation setup to Role-Based and Attribute-Based Access Control, RBAC + ABAC.  
+Claims can contains both roles and other attributes like department, job title and more. These are the perfect data setup to Role-Based and Attribute-Based Access Control, RBAC + ABAC.  
 
-For the "second layer " of authorization, which usually Dev teams tend to build their own for every project, I am planning to implement CanYou.
+For the "second layer " of authorization, I am planning to implement [CanYou](#appsec-hobby-projects).
 
 
 ### Azure Development Security Guidelines
