@@ -426,6 +426,7 @@ Scripts include:
 ## Logging & Monitoring  
 
 * All error events are log to MySQL and the reason is that I can easily query/full-text search for errors including date/time range, as compared to the very             inefficient way of logging to text files and having to eyeball and "Ctrl-F" to find errors
+
 * Application Insights is also enabled on the App Service hosting the API for App Performance Monitoring
   As an item for Project Roadmap, I can also include Application Insights SDK to enable tracking of dependencies to MySQL, Storage and even messaging sinks like         Service Bus and Event Hubs in future.
 
