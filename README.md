@@ -52,9 +52,9 @@ Web App is fully hosted on Azure and consist of major components including
    * [Authentication](#authentication)
    * [Authorization](#authorization)
    * [AppSec Guidelines in Azure Software Development](#appsec-guidelines-in-azure-software-development)
-   
 * [ApiServer Specifications](#api-server-specifications)
 * [Database Specifications](#database-specifications)
+* [Logging & Monitoring](#logging--monitoring)
 * [Testings](#testings)
 * [Development Challenges](#development-challenges)
 * [Project Roadmap - If I Have More Time](#project-roadmap---if-i-have-more-time)
@@ -325,7 +325,7 @@ The following is a set of areas for reviews I will try to cover depending on the
     * Run Unit Tests
     
  * <b>Release Pipeline</b>
-    * OWASP ZAP - integrated penetration testing tool to detect web vulnerabilities in web apps
+    * OWASP ZAP - integrated penetration testing tool to detect web vulnerabilities in our Web APIs
     * Fuzz Test - explore the introduction of Fuzzing with web fuzzers like [FFUS](https://github.com/ffuf/ffuf) or [OneFuzz](https://github.com/microsoft/onefuzz/blob/main/README.md)  
 
 
@@ -421,6 +421,15 @@ Scripts include:
 * stored procedure that uses the Haversine formula to calculate the distant between filtered food truck coordinates, against user's coordinates passed in as paramaters   from web portal.
 
 <br />
+<br />  
+
+## Logging & Monitoring  
+
+* All error events are log to MySQL and the reason is that I can easily query/full-text search for errors including date/time range, as compared to the very             inefficient way of logging to text files and having to eyeball and "Ctrl-F" to find errors
+* Application Insights is also enabled on the App Service hosting the API for App Performance Monitoring
+  As an item for Project Roadmap, I can also include Application Insights SDK to enable tracking of dependencies to MySQL, Storage and even messaging sinks like         Service Bus and Event Hubs in future.
+
+<br />
 <br />
 
 ## Testings
@@ -437,11 +446,11 @@ In our project roadmap, I plan to setup the following types of test:
   * ApiServer: using [Artillery](https://www.artillery.io/docs/guides/getting-started/core-concepts#test-definitions) to smoke test ApiServer by pre-configuring the       querystring parameters following a set of defined test cases.
 * Functional Tests - functional tests can also be automated using Selenium, Cypress or other similar tool. Functional test follows a set of wel-defined and               comprehensive test cases to go deep into testing functionalities, as compared to Smoke Test which aims for coverage to discover instability in new features.
 * Integration Tests - This test focus on cross app domain/network component testing. It can be manual or automated at the GUI layer to trigger calls to MySQL database.
-  If in future there are integrations with external systems and integration tests are to be conducted.  
-  Testing becomes more tricky as each dev team may need to wait for each other's integration endpoint to be ready before integration tests can occur.  
+  If in future there are integrations with external systems, testing becomes more tricky as each dev team may need to wait for each other's integration endpoint to be ready before integration tests can occur.  
   In this case we can explore using [Pact](https://docs.pact.io/), a consumer-driven integration test tool that mocks external endpoints by specifying a "contract".
   A contract makes up of Endpoint Url, input parameters and data types, and return data and data type. So as long as both parties follows the Api interface contract,     testing against a Mocked API that adheres to the contract is the same as testing against the real external API.
 * Load Tests - [Artillery](https://www.artillery.io/docs/guides/getting-started/core-concepts#test-definitions) can also be used for load testing by increasing the       number of "virtual-users"
+* DAST: Penetration Tests - as described in [DevSecOps](#devsecops--sdlc---deployment-phase) Release Pipeline contains OWASP ZAP Scanner to perform black-box testing     on Web API
 * Fuzz Test - As mentioned, we could explore Grammer-based Fuzzing to generate templatized inputs to Web APIs, to find bugs and security vulnerability.
 
 <br />
