@@ -399,6 +399,9 @@ ApiServer subsystem is an ASP.NET Core 3.1 web application which uses Json as th
   * Pick a date, could be 90 days, to 6 months or to a year
   * Inform API consumers of the deprecation
   * Monitor old API on API Gateway and reach out to each consumer to find out reason for late migration and support them
+
+* Assets can include Infra components, do discourage sharing the same Infra components like Firewall, Windows AD, DNS server and more across Prod and Non-Prod           environments.  
+  When sharing these components, any mistakes in security misconfigurations can cause Production Firewall routing rules to route production traffic to DevTest           environments. Or a DevTest domain name add as A-record to Production Private IP address.
   
 * In Food Truck Junkie API versioning implementation, the API versions are mapped to methods as shown below. With a new version API-2.0, it is just another method       within FoodTruckPermitController class, and not a separately deployed API system running on a different runtime. With this, old API versions enjoy the same             protection as the current API like WAF scans, Rate Limiting, Custom Rules, Authn and etc. Hence, not leaving behind any old API versions vulnerable and unprotected.
 
