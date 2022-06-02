@@ -197,12 +197,11 @@ Through my recent AppSec exploration and studies, I have came up with the follow
 I devised a study plan for me to stay focus in learning and dive deep into the AppSec areas I believe is important in my AppSec journey.
 I hope to learn more secure coding techniques and be experience in spotting vulnerabilities in code through trainings below.
  * OWASP Top 10 current, past and [other](https://portswigger.net/web-security/all-materials) web vulnerabilities
- * Go through [Secure Code Warrior](https://portal.securecodewarrior.com/#/website-trial/web/injection/sql/c_sharp/web_forms) or similar gamified training programs
+ * Train with [Secure Code Warrior](https://portal.securecodewarrior.com/#/website-trial/web/injection/sql/c_sharp/web_forms) or similar gamified training programs
  * Train using [PicoCTF](https://picoctf.org/) cybersecurity challenges
- * Learn Ethical Hacking and explore Certified Ethical Hacker CEH v11
- * AppSec training
+ * Explore and attain EC Council - Certified Application Security Engineer
  * Azure Security
- * Get CISSP certification    
+ * Explore Ethical Hacking   
 
 ### Define Security Requirements | SDLC - Define Requirement Phase
 
