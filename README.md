@@ -381,12 +381,28 @@ ApiServer subsystem is an ASP.NET Core 3.1 web application which uses Json as th
   * improve external developers' development experience, providing them a formal accurate API contract to develop against
   * to support better integration with external API Gateway products, they can easily import the OpenApi Json format as exposed as ""/swagger/v1/swagger.json
 
-| Verbs | API Paths | QueryStrings | Description | Status Code | Data Returned | 
-| ------------- | ------------- | ------------- | ------------- | ------------- |  ------------- |
-| GET | /api/<b>1.0</b>/searchfoodtrucks | latitude={decimal}&longitude={decimal}&distantMiles={int}&noOfResult={int} | search food truck info by given {latitude} + {longitude} within {distantMiles} | 200, 400 | "applicant": {string}, "foodItems": {string}, "latitude": {decimal}, "longitude": {decimal}, "address": {string},   "locationDescription": {string} |
-| GET | /health/1.0 |  | health status and monitoring information | 200 | |
-| GET | / |  | OpenAPI/Swagger UI | 200 | |
-| GET | /swagger/v1/swagger.json | | OpenAPI/Swagger Json | 200 | |
+| Verbs | Paths | QueryStrings | Description | Status Code | Data Return | Authn | Rate Limit | CORS |
+| ------------- | ------------- | ------------- | ------------- | ------------- |  ------------- |  ------------- |  ------------- |  ------------- |
+| GET | /api/<b>1.0</b>/searchfoodtrucks | <sub> latitude={decimal}&longitude={decimal}&distantMiles={int}&noOfResult={int} </sub> | <sub> search food truck info by given {latitude} + {longitude} within {distantMiles} </sub> | <sub>200 - OK, 400 - Bad Request</sub> | <sub>"applicant": {string}, "foodItems": {string}, "latitude": {decimal}, "longitude": {decimal}, "address": {string},   "locationDescription": {string} </sub> | <sub>Project Roadmap: OAUTH Authorization Code Flow</sub> | 70 calls/min | <sub>AllowedHeaders:*, AllowedMethods: GET, AllowedOrigins: https://localhost:5001, https://webapp-foodtruckjunkie-api.azurewebsites.net, MaxAgeSeconds: 3000 </sub> |
+| GET | /health/1.0 |  | <sub>health status and monitoring information</sub> | 200 | |  <sub>Project Roadmap: OAUTH Authorization Code Flow</sub> | 70 calls/min | <sub>AllowedHeaders:*, AllowedMethods: GET, AllowedOrigins: https://localhost:5001, https://webapp-foodtruckjunkie-api.azurewebsites.net, MaxAgeSeconds: 3000 </sub> |
+| GET | / |  | OpenAPI/Swagger UI | 200 | | <sub>Project Roadmap: OAUTH Authorization Code Flow</sub> | 70 calls/min | <sub>AllowedHeaders:*, AllowedMethods: GET, AllowedOrigins: https://localhost:5001, https://webapp-foodtruckjunkie-api.azurewebsites.net, MaxAgeSeconds: 3000 </sub> |
+| GET | /swagger/v1/swagger.json | | <sub> OpenAPI/Swagger Json | 200 </sub> | | <sub>Project Roadmap: OAUTH Authorization Code Flow</sub> | 70 calls/min | <sub>AllowedHeaders:*, AllowedMethods: GET, AllowedOrigins: https://localhost:5001, https://webapp-foodtruckjunkie-api.azurewebsites.net, MaxAgeSeconds: 3000 </sub> |
+<br />
+
+### Preventing OWASP Improper Asset Management
+
+* All APIs including previous versions will be clearly documented including Authn mechanisms, Rate Limit and CORS Policy. This is to prevent any old API versions get     left out and attacked without anyone knowing
+
+* API Retirement Plan - create a plan to safely and "quickly" decommision old API versions
+  * Monitor API Gateways to get a sense of traffic volume still going to old API
+  * Pick a date, could be 90 days, to 6 months or to a year
+  * Inform API consumers of the deprecation
+  * Monitor old API on API Gateway and reach out to each consumer to find out reason for late migration and support them
+  
+* In Food Truck Junkie API versioning implementation, the API versions are mapped to methods as shown below. With a new version API-2.0, it is just another method       within FoodTruckPermitController class, and not a separately deployed API system running on a different runtime. With this, old API versions enjoy the same             protection as the current API like WAF scans, Rate Limiting, Custom Rules, Authn and etc. Hence, not leaving behind any old API versions vulnerable and unprotected.
+
+  <img src="https://user-images.githubusercontent.com/43234101/171579530-62fd1a3d-7e60-4bfd-8517-32f1021b2c9c.png" width="900" height="600" /> 
+
 
 <br />
 <br />
