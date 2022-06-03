@@ -7,7 +7,7 @@ Quick test URLs below
 |  Components | URLs |
 | ------------- | ------------- |
 | Frontend - React Portal  | https://webapp-foodtruckjunkie-portal.azurewebsites.net  <br/><br/> |
-| Backend - ApiServer  | API: https://webapp-foodtruckjunkie-api.azurewebsites.net/api/1.0/searchfoodtrucks?latitude=37.78798865&longitude=-122.3961007&distantMiles=20&noOfResult=1 <br/><br/> OpenAPI Portal: https://webapp-foodtruckjunkie-api.azurewebsites.net  <br/><br/> OpenAPI Json: https://webapp-foodtruckjunkie-api.azurewebsites.net/swagger/v1/swagger.json <br/><br/> ApiServer Health endpoint: https://webapp-foodtruckjunkie-api.azurewebsites.net/health/1.0|  
+| Backend - ApiServer  | Search Food Truck by Proximity API: https://webapp-foodtruckjunkie-api.azurewebsites.net/api/1.0/searchfoodtrucks?latitude=37.78798865&longitude=-122.3961007&distantMiles=20&noOfResult=1 <br/><br/> Health API: https://webapp-foodtruckjunkie-api.azurewebsites.net/health/1.0 <br/><br/> OpenAPI Portal: https://webapp-foodtruckjunkie-api.azurewebsites.net  <br/><br/> OpenAPI Json: https://webapp-foodtruckjunkie-api.azurewebsites.net/swagger/v1/swagger.json |  
 
 [![Food Truck Junkie](https://user-images.githubusercontent.com/43234101/170927395-5df23ba5-f36f-43f3-9c62-a86f92cf16f8.png)](https://webapp-foodtruckjunkie-portal.azurewebsites.net)
 
