@@ -49,6 +49,7 @@ Web App is fully hosted on Azure and consist of major components including
    * [Security Unit Tests | SDLC - Development Phase](#security-unit-tests--sdlc---development-phase)
    * [Secure Code Review | SDLC - Development Phase](#secure-code-review--sdlc---development-phase)
    * [DevSecOps | SDLC - Deployment Phase](#devsecops--sdlc---deployment-phase)
+   * [Security Logging & Monitoring | SDLC - Operations & Maintenance Phase](#security-logging--monitoring--sdlc---operations--maintenance-phase)
    * [Authentication](#authentication)
    * [Authorization](#authorization)
    * [AppSec Guidelines in Azure Software Development](#appsec-guidelines-in-azure-software-development)
@@ -190,6 +191,7 @@ Through my recent AppSec exploration and studies, I have came up with the follow
 | Development | Security Unit Tests, Secure Coding and  Secure Code Review |
 | Testing | SAST, Vulnerability Scans, Peneration Tests and  Fuzz Tests |
 | Deployment | DevSecOps |
+| Operations & Maintenance | Security Logging & Monitoring |
 
 
 ### AppSec Training & Awareness | SDLC - Planning Phase
@@ -327,7 +329,24 @@ The following is a set of areas for reviews I will try to cover depending on the
     * OWASP ZAP - integrated penetration testing tool to detect web vulnerabilities in our Web APIs
     * Fuzz Test - explore the introduction of Fuzzing with web fuzzers like [FFUS](https://github.com/ffuf/ffuf) or [OneFuzz](https://github.com/microsoft/onefuzz/blob/main/README.md)  
 
+### Security Logging & Monitoring | SDLC - Operations & Maintenance Phase
 
+#### Security Logging  
+Security logging in AppSec context means developers intentionally log events happen at security control areas, in addition to standard App logging.
+In Azure, one of the design principal to logging is to log to stash all logs in Log Analytics. I can use a Serilog logging frameowrk extension like [Serilog.Sinks.AzureAnalytics](https://github.com/saleem-mirza/serilog-sinks-azure-analytics) to easily add Log Analytics as one of my log destination.
+
+I got to be careful not to over-log that makes monitoring difficult and storage exensive, yet not under-log which I may lose insights.  
+Implementing logging in code at security control areas at high-level includes:
+* Authentication - sign-in and sign-out successes and failures
+  * Access Token validation failures 
+* Authorization failures
+* Input validation failures
+* Critical transactions  
+
+#### Security Monitoring  
+SIEM like Azure Sentinel provides the best way to review VMs and PaaS services' collected logs, including custom logs from Security Logging, for suspicious or malicious activities,
+
+<br />
 
 ### Authentication
 (as part of the Project Roadmap I plan to include)  
