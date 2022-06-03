@@ -332,8 +332,8 @@ The following is a set of areas for reviews I will try to cover depending on the
 ### Security Logging & Monitoring | SDLC - Operations & Maintenance Phase
 
 #### Security Logging  
-Security logging in AppSec context means developers intentionally log events happen at security control areas, in addition to standard App logging.
-In Azure, one of the design principal to logging is to log to stash all logs in Log Analytics. I can use a Serilog logging frameowrk extension like [Serilog.Sinks.AzureAnalytics](https://github.com/saleem-mirza/serilog-sinks-azure-analytics) to easily add Log Analytics as one of my log destination.
+Security logging in AppSec context means developers intentionally log events happen in security controls, in addition to standard App logging.
+In Azure, one of the design principle to logging is to stash all logs in Log Analytics. I can use a .Net Serilog log frameowrk extension like [Serilog.Sinks.AzureAnalytics](https://github.com/saleem-mirza/serilog-sinks-azure-analytics) to easily add Log Analytics as one of my log destination.
 
 I got to be careful not to over-log that makes monitoring difficult and storage exensive, yet not under-log which I may lose insights.  
 Implementing logging in code at security control areas at high-level includes:
@@ -344,7 +344,7 @@ Implementing logging in code at security control areas at high-level includes:
 * Critical transactions  
 
 #### Security Monitoring  
-SIEM like Azure Sentinel provides the best way to review VMs and PaaS services' collected logs, including custom logs from Security Logging, for suspicious or malicious activities,
+SIEM like Azure Sentinel provides the best way to review VMs and PaaS services' collected logs, including custom logs from Security Logging for investigating suspicious or malicious activities.
 
 <br />
 
