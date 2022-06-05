@@ -5,6 +5,21 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "debug Cli",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/FoodTruckJunkie.Cli/main.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "BASE_API_URL": "https://localhost:5001/api/1.0/",
+                "env": "dev"
+            },
+            "args": [
+                "foodtrucks", "search", "37.78798865",  "122.78798865"
+            ]
+        },
+        {
             "name": "debug Api Server",
             "type": "coreclr",
             "request": "launch",
