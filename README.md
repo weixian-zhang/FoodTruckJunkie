@@ -7,7 +7,7 @@ Quick test URLs below
 |  Components | URLs |
 | ------------- | ------------- |
 | Frontend - React Portal  | https://webapp-foodtruckjunkie-portal.azurewebsites.net  <br/><br/> |
-| Frontend - Python Cli | command examples: <br /> python [main.py](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/src/FoodTruckJunkie.Cli/main.py) -h <br /> python [main.py](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/src/FoodTruckJunkie.Cli/main.py) foodtrucks search <br/>python [main.py](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/src/FoodTruckJunkie.Cli/main.py) foodtrucks search 37.79083842 -- -122.4012796 10 20 <br/><br/> |
+| Frontend - Python Cli | command examples: <br /> python [main.py](https://github.com/weixian-zhang/FoodTruckJunkie/blob/main/src/FoodTruckJunkie.Cli/main.py) -h <br /> python main.py foodtrucks search <br/>python main.py foodtrucks search 37.79083842 -- -122.4012796 10 20 <br /> python main.py health  <br/><br/> |
 | Backend - ApiServer  | Search Food Truck by Proximity API: https://webapp-foodtruckjunkie-api.azurewebsites.net/api/1.0/searchfoodtrucks?latitude=37.78798865&longitude=-122.3961007&distantMiles=20&noOfResult=1 <br/><br/> Health API: https://webapp-foodtruckjunkie-api.azurewebsites.net/health/1.0 <br/><br/> OpenAPI Portal: https://webapp-foodtruckjunkie-api.azurewebsites.net  <br/><br/> OpenAPI Json: https://webapp-foodtruckjunkie-api.azurewebsites.net/swagger/v1/swagger.json |  
 
 [![Food Truck Junkie](https://user-images.githubusercontent.com/43234101/170927395-5df23ba5-f36f-43f3-9c62-a86f92cf16f8.png)](https://webapp-foodtruckjunkie-portal.azurewebsites.net)
@@ -131,8 +131,11 @@ A big picture of how users use FoodTruckJunkie Web App
 
 * ApiServer is RESTful API hosted on multi-tenanted App Service.  
   In Project Roadmap, for security reasons, Azure FrontDoor WAF (see [project roadmap](#project-roadmap)) can be added in-front of ApiServer to allow FrontDoor WAF       capability to perform SSL Termination and Owasp web vulnerability scan, before routing scanned HTTP traffic to ApiServer. 
-* SPA-based Portal is hosted on a separate App Service. In future, Portal can be moved to Azure Static Web App to take advange of the built-in CDN capability.
-![image](https://user-images.githubusercontent.com/43234101/170195884-acccc7a8-ebd3-4248-8a6a-5d6a5ee24937.png)
+* SPA-based Portal is hosted on a separate App Service. In Project Roadmap, Portal can be moved to Azure Static Web App to take advange of the built-in CDN capability.
+* Python-based Cli app using [Typer](https://typer.tiangolo.com/) module to implement commands, sub-command and arguments
+
+![image](https://user-images.githubusercontent.com/43234101/172105124-0aa2ed07-4a16-42a0-9510-5199c8803b9c.png)
+
 
 [A Workbench diagram](https://www.azureworkbench.com/?id=jSjmXFhgHxBzFuBTUTap)
 
