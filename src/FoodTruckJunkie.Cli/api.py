@@ -2,6 +2,7 @@ import requests
 import os
 import json
 from rich.console import Console
+from utils import *
 
 class Api:
     
@@ -17,7 +18,7 @@ class Api:
         
         self.set_properties_by_env()
         
-    
+    @log_time
     def search_nearest_food_trucks(self, lat, long, distantMiles = 5, noOfResult = 5):
         
         try:
@@ -43,7 +44,8 @@ class Api:
         except Exception as ex:
             self.console.print(f'Error occured while searching nearest food trucks: {ex}', style='red')
             return []
-        
+    
+    @log_time
     def get_health(self):
         try:
             
