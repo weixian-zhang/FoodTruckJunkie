@@ -494,8 +494,11 @@ In our project roadmap, I plan to setup the following types of test:
   any text change causes map to grey-out.
   Found out that this bug is due to input textboxes are of string type while GoogleMap's "center" property accepts decimal only, which makes sense since they are         coordinates. This is solved by parsing string to float e.g: parseFloat(this.state.latitude)
   
-* [Python Typer Cli](https://typer.tiangolo.com/) module argument MUST NOT contain camel case or uppper case, all argument names have to be in lower case.  
-  <img src="https://user-images.githubusercontent.com/43234101/172089396-0fb0e879-76c7-49c8-b84d-df30b9d16043.png" width="800px" height="500px" />
+* [Python Typer Cli](https://typer.tiangolo.com/) command arguments MUST NOT contain camel case or uppper case, all argument names have to be in lower case.  
+ 
+   <img src="https://user-images.githubusercontent.com/43234101/172089396-0fb0e879-76c7-49c8-b84d-df30b9d16043.png" width="800px" height="500px" />  
+
+* Another challenge when developing the Python Cli is about packaging. Using Pyinstaller to package Cli into .exe for cmdline execution in Windows environment is         very slow. Any cmd for instance **ftj health** or **ftj foodtrucks search** (default argument values) can take up to 20-30 secs before result is returned. I plan to look       into how [AzCli](https://github.com/Azure/azure-cli) which is also a Python Cli app, can package as MSI installer and able to execute so efficiently on Windows. 
 
 
 
