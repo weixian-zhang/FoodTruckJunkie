@@ -42,7 +42,7 @@
         {
             "label": "build cli as exe",
             "type": "shell",
-            "command": "pyinstaller main.py -n ftj --onefile --windowed",
+            "command": "pyinstaller --name ftj -F main.py --hiddenimport=requests --hiddenimport=rich --hiddenimport=typer",
             "options": {
                 "cwd": "${workspaceFolder}/src/FoodTruckJunkie.Cli"
             }
