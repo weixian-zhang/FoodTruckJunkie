@@ -46,6 +46,14 @@
             "options": {
                 "cwd": "${workspaceFolder}/src/FoodTruckJunkie.Cli"
             }
+        },
+        {
+            "label": "unittest cli",
+            "type": "shell",
+            "command": "python -m unittest api_test.py",
+            "options": {
+                "cwd": "${workspaceFolder}/tests/unit_tests/FoodTruckJunkie.Cli_Tests"
+            }
         }
     ]
 }
