@@ -488,8 +488,12 @@ In our project roadmap, I plan to setup the following types of test:
   
 * Frontend - when binding GoogleMap javascript object's "center" property, to input textboxes of latitude and longitude over React-State,
   any text change causes map to grey-out.
-  Finally found out that this bug is due to input textboxes are of string type while GoogleMap's "center" property accepts decimal only, which makes perfect sense       since they are coordinates.  
-  This is solved by parsing string to float e.g: parseFloat(this.state.latitude)
+  Found out that this bug is due to input textboxes are of string type while GoogleMap's "center" property accepts decimal only, which makes sense since they are         coordinates. This is solved by parsing string to float e.g: parseFloat(this.state.latitude)
+  
+* [Python Typer Cli](https://typer.tiangolo.com/) module argument MUST NOT contain camel case or uppper case, all argument names have to be in lower case.  
+  <img src="https://user-images.githubusercontent.com/43234101/172089396-0fb0e879-76c7-49c8-b84d-df30b9d16043.png" width="800px" height="500px" />
+
+
 
 <br />
 <br />
