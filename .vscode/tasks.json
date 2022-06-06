@@ -39,5 +39,13 @@
                 "cwd": "${workspaceFolder}/src/FoodTruckJunkie.ApiServer"
             }
         },
+        {
+            "label": "build cli as exe",
+            "type": "shell",
+            "command": "pyinstaller main.py -n ftj --onefile --windowed",
+            "options": {
+                "cwd": "${workspaceFolder}/src/FoodTruckJunkie.Cli"
+            }
+        }
     ]
 }

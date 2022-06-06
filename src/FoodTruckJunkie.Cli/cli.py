@@ -1,33 +1,32 @@
+from rich.console import Console
 import typer
 from typing import Optional
 from api import Api
-import json
-import click
+from rich.console import Console
+from foodtrucks_commands import app as foodtrucks_app
 
-class FoodTruckJunkieCli:
-    
-    api = Api()
-    
-    api = Api()
-    
-    CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
+api = Api()
 
-    app = typer.Typer()
-
-    foodtrucks_app = typer.Typer()
-    app.add_typer(foodtrucks_app, name='foodtrucks')
-        
-
-    @foodtrucks_app.command("search")
-    def foodtrucks(lat: float, long: float, distantMiles: int = 5, noOfResults: int = 5):
-        
-        nearestFoodTrucks = FoodTruckJunkieCli.api.search_nearest_food_trucks(lat, long, distantMiles, noOfResults)
-        
-        jsonStr = json.dumps(nearestFoodTrucks, sort_keys=True, indent=4)
-        
-        typer.echo(jsonStr)
-       
+console = Console()
     
-    def run(self):
-        FoodTruckJunkieCli.app()
+CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
+
+app = typer.Typer(context_settings=CONTEXT_SETTINGS, add_completion=False)
+
+app.add_typer(foodtrucks_app, name='foodtrucks') #add sub commands for future additional of foodtruck related cmds like List, Get and etc
+
+@app.command()
+def health():
+    status = api.get_health()
+    
+    if status == 'alive':
+        console.print('ApiServer is alive!', style='green')
+    
+
+def run():
+    app()
+
+
+    
+    
        

@@ -12,11 +12,13 @@
             "console": "integratedTerminal",
             "justMyCode": true,
             "env": {
-                "BASE_API_URL": "https://localhost:5001/api/1.0/",
+                "BASE_API_URL": "https://localhost:5001/",
                 "env": "dev"
             },
             "args": [
-                "foodtrucks", "search", "37.78798865",  "122.78798865"
+                //"health"
+                //"foodtrucks", "search"
+                "foodtrucks", "search", "37.79083842", "--", "-122.4012796", "10", "20"
             ]
         },
         {

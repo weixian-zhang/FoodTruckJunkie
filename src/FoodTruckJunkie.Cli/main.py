@@ -1,8 +1,4 @@
-from cli import FoodTruckJunkieCli
-from api import Api
-from api import Api
-
-cli = FoodTruckJunkieCli()
+import cli
 
 if __name__ == '__main__':
    cli.run()
