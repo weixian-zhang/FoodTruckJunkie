@@ -65,8 +65,8 @@ Web App is fully hosted on Azure and consist of major components including
 
 ## System Deployment & Azure Resource Provisioning
 
-Azure is our hosting platform and PaaS services are preferred, over IaaS as much as possible to reduce any infra-related maintenance overhead.
-* Infra-as-Code (see [Project Roadmap]((#project-roadmap))) is the default way to deploy any Azure resource, we are open to any practical ways but the team mainly adopts Bicep, Terraform and/or PowerShell at times.
+Azure is my preferred hosting platform and PaaS sover IaaS as much as possible to reduce any infra-related maintenance overhead.
+* Infra-as-Code (see [Project Roadmap]((#project-roadmap))) is the default way to deploy any Azure resource, I am open to any other IAC scripting languages but Bicep and/or PowerShellare the ones I am familiar with at this point of time.
 * for apps and IAC scripts deployment, in Project Roadmap, DevSecOps (see [Security In Software Development](#security-in-software-development)) will be implemented using Azure DevOps Pipelines or GitHub Actions.  
   As for now we use [VSCode Azure Tools extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) for deployment.
 
@@ -83,7 +83,7 @@ Azure is our hosting platform and PaaS services are preferred, over IaaS as much
 
 ### Our Branching Strategy
 
-Our team practices GitFlow branching, any feature is a short-lived branch that you can clone from Dev.
+GitFlow branching is the strategy adopted in this project, any feature is a short-lived branch that you can clone from Dev.
 Once your great work is done, do a pull request and find any team mate for a second pair of eyes before merging into Dev.
 I like to work on bite-size feature, so it is important how the User Stories are broken down into "manageable-sized" Tasks and each Task should only do one thing.  
 >For example implementing a Search-FoodTruck-By-FoodType User Story, updating ApiServer, Service and Repository Layers can be one task. Updating Stored Proc to accept "FoodType" parameter can be another task, lastly updating Portal can be another. This User Story can be a branch.  
