@@ -202,9 +202,10 @@ I hope to learn more secure coding techniques and be experience in spotting vuln
  * OWASP Top 10 current, past and [other](https://portswigger.net/web-security/all-materials) web vulnerabilities
  * Train with [Secure Code Warrior](https://portal.securecodewarrior.com/#/website-trial/web/injection/sql/c_sharp/web_forms) or similar gamified training programs
  * Train using [PicoCTF](https://picoctf.org/) cybersecurity challenges
- * Explore and attain EC Council - Certified Application Security Engineer
+ * Explore and pursue EC-Council - [Certified Application Security Engineer](https://www.eccouncil.org/wp-content/uploads/2019/03/CASE-Dot-NET-Exam-Blueprint-v1.pdf)
+ * Explore and pursue [Certified Ethical Hacking](https://www.eccouncil.org/programs/certified-ethical-hacker-ceh/)
  * Azure Security
- * Explore Ethical Hacking   
+ 
 
 ### Define Security Requirements | SDLC - Define Requirement Phase
 
