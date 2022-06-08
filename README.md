@@ -161,7 +161,12 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 
 ### AppSec Hobby Projects  
 
-During this time of learning AppSec, I am inspired to start a couple of hobby projects on fuzzing and authorization, the following projects are what I have in mind at high level: 
+During this time of learning AppSec, I am inspired to start a couple of hobby projects on fuzzing and authorization, the following projects are what I have in mind at high level:  
+
+* AKVCrypter - A web app that is fully integrated with Key Vault and exposes Web APIs to perform common cryptographic operations on-behalf of other Apps.  
+  Apps can easily perform these complex operations by calling AKVCrypter's API without owning the complexity, at thesame time all shared secrets, keys and certs used     in operations are kept in Key Vault.  All authentication uses Azure Manaed Identity.  
+
+[![AKVCrypter](https://user-images.githubusercontent.com/43234101/172545758-5e3d46d6-fbbb-41f4-be30-bd67aa5ba9a6.png)](https://www.azureworkbench.com/?id=MBjJaOnTTKNjnkwXCnvV)
 
 * Fuzzie - Fuzzie is a Visual Studio Code Extension that brings Web API fuzzing closest to where developers code, the IDE.  
   Fuzzing can happen right within IDE without having to wait until Fuzzer task runs in DevOps pipeline, this can greatly reduce overall bug fix time.  
@@ -179,6 +184,10 @@ During this time of learning AppSec, I am inspired to start a couple of hobby pr
   
   CanYou assumes the systems handle authentication on their own, a good authn candidate can be a Token-based authentication where roles and attributes of users are       stored in claims or OIDC-ID tokens. Systems can pass these user attributes to call CanYou API, and Rego policies are executed to make authorization Permit/Deny         decisions.
   Hopefully, with this generic authorization engine, many applications can take advantage of it and not having to build their own, which is commonly the case.
+  
+
+
+
 
 ### AppSec Practices in SDLC  
 
