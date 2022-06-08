@@ -161,7 +161,7 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 
 ### AppSec Hobby Projects  
 
-During this time of learning AppSec, I am inspired to start a couple of hobby projects on fuzzing and authorization, the following projects are what I have in mind at high level:  
+During this time of learning AppSec, I am inspired to start some of hobby projects and the following projects are what I have in mind:  
 
 * AKVCrypter - A web app that is fully integrated with Key Vault and exposes Web APIs to perform common cryptographic operations on-behalf of other Apps.  
   Apps can easily perform these complex operations by calling AKVCrypter's API without owning the complexity, at thesame time all shared secrets, keys and certs used     in operations are kept in Key Vault.  All authentication uses Azure Manaed Identity.  
