@@ -125,7 +125,8 @@ The following [diagrams](https://github.com/weixian-zhang/FoodTruckJunkie/blob/m
 ### Context Diagram
 
 A big picture of how users use FoodTruckJunkie Web App  
-<img src="https://user-images.githubusercontent.com/43234101/170187803-b1a55b76-dda0-4ac9-9511-350539bfe478.png" width="250" height="500" />  
+<img src="https://user-images.githubusercontent.com/43234101/172609048-bd0a0410-32e6-4876-b83b-54160659bce4.png" width="250" height="500" />  
+
 
 ### Container Diagram
 
@@ -134,7 +135,7 @@ A big picture of how users use FoodTruckJunkie Web App
 * SPA-based Portal is hosted on a separate App Service. In Project Roadmap, Portal can be moved to Azure Static Web App to take advange of the built-in CDN capability.
 * Python-based Cli app using [Typer](https://typer.tiangolo.com/) module to implement commands, sub-command and arguments
 
-![image](https://user-images.githubusercontent.com/43234101/172105124-0aa2ed07-4a16-42a0-9510-5199c8803b9c.png)
+![image](https://user-images.githubusercontent.com/43234101/172607253-7f3d1229-433c-46e3-bd78-a6ff9963bb79.png)
 
 
 [A Workbench diagram](https://www.azureworkbench.com/?id=jSjmXFhgHxBzFuBTUTap)
@@ -161,7 +162,12 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 
 ### AppSec Hobby Projects  
 
-During this time of learning AppSec, I am inspired to start a couple of hobby projects on fuzzing and authorization, the following projects are what I have in mind at high level: 
+During this time of learning AppSec, I am inspired to start some of hobby projects and the following projects are what I have in mind:  
+
+* AKVCrypter - A web app that is fully integrated with Key Vault and exposes Web APIs to perform common cryptographic operations on-behalf of other Apps. Think of it like a Key Vault extension that handles your cryptographic needs.   
+  Apps can easily perform these complex operations by calling AKVCrypter's API without owning the complexity, at the same time all shared secrets, keys and certs used     in operations are kept in Key Vault.  Authentication between components uses Azure Managed Identity.  
+
+[![AKVCrypter](https://user-images.githubusercontent.com/43234101/172545758-5e3d46d6-fbbb-41f4-be30-bd67aa5ba9a6.png)](https://www.azureworkbench.com/?id=MBjJaOnTTKNjnkwXCnvV)
 
 * Fuzzie - Fuzzie is a Visual Studio Code Extension that brings Web API fuzzing closest to where developers code, the IDE.  
   Fuzzing can happen right within IDE without having to wait until Fuzzer task runs in DevOps pipeline, this can greatly reduce overall bug fix time.  
@@ -179,6 +185,10 @@ During this time of learning AppSec, I am inspired to start a couple of hobby pr
   
   CanYou assumes the systems handle authentication on their own, a good authn candidate can be a Token-based authentication where roles and attributes of users are       stored in claims or OIDC-ID tokens. Systems can pass these user attributes to call CanYou API, and Rego policies are executed to make authorization Permit/Deny         decisions.
   Hopefully, with this generic authorization engine, many applications can take advantage of it and not having to build their own, which is commonly the case.
+  
+
+
+
 
 ### AppSec Practices in SDLC  
 
@@ -198,13 +208,14 @@ Through my recent AppSec exploration and studies, I have came up with the follow
 ### AppSec Training & Awareness | SDLC - Planning Phase
 
 I devised a study plan for me to stay focus in learning and dive deep into the AppSec areas I believe is important in my AppSec journey.
-I hope to learn more secure coding techniques and be experience in spotting vulnerabilities in code through trainings below.
+I hope to learn more secure coding techniques and be experience in spotting vulnerabilities in code through trainings.
  * OWASP Top 10 current, past and [other](https://portswigger.net/web-security/all-materials) web vulnerabilities
  * Train with [Secure Code Warrior](https://portal.securecodewarrior.com/#/website-trial/web/injection/sql/c_sharp/web_forms) or similar gamified training programs
  * Train using [PicoCTF](https://picoctf.org/) cybersecurity challenges
- * Explore and attain EC Council - Certified Application Security Engineer
+ * Explore and pursue EC-Council - [Certified Application Security Engineer](https://www.eccouncil.org/wp-content/uploads/2019/03/CASE-Dot-NET-Exam-Blueprint-v1.pdf)
+ * Explore and pursue [Certified Ethical Hacking](https://www.eccouncil.org/programs/certified-ethical-hacker-ceh/)
  * Azure Security
- * Explore Ethical Hacking   
+ 
 
 ### Define Security Requirements | SDLC - Define Requirement Phase
 
