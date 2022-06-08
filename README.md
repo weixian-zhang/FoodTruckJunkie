@@ -163,8 +163,8 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 
 During this time of learning AppSec, I am inspired to start some of hobby projects and the following projects are what I have in mind:  
 
-* AKVCrypter - A web app that is fully integrated with Key Vault and exposes Web APIs to perform common cryptographic operations on-behalf of other Apps.  
-  Apps can easily perform these complex operations by calling AKVCrypter's API without owning the complexity, at the same time all shared secrets, keys and certs used     in operations are kept in Key Vault.  All authentications uses Azure Managed Identity.  
+* AKVCrypter - A web app that is fully integrated with Key Vault and exposes Web APIs to perform common cryptographic operations on-behalf of other Apps. Think of it like a Key Vault extension that handles your cryptographic needs.   
+  Apps can easily perform these complex operations by calling AKVCrypter's API without owning the complexity, at the same time all shared secrets, keys and certs used     in operations are kept in Key Vault.  Authentication between components uses Azure Managed Identity.  
 
 [![AKVCrypter](https://user-images.githubusercontent.com/43234101/172545758-5e3d46d6-fbbb-41f4-be30-bd67aa5ba9a6.png)](https://www.azureworkbench.com/?id=MBjJaOnTTKNjnkwXCnvV)
 
