@@ -134,7 +134,7 @@ A big picture of how users use FoodTruckJunkie Web App
 * SPA-based Portal is hosted on a separate App Service. In Project Roadmap, Portal can be moved to Azure Static Web App to take advange of the built-in CDN capability.
 * Python-based Cli app using [Typer](https://typer.tiangolo.com/) module to implement commands, sub-command and arguments
 
-![image](https://user-images.githubusercontent.com/43234101/172105124-0aa2ed07-4a16-42a0-9510-5199c8803b9c.png)
+![image](https://user-images.githubusercontent.com/43234101/172607253-7f3d1229-433c-46e3-bd78-a6ff9963bb79.png)
 
 
 [A Workbench diagram](https://www.azureworkbench.com/?id=jSjmXFhgHxBzFuBTUTap)
