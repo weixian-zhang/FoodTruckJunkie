@@ -255,23 +255,6 @@ class App extends Component {
     );
   }
 
-
-
-//   getUserCurrentLocation = () => {
-//     if (navigator.geolocation) {
-//         navigator.geolocation.getCurrentPosition(this.userCurrentLocationHandler);
-//       } 
-//   }
-
-//   userCurrentLocationHandler = (position) => {
-//     var lat = position.coords.latitude;
-//     var long = position.coords.longitude;
-
-//     this.setState({
-//       centerMap: {lat: parseFloat(lat), lng: parseFloat(long)}
-//     })
-//  }
-
 latitudeChanged = (event) => {
     this.setState({
         latitude: event.target.value,
@@ -307,7 +290,6 @@ noOfResultChanged = (event) => {
 }
 
 
-
 searchNearestFoodTrucks = () => {
     if( !this.state.latitude || !this.state.longitude ||
       !this.state.distantMiles || !this.state.noOfResult) {
@@ -340,18 +322,6 @@ searchNearestFoodTrucks = () => {
                 alert(error);
             });
   }
-
-  // setDefaultLatLongInputIfEmpty() {
-  //   if(!this.state.latitude) {
-  //     this.setState({latitude: this.state.defaultLatitude});
-  //     this.promptAlert(`Latitude is empty, default to ${this.state.defaultLatitude}`)
-  //   }
-
-  //   if(!this.state.longitude) {
-  //     this.setState({longitude: this.state.defaultLogitude});
-  //     this.promptAlert(`Latitude is empty, default to ${this.state.defaultLogitude}`)
-  //   }
-  // }
 
   hasMaliciousInputs() {
 

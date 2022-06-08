@@ -16,10 +16,7 @@ baseProjectPath = unittestProjectPath.parent.parent.parent
 cliProjectPathFromUnitTestRun = os.path.join(baseProjectPath, 'src', 'FoodTruckJunkie.Cli')
 sys.path.append(cliProjectPathFromUnitTestRun)
 
-from api import Api
-
 class ApiTest(TestCase):
-    
     
     @mock.patch('api.Api.get_health', return_value='alive')
     def test_apiserver_get_health(self, mock_get_health):    
