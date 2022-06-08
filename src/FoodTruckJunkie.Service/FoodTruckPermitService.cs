@@ -39,7 +39,7 @@ namespace FoodTruckJunkie.Service
             if(noOfResult < NoOfResultLowerLimit)
                 noOfResult = NoOfResultLowerLimit;
             else if (noOfResult > NoOfResultUpperLimit)
-                noOfResult = 50;
+                noOfResult = NoOfResultUpperLimit;
 
             return noOfResult;
         }

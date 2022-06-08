@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using FoodTruckJunkie.ApiServer.Controllers;
 using FoodTruckJunkie.Model;
+using FoodTruckJunkie.Repository;
 using FoodTruckJunkie.Service;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -32,16 +33,17 @@ namespace FoodTruckJunkie.ApiServer_Tests
         public void SearchNearestFoodTrucks_WithValidLatitudeLongitude_ReturnHttpOK
             (decimal latitude, decimal longitude, int distantMiles,  int noOfResult)
         {
-            var mockService = new Mock<IFoodTruckPermitService>();
-            mockService.Setup
-                (x => x.SearchNearestFoodTrucks(It.IsAny<decimal>(), It.IsAny<decimal>(), distantMiles, noOfResult))
-                .Returns(new NearestFoodTruckSearchResult(){
+            var mockRepoSetup = new Mock<IFoodTruckPermitRepository>();
+            mockRepoSetup.Setup(x => x.SearchNearestFoodTrucks(It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<int>(), It.IsAny<int>()))
+            .Returns(new NearestFoodTruckSearchResult(){
                     HasError = false,
                     NearestFoodTrucks = _nearestFoodTrucks,
                     HasNearestFoodTruck = true
                 });
 
-            IFoodTruckPermitService service = mockService.Object;
+            var mockRepo = mockRepoSetup.Object;
+
+            IFoodTruckPermitService service = new FoodTruckPermitService(_appconfig, mockRepo, _logger);
 
             var controller = new FoodTruckPermitController(service, _logger);
 
@@ -57,25 +59,28 @@ namespace FoodTruckJunkie.ApiServer_Tests
         [InlineData(-137.78795496, -192.3972365, 4 , 51)]
         [InlineData(91.78844616, -122.3925795, 5 , 10000)]
         [InlineData(-337.79215055, -122.394, 11 , 80)]
-        public void SearchNearestFoodTrucks_WithValidLatitudeLongitude_ReturnHttpForbid
+        public void SearchNearestFoodTrucks_WithInValidLatitudeLongitude_ReturnHttpForbid
             (decimal latitude, decimal longitude, int distantMiles,  int noOfResult)
         {
-            var mockService = new Mock<IFoodTruckPermitService>();
-            mockService.Setup
-                (x => x.SearchNearestFoodTrucks(It.IsAny<decimal>(), It.IsAny<decimal>(), distantMiles, noOfResult))
-                .Returns(new NearestFoodTruckSearchResult(){
+            var mockRepoSetup = new Mock<IFoodTruckPermitRepository>();
+            mockRepoSetup.Setup(x => x.SearchNearestFoodTrucks(It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<int>(), It.IsAny<int>()))
+            .Returns(new NearestFoodTruckSearchResult(){
                     HasError = false,
                     NearestFoodTrucks = _nearestFoodTrucks,
                     HasNearestFoodTruck = true
                 });
 
-            IFoodTruckPermitService service = mockService.Object;
+            var mockRepo = mockRepoSetup.Object;
+
+            IFoodTruckPermitService service = new FoodTruckPermitService(_appconfig, mockRepo, _logger);
 
             var controller = new FoodTruckPermitController(service, _logger);
 
             var result = controller.SearchNearestFoodTrucks(latitude, longitude, distantMiles,noOfResult);
 
-            Assert.IsType<ForbidResult>(result);
+            var badRequestResult =  result as BadRequestObjectResult;
+
+            Assert.Equal(badRequestResult.StatusCode, 400);
         }
 
         private void SetupNearestFoodTrucksData()
