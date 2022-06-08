@@ -43,7 +43,7 @@ namespace FoodTruckJunkie.ApiServer_Tests
 
             var mockRepo = mockRepoSetup.Object;
 
-            IFoodTruckPermitService service = new FoodTruckPermitService(_appconfig, mockRepo, _logger);
+            IFoodTruckPermitService service = new FoodTruckPermitService(mockRepo, _logger);
 
             var controller = new FoodTruckPermitController(service, _logger);
 
@@ -72,7 +72,7 @@ namespace FoodTruckJunkie.ApiServer_Tests
 
             var mockRepo = mockRepoSetup.Object;
 
-            IFoodTruckPermitService service = new FoodTruckPermitService(_appconfig, mockRepo, _logger);
+            IFoodTruckPermitService service = new FoodTruckPermitService( mockRepo, _logger);
 
             var controller = new FoodTruckPermitController(service, _logger);
 

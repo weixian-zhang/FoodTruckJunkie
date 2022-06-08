@@ -11,16 +11,14 @@ namespace FoodTruckJunkie.Service
     {
         private const int NoOfResultLowerLimit = 5;
         private const int NoOfResultUpperLimit = 50;
-        private const int ProximityMilesLowwerLimit = 1;
-        private const int ProximityMilesUpperLimit = 30;
+        private const int DistantMilesLowerLimit = 1;
+        private const int DistantMilesUpperLimit = 30;
 
         private IFoodTruckPermitRepository _permitRepo;
-        private AppConfig _appconfig;
         private ILogger _logger;
 
-        public FoodTruckPermitService(AppConfig appconfig, IFoodTruckPermitRepository permitRepo, ILogger logger)
+        public FoodTruckPermitService(IFoodTruckPermitRepository permitRepo, ILogger logger)
         {
-            _appconfig = appconfig;
             _permitRepo = permitRepo;    
             _logger = logger;
         }
@@ -28,7 +26,7 @@ namespace FoodTruckJunkie.Service
         public NearestFoodTruckSearchResult SearchNearestFoodTrucks
             (decimal lat, decimal longitude, int distantMiles, int noOfResult)
         {
-           distantMiles = LimitProximity(distantMiles);
+           distantMiles = LimitDistantMiles(distantMiles);
            noOfResult = LimitNoOfResult(noOfResult);
             
            var result = _permitRepo.SearchNearestFoodTrucks(lat, longitude, distantMiles, noOfResult);
@@ -44,11 +42,11 @@ namespace FoodTruckJunkie.Service
             return noOfResult;
         }
 
-        private int LimitProximity(int distantMiles) {
-            if(distantMiles < ProximityMilesLowwerLimit)
-                distantMiles = ProximityMilesLowwerLimit;
-            else if (distantMiles > ProximityMilesUpperLimit)
-                distantMiles = ProximityMilesUpperLimit;
+        private int LimitDistantMiles(int distantMiles) {
+            if(distantMiles < DistantMilesLowerLimit)
+                distantMiles = DistantMilesLowerLimit;
+            else if (distantMiles > DistantMilesUpperLimit)
+                distantMiles = DistantMilesUpperLimit;
 
             return distantMiles;
         }

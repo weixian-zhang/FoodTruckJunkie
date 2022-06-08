@@ -47,7 +47,7 @@ namespace FoodTruckJunkie.Service_Tests
 
             IFoodTruckPermitRepository repo = repoMock.Object;
 
-            IFoodTruckPermitService service = new FoodTruckPermitService(_appconfig, repo, _logger);
+            IFoodTruckPermitService service = new FoodTruckPermitService(repo, _logger);
 
             var result = service.SearchNearestFoodTrucks(latitude, longitude, distantMiles, noOfResult);
 
@@ -79,7 +79,7 @@ namespace FoodTruckJunkie.Service_Tests
 
             IFoodTruckPermitRepository repo = repoMock.Object;
 
-            var service = new FoodTruckPermitService(_appconfig, repo, _logger);
+            var service = new FoodTruckPermitService(repo, _logger);
 
             var result = service.SearchNearestFoodTrucks(latitude, longitude, distantMiles, noOfResult);
 
@@ -108,7 +108,7 @@ namespace FoodTruckJunkie.Service_Tests
 
             IFoodTruckPermitRepository repo = repoMock.Object;
 
-            IFoodTruckPermitService service = new FoodTruckPermitService(_appconfig, repo, _logger);
+            IFoodTruckPermitService service = new FoodTruckPermitService(repo, _logger);
 
             var result = service.SearchNearestFoodTrucks(latitude, longitude, distantMiles, noOfResult);
 

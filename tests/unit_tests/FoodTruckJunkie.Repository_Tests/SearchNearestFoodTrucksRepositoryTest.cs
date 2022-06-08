@@ -48,7 +48,7 @@ namespace FoodTruckJunkie.Repository_Tests
 
             IDbConnection db = dbMock.Object;
 
-            var repo = new FoodTruckPermitRepository(_appconfig, db, _logger);
+            var repo = new FoodTruckPermitRepository(db, _logger);
 
             var searchResult = repo.SearchNearestFoodTrucks(latitude, longitude, distantMiles,noOfResult);
 
