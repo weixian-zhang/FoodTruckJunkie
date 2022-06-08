@@ -45,9 +45,8 @@ namespace FoodTruckJunkie.ApiServer
                 builder
                     .WithOrigins(
                         "https://localhost:5001",
-                        "https://webapp-foodtruckjunkie-api.azurewebsites.net"
+                        "https://webapp-foodtruckjunkie-portal.azurewebsites.net"
                     )
-                    .AllowAnyOrigin()
                     .AllowAnyMethod()
                     .AllowAnyHeader();
             }));
