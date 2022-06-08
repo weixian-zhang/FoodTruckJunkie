@@ -125,7 +125,8 @@ The following [diagrams](https://github.com/weixian-zhang/FoodTruckJunkie/blob/m
 ### Context Diagram
 
 A big picture of how users use FoodTruckJunkie Web App  
-<img src="https://user-images.githubusercontent.com/43234101/170187803-b1a55b76-dda0-4ac9-9511-350539bfe478.png" width="250" height="500" />  
+<img src="https://user-images.githubusercontent.com/43234101/172609048-bd0a0410-32e6-4876-b83b-54160659bce4.png" width="250" height="500" />  
+
 
 ### Container Diagram
 
