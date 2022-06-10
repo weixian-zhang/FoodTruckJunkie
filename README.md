@@ -397,6 +397,11 @@ Based on my experience as an Azure practiioner and not limited to:
   Although Application Insights is a App Performance Monitoring (APM) tool
    * the App Map feature could show if web app is contacting any suspicious external endpoints, detecting malware doing Commmand and Control to form backdoors and          executing data exfiltration
    * Application Insight logs could  further joined with other log types in Azure Sentinel for further investigation. Although I have not seen this in action, I think      this has potential.  
+* Use Azure Storage SAS Url to access Storage whenever situation fits. Below screenshot is an example of using Storage SAS Url from my hobby project [Azure Workbench](https://www.azureworkbench.com/) (codes in private repo, public docs [here](https://github.com/weixian-zhang/Azure-Workbench)).  
+  Workbench supports generation of Bicep templates of diagram, behind the scenes, the ApiServer generate a Storage SAS Url, store the SAS in the response header and     return to Portal instantly. Portal then polls the SAS Url continuously. At the same time, the Bicep generation "recipe" info is sent to Service Bus as a message.  
+  A separate container-based Python daemon App is listening for Bicep-gen messages, once daemon App receives a message, it then uses Python Jinja template framework to generate the Bicep file and store it in Storage. Portal is able to securely poll and retrieve the Bicep file using a short-lived SAS Url.  
+  ![image](https://user-images.githubusercontent.com/43234101/173002324-0187b6fd-2da2-449c-bb27-2731c7918aa9.png)
+
      
 <br />
 <br />
