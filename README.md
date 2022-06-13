@@ -331,15 +331,23 @@ The following is a set of areas for reviews I will try to cover depending on the
  I plan to introduce security-related pipeline Tasks into our Build and Release pipelines as follows (not limited to),
  * <b>Build Pipeline</b>
     * Credential Scanner - detects credentials and secrets
-    * SonarQube Static Code Analysis - code smells, bugs and security vulnerabilities ([rules here](https://docs.sonarqube.org/latest/user-guide/security-rules/))
-    * WhiteSource Bolt - detects vulnerabilities in open source components and provides fixes and checks licensing
-    * OWasp Dependency Checks - detects publicly disclosed vulnerabilities contained within a project’s dependencies
-    * Anchore Image Scanner - For scanning Docker images for vulnerabilities, if any team member decides to containerize some sub-systems
-    * Run Unit Tests
+    * Static Code Analytics
+      * SonarQube Static Code Analysis - code smells, bugs and security vulnerabilities ([rules here](https://docs.sonarqube.org/latest/user-guide/security-rules/))
+    * Open Source Analysis
+      * WhiteSource Bolt - detects vulnerabilities in open source components and provides fixes and checks licensing
+      * OWasp Dependency Checks - detects publicly disclosed vulnerabilities contained within a project’s dependencies
+    * Docker Image Analysis
+      * Anchore Image Scanner - For scanning Docker images for vulnerabilities, if any team member decides to containerize some sub-systems
+    * Unit Tests
+      * standard unit tests for features
+      * security unit tests for security controls
     
  * <b>Release Pipeline</b>
-    * OWASP ZAP - integrated penetration testing tool to detect web vulnerabilities in our Web APIs
-    * Fuzz Test - explore the introduction of Fuzzing with web fuzzers like [FFUS](https://github.com/ffuf/ffuf) or [OneFuzz](https://github.com/microsoft/onefuzz/blob/main/README.md)  
+    * Web Penetration Testing
+      * OWASP ZAP integrated penetration testing tool to detect web vulnerabilities in our Web APIs
+    * Fuzz Test - explore the introduction of Fuzzing with web fuzzers like
+      * [FFUS](https://github.com/ffuf/ffuf)
+      * [OneFuzz](https://github.com/microsoft/onefuzz/blob/main/README.md)  
 
 ### Security Logging & Monitoring | SDLC - Operations & Maintenance Phase
 
