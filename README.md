@@ -189,7 +189,6 @@ During this time of learning AppSec, I am inspired to start some of hobby projec
 
 
 
-
 ### AppSec Practices in SDLC  
 
 Through my recent AppSec exploration and studies, I have came up with the following sections that describe the AppSec practices I plan to execute for each SDLC phase. These sections are constantly updated as my studies progess.  
@@ -210,10 +209,14 @@ Through my recent AppSec exploration and studies, I have came up with the follow
 I devised a study plan for me to stay focus in learning and dive deep into the AppSec areas I believe is important in my AppSec journey.
 I hope to learn more secure coding techniques and be experience in spotting vulnerabilities in code through trainings.
  * OWASP Top 10 current, past and [other](https://portswigger.net/web-security/all-materials) web vulnerabilities
- * Train with [Secure Code Warrior](https://portal.securecodewarrior.com/#/website-trial/web/injection/sql/c_sharp/web_forms) or similar gamified training programs
- * Train using [PicoCTF](https://picoctf.org/) cybersecurity challenges
- * Explore and pursue EC-Council - [Certified Application Security Engineer](https://www.eccouncil.org/wp-content/uploads/2019/03/CASE-Dot-NET-Exam-Blueprint-v1.pdf)
- * Explore and pursue [Certified Ethical Hacking](https://www.eccouncil.org/programs/certified-ethical-hacker-ceh/)
+ * Secure Coding
+   * [Secure Code Warrior](https://portal.securecodewarrior.com/#/website-trial/web/injection/sql/c_sharp/web_forms) or similar gamified training programs
+ * Ethical Hacking
+   * Train using [PicoCTF](https://picoctf.org/) cybersecurity challenges
+   * [OWASP Security Knowledge Framework Labs](https://demo.securityknowledgeframework.org/dashboard)
+   * Explore and pursue EC-Council - [Certified Application Security Engineer](https://www.eccouncil.org/wp-content/uploads/2019/03/CASE-Dot-NET-Exam-Blueprint-v1.pdf)
+   * Explore and pursue [Certified Ethical Hacking](https://www.eccouncil.org/programs/certified-ethical-hacker-ceh/)
+   * [Hack-This-Site org](https://hackthissite.org/)
  * Azure Security
  
 
