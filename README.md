@@ -210,8 +210,12 @@ I devised a study plan for me to stay focus in learning and dive deep into the A
 I hope to learn more secure coding techniques and be experience in spotting vulnerabilities in code through trainings.
  * OWASP Top 10 current, past and [other](https://portswigger.net/web-security/all-materials) web vulnerabilities
  * Secure Coding
+   I am currently using Secure Code Warrior to train on spotting vulnerabilities in codes. This gamified platform provdies realistic code base.
    * [Secure Code Warrior](https://portal.securecodewarrior.com/#/website-trial/web/injection/sql/c_sharp/web_forms) or similar gamified training programs
    * [My Secure Code Warrior Current Training Score](https://portal.securecodewarrior.com/#/stats/62b1c64184f1be000967ff80)
+   <br />
+   <img src ="https://user-images.githubusercontent.com/43234101/175228665-eff6f221-59d5-4f5a-a1a2-5f7f5818c302.png" width="900px" height="600px" />
+
  * Ethical Hacking
    * Train using [PicoCTF](https://picoctf.org/) cybersecurity challenges
    * [OWASP Security Knowledge Framework Labs](https://demo.securityknowledgeframework.org/dashboard)
