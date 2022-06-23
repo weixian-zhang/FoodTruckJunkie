@@ -40,7 +40,7 @@ Web App is fully hosted on Azure and consist of major components including
 * [AppSec](#appsec)
    * [AppSec Hobby Projects](#appsec-hobby-projects)
    * [AppSec Practices in SDLC](#appsec-practices-in-sdlc)
-   * [AppSec Training & Awareness | SDLC - Planning Phase](#appsec-training--awareness--sdlc---planning-phase)
+   * [AppSec Training | SDLC - Planning Phase](#appsec-training--sdlc---planning-phase)
    * [Define Security Requirements | SDLC - Define Requirement Phase](#define-security-requirements--sdlc---define-requirement-phase)
    * [Threat Modelling | SDLC - Design & Protoyping Phase](#threat-modelling--sdlc---design--protoyping-phase)
    * [Secure Coding | SDLC - Development Phase](#secure-coding--sdlc---development-phase)
@@ -204,13 +204,14 @@ Through my recent AppSec exploration and studies, I have came up with the follow
 | Operations & Maintenance | Security Logging & Monitoring |
 
 
-### AppSec Training & Awareness | SDLC - Planning Phase
+### AppSec Training | SDLC - Planning Phase
 
 I devised a study plan for me to stay focus in learning and dive deep into the AppSec areas I believe is important in my AppSec journey.
 I hope to learn more secure coding techniques and be experience in spotting vulnerabilities in code through trainings.
  * OWASP Top 10 current, past and [other](https://portswigger.net/web-security/all-materials) web vulnerabilities
  * Secure Coding
    * [Secure Code Warrior](https://portal.securecodewarrior.com/#/website-trial/web/injection/sql/c_sharp/web_forms) or similar gamified training programs
+   * [My Secure Code Warrior Current Training Score](https://portal.securecodewarrior.com/#/stats/62b1c64184f1be000967ff80)
  * Ethical Hacking
    * Train using [PicoCTF](https://picoctf.org/) cybersecurity challenges
    * [OWASP Security Knowledge Framework Labs](https://demo.securityknowledgeframework.org/dashboard)
