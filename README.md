@@ -164,11 +164,6 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 
 During this time of learning AppSec, I am inspired to start some of hobby projects and the following projects are what I have in mind:  
 
-* AKVCrypter - A web app that is fully integrated with Key Vault and exposes Web APIs to perform common cryptographic operations on-behalf of other Apps. Think of it like a Key Vault extension that handles your cryptographic needs.   
-  Apps can easily perform these complex operations by calling AKVCrypter's API without owning the complexity, at the same time all shared secrets, keys and certs used     in operations are kept in Key Vault.  Authentication between components uses Azure Managed Identity.  
-
-[![AKVCrypter](https://user-images.githubusercontent.com/43234101/172545758-5e3d46d6-fbbb-41f4-be30-bd67aa5ba9a6.png)](https://www.azureworkbench.com/?id=MBjJaOnTTKNjnkwXCnvV)
-
 * Fuzzie - Fuzzie is a Visual Studio Code Extension that brings Web API fuzzing closest to where developers code, the IDE.  
   Fuzzing can happen right within IDE without having to wait until Fuzzer task runs in DevOps pipeline, this can greatly reduce overall bug fix time.  
   
@@ -190,10 +185,15 @@ Inspired by [OWASP Security Knowledge Framework](https://demo.securityknowledgef
   CanYou plans to use [Open Policy Agent (OPA)](https://www.openpolicyagent.org/docs/latest/) as the backend policy engine, and users can express their authorization     policies using a domain-specific language call [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/). The Web Frontend also allows admins to write and   test their Rego policies, policies can include attributes like department, team, reporting manager and more, which is the vital data for Attribute-Based Access         Control.  
   
   CanYou assumes the systems handle authentication on their own, a good authn candidate can be a Token-based authentication where roles and attributes of users are       stored in claims or OIDC-ID tokens. Systems can pass these user attributes to call CanYou API, and Rego policies are executed to make authorization Permit/Deny         decisions.
-  Hopefully, with this generic authorization engine, many applications can take advantage of it and not having to build their own, which is commonly the case.
+  Hopefully, with this generic authorization engine, many applications can take advantage of it and not having to build their own, which is commonly the case.  
   
+* AKVCrypter - A web app that is fully integrated with Key Vault and exposes Web APIs to perform common cryptographic operations on-behalf of other Apps. Think of it like a Key Vault extension that handles your cryptographic needs.   
+  Apps can easily perform these complex operations by calling AKVCrypter's API without owning the complexity, at the same time all shared secrets, keys and certs used     in operations are kept in Key Vault.  Authentication between components uses Azure Managed Identity.  
 
-
+[![AKVCrypter](https://user-images.githubusercontent.com/43234101/172545758-5e3d46d6-fbbb-41f4-be30-bd67aa5ba9a6.png)](https://www.azureworkbench.com/?id=MBjJaOnTTKNjnkwXCnvV)  
+  
+<br />
+<br />
 
 ### AppSec Practices in SDLC  
 
