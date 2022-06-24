@@ -175,8 +175,9 @@ During this time of learning AppSec, I am inspired to start some of hobby projec
 * Azure DevOps Extension - Secure Development Lifecycle Tracker
 This DevOps extension incorporate [OWASP ASVS and MASVS](https://cheatsheetseries.owasp.org/IndexASVS.html) guides into Azure Board and Work Items, allowing developers to choose the verification guides as Security Requirements. A Wizard Form can be further developed to prompt and help developers to choosing the right security requirements for ease of use.  
 This extension can instill secure development awareness and concepts into dev teams.  
-Inspired by [OWASP Security Knowledge Framework](https://demo.securityknowledgeframework.org/dashboard).
-<img src ="https://user-images.githubusercontent.com/43234101/175455554-6ad925f5-6892-4053-99b4-e84f2ab168ad.png" width="900px" height="600px" />
+Inspired by [OWASP Security Knowledge Framework](https://demo.securityknowledgeframework.org/dashboard).  
+<br />
+  <img src ="https://user-images.githubusercontent.com/43234101/175455554-6ad925f5-6892-4053-99b4-e84f2ab168ad.png" width="900px" height="600px" />
 
 * CanYou - A policy-based authorization engine that supports a hybrid of Role-Based Access Control and Attribute-Based Access Control design and offers
   * REST APIs as Backend 
