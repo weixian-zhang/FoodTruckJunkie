@@ -174,9 +174,8 @@ During this time of learning AppSec, I am inspired to start some hobby projects 
 
 * <b>Azure DevOps Extension - Secure Development Lifecycle Tracker</b>  
 This extension can instill secure development awareness and concepts into dev teams.  
-Inspired by [OWASP Security Knowledge Framework](https://demo.securityknowledgeframework.org/dashboard) 
-This DevOps extension incorporates:
-  * [OWASP ASVS and MASVS](https://cheatsheetseries.owasp.org/IndexASVS.html) guides into Azure Board and Work Items, allowing developers to choose the verification       guides as Security Requirements.
+Inspired by [OWASP Security Knowledge Framework](https://demo.securityknowledgeframework.org/dashboard)  
+  * Incorporate [OWASP ASVS and MASVS](https://cheatsheetseries.owasp.org/IndexASVS.html) verification standards into Azure Board and Work Items, allowing developers       to select verification standards from drop-down intellisense, making these standards into Security Requirement work items.
   * A Wizard Form can be further developed to prompt and help developers to choosing the right security requirements for ease of use
   * Built-in Risk Rating Calculator + Questionaires to determine risk for each selected Security Requirement. This is critical for DevCrews to prioritize Security         Requirements
 <br />
