@@ -162,9 +162,9 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 
 ### AppSec Hobby Projects  
 
-During this time of learning AppSec, I am inspired to start some of hobby projects and the following projects are what I have in mind:  
+During this time of learning AppSec, I am inspired to start some hobby projects and the following are what I have in mind:  
 
-* Fuzzie - Fuzzie is a Visual Studio Code Extension that brings Web API fuzzing closest to where developers code, the IDE.  
+* <b>Fuzzie</b> - Fuzzie is a Visual Studio Code Extension that brings Web API fuzzing closest to where developers code, the IDE.  
   Fuzzing can happen right within IDE without having to wait until Fuzzer task runs in DevOps pipeline, this can greatly reduce overall bug fix time.  
   
   For Fuzzie to know the API paths and parameters, I am thinking of VSCode Side Bar GUI to allow developers to specify one or more "Fuzzing Profiles", and each           Fuzzing Profile contains API Urls and/or OpenAPI definition file paths/Urls and other info like authentication methods.
@@ -172,14 +172,17 @@ During this time of learning AppSec, I am inspired to start some of hobby projec
   
   As for data, Fuzzie will download fuzz data from an Azure Storage I own so I have full control of the data, however, the data is sourced externally from sources like [Big List Of Naughty Strings](https://github.com/minimaxir/big-list-of-naughty-strings) and [SecList](https://github.com/danielmiessler/SecLists/tree/master/Fuzzing).
 
-* Azure DevOps Extension - Secure Development Lifecycle Tracker
-This DevOps extension incorporate [OWASP ASVS and MASVS](https://cheatsheetseries.owasp.org/IndexASVS.html) guides into Azure Board and Work Items, allowing developers to choose the verification guides as Security Requirements. A Wizard Form can be further developed to prompt and help developers to choosing the right security requirements for ease of use.  
+* <b>Azure DevOps Extension - Secure Development Lifecycle Tracker</b>  
 This extension can instill secure development awareness and concepts into dev teams.  
-Inspired by [OWASP Security Knowledge Framework](https://demo.securityknowledgeframework.org/dashboard).  
+Inspired by [OWASP Security Knowledge Framework](https://demo.securityknowledgeframework.org/dashboard) 
+This DevOps extension incorporates:
+  * [OWASP ASVS and MASVS](https://cheatsheetseries.owasp.org/IndexASVS.html) guides into Azure Board and Work Items, allowing developers to choose the verification       guides as Security Requirements.
+  * A Wizard Form can be further developed to prompt and help developers to choosing the right security requirements for ease of use
+  * Built-in Risk Rating Calculator + Questionaires to determine risk for each selected Security Requirement. This is critical for DevCrews to prioritize Security         Requirements
 <br />
-  <img src ="https://user-images.githubusercontent.com/43234101/175455554-6ad925f5-6892-4053-99b4-e84f2ab168ad.png" width="900px" height="600px" />
+    <img src ="https://user-images.githubusercontent.com/43234101/175455554-6ad925f5-6892-4053-99b4-e84f2ab168ad.png" width="900px" height="600px" />
 
-* CanYou - A policy-based authorization engine that supports a hybrid of Role-Based Access Control and Attribute-Based Access Control design and offers
+* <b>CanYou</b> - A policy-based authorization engine that supports a hybrid of Role-Based Access Control and Attribute-Based Access Control design and offers
   * REST APIs as Backend 
   * a Web Frontend for admins to setup and configure role, actions/features and role-feature mappings
 
@@ -188,7 +191,7 @@ Inspired by [OWASP Security Knowledge Framework](https://demo.securityknowledgef
   CanYou assumes the systems handle authentication on their own, a good authn candidate can be a Token-based authentication where roles and attributes of users are       stored in claims or OIDC-ID tokens. Systems can pass these user attributes to call CanYou API, and Rego policies are executed to make authorization Permit/Deny         decisions.
   Hopefully, with this generic authorization engine, many applications can take advantage of it and not having to build their own, which is commonly the case.  
   
-* AKVCrypter - A web app that is fully integrated with Key Vault and exposes Web APIs to perform common cryptographic operations on-behalf of other Apps. Think of it like a Key Vault extension that handles your cryptographic needs.   
+* <b>AKVCrypter</b> - A web app that is fully integrated with Key Vault and exposes Web APIs to perform common cryptographic operations on-behalf of other Apps. Think of it like a Key Vault extension that handles your cryptographic needs.   
   Apps can easily perform these complex operations by calling AKVCrypter's API without owning the complexity, at the same time all shared secrets, keys and certs used     in operations are kept in Key Vault.  Authentication between components uses Azure Managed Identity.  
 
 [![AKVCrypter](https://user-images.githubusercontent.com/43234101/172545758-5e3d46d6-fbbb-41f4-be30-bd67aa5ba9a6.png)](https://www.azureworkbench.com/?id=MBjJaOnTTKNjnkwXCnvV)  
