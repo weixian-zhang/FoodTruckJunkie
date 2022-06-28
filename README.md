@@ -164,6 +164,12 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 
 During this time of learning AppSec, I am inspired to start some hobby projects and the following are what I have in mind:  
 
+* <b>[Azure Workbench](https://www.azureworkbench.com/)</b> - Enhance Azure Workbench to support [threat modelling](https://github.com/weixian-zhang/Azure-Workbench/issues/33) with STRIDE. Threat         modelling feature should also include Azure specific threats for example:  
+  * Public IP attach to VM
+  * Storage allowing anonymous access
+  * Not accessing Key Vault with Managed Identity
+  * more  
+  
 * <b>Fuzzie</b> - Fuzzie is a Visual Studio Code Extension that brings Web API fuzzing closest to where developers code, the IDE.  
   Fuzzing can happen right within IDE without having to wait until Fuzzer task runs in DevOps pipeline, this can greatly reduce overall bug fix time.  
   
