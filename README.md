@@ -168,7 +168,8 @@ During this time of learning AppSec, I am inspired to start some hobby projects 
   * Public IP attach to VM
   * Storage allowing anonymous access
   * Not accessing Key Vault with Managed Identity
-  * more  
+  * Database firewall whitelist specific IP address
+  * more
   
 * <b>Fuzzie</b> - Fuzzie is a Visual Studio Code Extension that brings Web API fuzzing closest to where developers code, the IDE.  
   Fuzzing can happen right within IDE without having to wait until Fuzzer task runs in DevOps pipeline, this can greatly reduce overall bug fix time.  
