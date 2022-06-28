@@ -164,14 +164,14 @@ A supplementary Layered architecture diagram is added to explicitly describe the
 
 During this time of learning AppSec, I am inspired to start some hobby projects and the following are what I have in mind:  
 
-* <b>[Azure Workbench](https://www.azureworkbench.com/)</b> - Enhance Azure Workbench to support [threat modelling](https://github.com/weixian-zhang/Azure-Workbench/issues/33) with STRIDE. Threat         modelling feature should also include Azure specific threats for example:  
+* <b>[Azure Workbench](https://www.azureworkbench.com/)</b> - Enhance Azure Workbench to support [threat modelling](https://github.com/weixian-zhang/Azure-Workbench/issues/33) with STRIDE. Threat modelling feature should also include Asset-Centric, App-Centric and Azure specific threats for example:  
   * Public IP attach to VM
   * Storage allowing anonymous access
   * Not accessing Key Vault with Managed Identity
   * Database firewall whitelist specific IP address
   * more
   
-* <b>Fuzzie</b> - Fuzzie is a Visual Studio Code Extension that brings Web API fuzzing closest to where developers code, the IDE.  
+* <b>[Fuzzie](https://marketplace.visualstudio.com/search?term=fuzzie&target=VSCode&category=All%20categories&sortBy=Relevance)</b> - Fuzzie is a Visual Studio Code Extension that brings Web API fuzzing closest to where developers code, the IDE.  
   Fuzzing can happen right within IDE without having to wait until Fuzzer task runs in DevOps pipeline, this can greatly reduce overall bug fix time.  
   
   For Fuzzie to know the API paths and parameters, I am thinking of VSCode Side Bar GUI to allow developers to specify one or more "Fuzzing Profiles", and each           Fuzzing Profile contains API Urls and/or OpenAPI definition file paths/Urls and other info like authentication methods.
